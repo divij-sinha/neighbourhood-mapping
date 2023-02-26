@@ -12,7 +12,7 @@ def get_geojson(input_str: str) -> dict:
     return None
 
 
-def get_map_comps(loc: tuple, zoom: int) -> tuple:
+def get_map_comps(loc: tuple, zoom: int, draw_options: dict) -> tuple:
     m = folium.Map(
         location = loc,
         zoom_start = zoom,
@@ -20,7 +20,7 @@ def get_map_comps(loc: tuple, zoom: int) -> tuple:
     )
     Draw(
      position="topleft",
-     draw_options={"polyline": False, "rectangle": False, "circle": False, "marker": False, "circlemarker": False,},
+     draw_options=draw_options,
      show_geometry_on_click=False
     ).add_to(m)
 
