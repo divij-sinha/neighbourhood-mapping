@@ -12,10 +12,8 @@ def survey_form():
     form = SurveyStart()
 
     if form.validate_on_submit():
-        print("HERE!")
         parsed_geojson = get_geojson(form.mark_layer.data)
-        print(parsed_geojson)
-        return redirect(url_for("survey_draw"), True)
+        return redirect(url_for("survey_draw_first"))
     
     if form.is_submitted:
         print(form.cur_neighbourhood.data)
@@ -29,19 +27,17 @@ def survey_form():
         script=script,
     )
 
-@app.route("/survey_draw", methods=['GET', 'POST'])
-def survey_draw(first_time: bool = True):
+@app.route("/survey_draw_first", methods=['GET', 'POST'])
+def survey_draw_first():
     draw_options = {"polyline": False, "rectangle": False, "circle": False, "marker": False, "circlemarker": False}
     header, body_html, script = get_map_comps(loc = (41.8781, -87.6298), zoom = 12, draw_options=draw_options)
-    if first_time:
-        form = SurveyDrawFirst()
-    else:
-        form = SurveyDraw()
+    form = SurveyDrawFirst()
     if form.validate_on_submit():
+        print(form.draw_another.data)
         if form.draw_another.data == "Yes":
             parsed_geojson = get_geojson(form.draw_layer.data)
             print(parsed_geojson)
-            return redirect(url_for("survey_draw", False))
+            return redirect(url_for("survey_draw_next"))
         else:
             pass
 
@@ -50,4 +46,27 @@ def survey_draw(first_time: bool = True):
         header=header,
         body_html=body_html,
         script=script,
+        first_time=True,
+    )
+
+@app.route("/survey_draw_next", methods=['GET', 'POST'])
+def survey_draw_next():
+    draw_options = {"polyline": False, "rectangle": False, "circle": False, "marker": False, "circlemarker": False}
+    header, body_html, script = get_map_comps(loc = (41.8781, -87.6298), zoom = 12, draw_options=draw_options)
+    form = SurveyDraw()
+    if form.validate_on_submit():
+        print(form.draw_another.data)
+        if form.draw_another.data == "Yes":
+            parsed_geojson = get_geojson(form.draw_layer.data)
+            print(parsed_geojson)
+            return redirect(url_for("survey_draw_next"))
+        else:
+            pass
+
+    return render_template("form_page_draw.html",
+        form=form,
+        header=header,
+        body_html=body_html,
+        script=script,
+        first_time=False,
     )
