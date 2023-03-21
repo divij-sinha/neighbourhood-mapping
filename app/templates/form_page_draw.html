@@ -1,3 +1,37 @@
+{% extends "_form_page.html" %}
+
+{% block map_head %}
+    {{ header|safe }}
+{% endblock %}
+    
+{% block map_body %}
+    <form action="" method="post" novalidate id="mainform">
+        {{ form.hidden_tag() }}
+        {% if first_time %}
+        {% else %}
+            {{ form.cur_neighbourhood.label }}
+            {{ form.cur_neighbourhood }}
+        {% endif %}
+        {{ form.draw_another }}
+    </form>
+        {{ body_html|safe }}
+        {{ form.submit(onclick="storeLayer()", form="mainform") }}
+{% endblock %}
+
+{% block map_script %}
+        <script>
+            {{ script|safe }}
+            function storeLayer() {
+                var data = drawnItems.toGeoJSON();
+                var convertedData = 'text/json;charset=utf-8,'
+                    + encodeURIComponent(JSON.stringify(data));
+                document.getElementById('draw_layer').setAttribute(
+                    'value', 'data:' + convertedData
+                );                 
+            }
+        </script>
+{% endblock %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,10 +52,12 @@
 
         <form action="" method="post" novalidate id="mainform">
             {{ form.hidden_tag() }}
-            {% if form.cur_neighbourhood %}
+            {% if first_time %}
+            {% else %}
                 {{ form.cur_neighbourhood.label }}
                 {{ form.cur_neighbourhood }}
             {% endif %}
+            {{ form.draw_another }}
         </form>
             {{ body_html|safe }}
             {{ form.submit(onclick="storeLayer()", form="mainform") }}            

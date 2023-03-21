@@ -1,37 +1,26 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        {{ header|safe }}
-    </head>
-    <body>
-        <h1>CHICAGOANS' NEIGHBORHOOD MENTAL MAPS</h1>
-        <br>
-        <p>
-            <h2>
-            Where are Chicago's neighborhoods?
-            </h2>
-            Chicago prides itself as “The City of Neighborhoods” but where are they? 
-            There are no official neighborhood boundaries, other than the “Community Areas” mapped out in the 1920s! 
-            Chicago needs an update. 
-        </p>
-        <p>
-            <h6>
-                By participating, you agree that you have read, understand and accept the Reader Submission Terms in relation to all of the content and other information you send to us ('Your Content'). If you do not accept these terms, please do not submit any content.
-            </h6>
-        </p>
+{% extends "_form_page.html" %}
 
+{% block map_head %}
+    {{ header|safe }}
+{% endblock %}
+    
+{% block map_body %}
         <form action="" method="post" novalidate id="mainform">
             {{ form.hidden_tag() }}
-
             {{ form.cur_neighbourhood.label }}
-            {{ form.cur_neighbourhood }}
+            {{ form.cur_neighbourhood(class_="form-select") }}
             {{ form.years_lived.label }}
-            {{ form.years_lived }}
+            {{ form.years_lived(class_="form-number") }}
         </form>
+        <div class="container-lg">
             {{ body_html|safe }}
+        </div>
         <form>
-            {{ form.submit(onclick="storeLayer()", form="mainform") }}            
+            {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn btn-primary") }}            
         </form>
+{% endblock %}
+
+{% block map_script %}
         <script>
             {{ script|safe }}
             function storeLayer() {
@@ -42,8 +31,5 @@
                     'value', 'data:' + convertedData
                 );                 
             }
-            
         </script>
-    </body>
-</html>
-
+{% endblock %}
