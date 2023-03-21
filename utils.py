@@ -17,6 +17,10 @@ def get_map_comps(loc: tuple, zoom: int, draw_options: dict) -> tuple:
         location = loc,
         zoom_start = zoom,
 #        tiles = "CartoDB", attr = "https://carto.com"
+        tiles='https://stamen-tiles.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png',
+        attr='Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.',
+        height=600,
+        width=800,
     )
     Draw(
      position="topleft",
