@@ -5,17 +5,20 @@
 {% endblock %}
     
 {% block map_body %}
-    <form action="" method="post" novalidate id="mainform">
-        {{ form.hidden_tag() }}
-        {% if first_time %}
-        {% else %}
-            {{ form.cur_neighbourhood.label }}
-            {{ form.cur_neighbourhood }}
-        {% endif %}
-        {{ form.draw_another }}
-    </form>
-        {{ body_html|safe }}
-        {{ form.submit(onclick="storeLayer()", form="mainform") }}
+
+{{ body_html|safe }}
+
+<form action="" method="post" novalidate id="mainform">
+    {{ form.hidden_tag() }}
+    {{ form.draw_another.label }}
+    {{ form.draw_another }}
+    {% if first_time %}
+    {% else %}
+    Which is the next neighborhood you want to draw?
+        {{ form.cur_neighbourhood(class_="form-radio") }}
+    {% endif %}
+</form>    
+    {{ form.submit(onclick="storeLayer()", form="mainform") }}
 {% endblock %}
 
 {% block map_script %}

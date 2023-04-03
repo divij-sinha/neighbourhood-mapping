@@ -1,10 +1,16 @@
 from app import app
 from flask import render_template, redirect, url_for
-from app.forms import SurveyStart, SurveyDraw, SurveyDrawFirst
+from app.forms import SurveyStart, SurveyDraw, SurveyDrawFirst, AgreeButton
 from utils import get_geojson, get_map_comps
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
+def start_page():
+    agree = AgreeButton()
+    if agree.validate_on_submit():
+        return redirect(url_for("survey_form"))
+    return render_template("start_page.html", agree=agree)
+
 @app.route("/survey_form", methods=['GET', 'POST'])
 def survey_form():
     draw_options = {"polygon":False, "polyline": False, "rectangle": False, "circle": False, "marker": False, "circlemarker": {"radius": 20},}
@@ -39,7 +45,8 @@ def survey_draw_first():
             print(parsed_geojson)
             return redirect(url_for("survey_draw_next"))
         else:
-            pass
+            return redirect(url_for("thank_page"))
+
 
     return render_template("form_page_draw.html",
         form=form,
@@ -61,7 +68,7 @@ def survey_draw_next():
             print(parsed_geojson)
             return redirect(url_for("survey_draw_next"))
         else:
-            pass
+            return redirect(url_for("thank_page"))
 
     return render_template("form_page_draw.html",
         form=form,
@@ -70,3 +77,7 @@ def survey_draw_next():
         script=script,
         first_time=False,
     )
+
+@app.route("/thank_you", methods=['GET'])
+def thank_page():
+    return render_template("thank_page.html")
