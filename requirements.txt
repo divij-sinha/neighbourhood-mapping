@@ -4,3 +4,4 @@ folium==0.14.0
 geojson==3.0.1
 pandas==1.5.3
 WTForms==3.0.1
+gunicorn==20.1.0
