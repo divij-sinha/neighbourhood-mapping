@@ -30,7 +30,7 @@ def survey_form():
         form=form,
         header=header,
         body_html=body_html,
-        script=script,
+        script=script
     )
 
 @app.route("/survey_draw_first", methods=['GET', 'POST'])

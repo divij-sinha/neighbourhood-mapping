@@ -7,12 +7,41 @@
 {% block map_body %}
         <form action="" method="post" novalidate id="mainform">
             {{ form.hidden_tag() }}
-            {{ form.cur_neighbourhood.label }}
-            {{ form.cur_neighbourhood(class_="form-select") }}
-            {{ form.years_lived.label }}
-            {{ form.years_lived(class_="form-number") }}
+        
+        <div class="container">
+            <div class="row">
+                <div class="col form-floating">
+                    {{ form.cur_neighbourhood(
+                        class_="form-text form-control", 
+                        placeholder = form.cur_neighbourhood.description,
+                        size = 30, 
+                    )}} 
+                    {{ form.cur_neighbourhood.label(
+                        for="cur_neighbourhood",
+                        class_="form-label"
+                    )}}
+                </div>
+                <div class="col form-floating">
+                    {{ form.years_lived(
+                        class_="form-number form-control",
+                    )}}
+                    {{ form.years_lived.label(
+                        for="years_lived",
+                        class_="form-label"
+                    )}}
+                </div>
+            </div>
+        </div>
+
         </form>
-        <div class="container-lg">
+        <br><br>
+        <div class="container-fluid">
+            <p>
+                Now, let's mark where you live! Please pan to where you live, click on the <img src={{img1|safe}} alt="white circle" /> and, mark your location.  
+                We will only look at your location in aggregate, and we do not store your address! 
+            </p>
+        </div>
+        <div class="container-fluid">
             {{ body_html|safe }}
         </div>
         <form>
