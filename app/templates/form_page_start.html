@@ -5,30 +5,51 @@
 {% endblock %}
     
 {% block map_body %}
-        <form action="" method="post" novalidate id="mainform">
+        {{ form_html }}
+        <form action="" method="post" novalidate id="mainform" class="needs-validation">
             {{ form.hidden_tag() }}
         
         <div class="container">
             <div class="row">
-                <div class="col form-floating">
-                    {{ form.cur_neighbourhood(
-                        class_="form-text form-control", 
-                        placeholder = form.cur_neighbourhood.description,
-                        size = 30, 
-                    )}} 
-                    {{ form.cur_neighbourhood.label(
-                        for="cur_neighbourhood",
-                        class_="form-label"
-                    )}}
+                    <div class="col-4 col-md-4 col-sm-12">
+                    {{ form.cur_neighbourhood.label}}
+                    {% if form.cur_neighbourhood.errors %}
+                        {{ form.cur_neighbourhood(class_="form-text form-control is-invalid")}}
+                    {% else %}
+                        {{ form.cur_neighbourhood(class_="form-text form-control")}}
+                    {% endif %}
+                    <div class="invalid-feedback">
+                      Please fill in the neighbourhood!
+                    </div>
                 </div>
-                <div class="col form-floating">
-                    {{ form.years_lived(
-                        class_="form-number form-control",
-                    )}}
-                    {{ form.years_lived.label(
-                        for="years_lived",
-                        class_="form-label"
-                    )}}
+                <div class="col-4 col-md-4 col-sm-12">
+                    {{ form.years_lived.label(class_="form-label")}}
+                    {% if form.years_lived.errors %}
+                        {{ form.years_lived(class_="form-number form-control is-invalid")}}
+                    {% else %}
+                        {{ form.years_lived(class_="form-number form-control")}}
+                    {% endif %}
+                    <div class="invalid-feedback">
+                        Please enter the number of years between 0 and 100
+                    </div>
+                </div>
+                <div class="col-4 col-md-4 col-sm-12">
+                    {% if form.rent_own.errors %}
+                        {{ form.rent_own.label(class_="form-check-label is-invalid")}}
+                    {% else %}
+                        {{ form.rent_own.label(class_="form-check-label")}}
+                    {% endif %}
+                    {% for subfield in form.rent_own %}
+                    <div class="form-check">
+                        <tr>
+                            <td>{{ subfield(class_="form-check-input") }}</td>
+                            <td>{{ subfield.label(class_="form-check-label") }}</td>
+                        </tr>
+                    </div>
+                    {% endfor %}
+                    <div class="invalid-feedback">
+                        Please choose an option!
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,7 +58,7 @@
         <br><br>
         <div class="container-fluid">
             <p>
-                Now, let's mark where you live! Please pan to where you live, click on the <img src={{img1|safe}} alt="white circle" /> and, mark your location.  
+                Now, let's mark where you live! Please pan to where you live, click on the <img src="draw_icon.png" alt="white circle" /> and, mark your location.  
                 We will only look at your location in aggregate, and we do not store your address! 
             </p>
         </div>

@@ -16,15 +16,10 @@ def survey_form():
     draw_options = {"polygon":False, "polyline": False, "rectangle": False, "circle": False, "marker": False, "circlemarker": {"radius": 20},}
     header, body_html, script = get_map_comps(loc = (41.8781, -87.6298), zoom = 12, draw_options=draw_options)
     form = SurveyStart()
-
+    
     if form.validate_on_submit():
         parsed_geojson = get_geojson(form.mark_layer.data)
         return redirect(url_for("survey_draw_first"))
-    
-    if form.is_submitted:
-        print(form.cur_neighbourhood.data)
-        print(form.years_lived.data)
-        print(form.mark_layer.data)
 
     return render_template("form_page_start.html",
         form=form,

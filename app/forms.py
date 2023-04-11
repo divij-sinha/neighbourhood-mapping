@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, HiddenField, SelectField, IntegerField, RadioField, StringField
-from wtforms.validators import NumberRange, Optional, DataRequired, InputRequired
+from wtforms import SubmitField, HiddenField, SelectField, RadioField, StringField, DecimalField
+from wtforms.validators import NumberRange, DataRequired, InputRequired
 import pandas as pd
 
 def neighborhood_list() -> list:
@@ -9,12 +9,13 @@ def neighborhood_list() -> list:
     
 class SurveyStart(FlaskForm): 
     cur_neighbourhood = StringField("What is the name of your neighborhood?", 
-                            description="What is the name of your neighborhood?"
-                            )
-    
-    years_lived = IntegerField("How many years have you lived here?",
+                            description="What is the name of your neighborhood?",
+                            validators=[DataRequired()])
+    years_lived = DecimalField("How many years have you lived here?",
                             description="How many years have you lived here?",
-                            validators=[NumberRange(0,100)],default=0)
+                            default=0,places=1,
+                            validators=[NumberRange(0,100),DataRequired()])
+    rent_own = RadioField("Do you rent or own your current residence?", choices=["Rent","Own"], validators=[DataRequired()])
     mark_layer = HiddenField("invisible_str_mark",validators=[DataRequired()])
 
     submit = SubmitField("Submit")
@@ -33,4 +34,4 @@ class SurveyDrawFirst(FlaskForm):
     submit = SubmitField("Submit")
 
 class AgreeButton(FlaskForm):
-    agree = SubmitField("Agree")
+    agree = SubmitField("I Agree")
