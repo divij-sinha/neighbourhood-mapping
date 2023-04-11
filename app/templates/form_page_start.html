@@ -61,13 +61,22 @@
                 Now, let's mark where you live! Please pan to where you live, click on the <img src="draw_icon.png" alt="white circle" /> and, mark your location.  
                 We will only look at your location in aggregate, and we do not store your address! 
             </p>
+            {% if form.mark_layer.errors %}
+            <p class="text-danger">
+                Please mark the general location of where you live!
+            </p>
+            {% endif %}
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid p-4">
             {{ body_html|safe }}
         </div>
-        <form>
-            {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn btn-primary") }}            
-        </form>
+        <div class="container-fluid text-center">
+            <form>
+                {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn btn-primary btn-lg") }}            
+            </form>
+        </div>
+        <div class="container-fluid p-4">
+        </div>
 {% endblock %}
 
 {% block map_script %}

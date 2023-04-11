@@ -1,11 +1,17 @@
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, HiddenField, SelectField, RadioField, StringField, DecimalField
-from wtforms.validators import NumberRange, DataRequired, InputRequired
+from wtforms.validators import NumberRange, DataRequired, InputRequired, ValidationError
 import pandas as pd
+from utils import get_geojson
 
 def neighborhood_list() -> list:
     df = pd.read_csv("app/data/neighborhoods233.csv")
     return df["name"].to_list()
+
+def validator_geo_json(form, field):
+    parsed_geojson = get_geojson(form.mark_layer.data)
+    if not parsed_geojson["features"]:
+        raise ValidationError()
     
 class SurveyStart(FlaskForm): 
     cur_neighbourhood = StringField("What is the name of your neighborhood?", 
@@ -16,9 +22,9 @@ class SurveyStart(FlaskForm):
                             default=0,places=1,
                             validators=[NumberRange(0,100),DataRequired()])
     rent_own = RadioField("Do you rent or own your current residence?", choices=["Rent","Own"], validators=[DataRequired()])
-    mark_layer = HiddenField("invisible_str_mark",validators=[DataRequired()])
+    mark_layer = HiddenField("invisible_str_mark",validators=[DataRequired(),validator_geo_json])
 
-    submit = SubmitField("Submit")
+    submit = SubmitField("Next!")
 
 class SurveyDraw(FlaskForm):
     cur_neighbourhood = SelectField("Neighbourhood", 
