@@ -58,8 +58,11 @@
         <br><br>
         <div class="container-fluid">
             <p>
-                Now, let's mark where you live! Please pan to where you live, click on the <img src="draw_icon.png" alt="white circle" /> and, mark your location.  
+                Now, let's mark where you live! Please pan to where you live, click on the <img src="/static/draw_icon.png" alt="white circle" width="25" /> and, mark your location.  
                 We will only look at your location in aggregate, and we do not store your address! 
+            </p>
+            <p class = "fst-italic">
+                Please mark only 1 location! Use the <img src="/static/delete_icon.png" alt="trash" width="25" /> to delete a marker. Use the <img src="/static/edit_icon.png" alt="pencil" width="25" /> to move a marker around.
             </p>
             {% if form.mark_layer.errors %}
             <p class="text-danger">
