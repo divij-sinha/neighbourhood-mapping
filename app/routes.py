@@ -1,7 +1,9 @@
 from app import app
 from flask import render_template, redirect, url_for
 from app.forms import SurveyStart, SurveyDraw, SurveyDrawFirst, AgreeButton
-from utils import get_geojson, get_map_comps
+from utils import get_geojson, get_map_comps, get_neighborhood_list
+
+neighborhood_list = get_neighborhood_list()
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -23,6 +25,7 @@ def survey_form():
 
     return render_template("form_page_start.html",
         form=form,
+        neighborhood_list = neighborhood_list,
         header=header,
         body_html=body_html,
         script=script

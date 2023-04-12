@@ -11,18 +11,23 @@
         
         <div class="container">
             <div class="row">
-                    <div class="col-4 col-md-4 col-sm-12">
-                    {{ form.cur_neighbourhood.label}}
-                    {% if form.cur_neighbourhood.errors %}
-                        {{ form.cur_neighbourhood(class_="form-text form-control is-invalid")}}
+                    <div class="col-4 col-md-4 col-sm-4"> 
+                    {{ form.cur_neighborhood.label}}
+                    {% if form.cur_neighborhood.errors %}
+                        {{ form.cur_neighborhood(class_="form-text form-control is-invalid", autocomplete="off", list="neighborhood_list")}}
                     {% else %}
-                        {{ form.cur_neighbourhood(class_="form-text form-control")}}
+                        {{ form.cur_neighborhood(class_="form-text form-control", autocomplete="off", list="neighborhood_list")}}
                     {% endif %}
+                    <datalist id="neighborhood_list">
+                        {% for neighborhood in neighborhood_list %}
+                            <option> {{ neighborhood }}</option>
+                        {% endfor %}
+                    </datalist>
                     <div class="invalid-feedback">
-                      Please fill in the neighbourhood!
+                      Please fill in the neighborhood!
                     </div>
                 </div>
-                <div class="col-4 col-md-4 col-sm-12">
+                <div class="col-4 col-md-4 col-sm-4">
                     {{ form.years_lived.label(class_="form-label")}}
                     {% if form.years_lived.errors %}
                         {{ form.years_lived(class_="form-number form-control is-invalid")}}
@@ -33,7 +38,7 @@
                         Please enter the number of years between 0 and 100
                     </div>
                 </div>
-                <div class="col-4 col-md-4 col-sm-12">
+                <div class="col-4 col-md-4 col-sm-4">
                     {% if form.rent_own.errors %}
                         {{ form.rent_own.label(class_="form-check-label is-invalid")}}
                     {% else %}
