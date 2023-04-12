@@ -7,11 +7,11 @@
 {% block map_body %}
         {{ form_html }}
         <form action="" method="post" novalidate id="mainform" class="needs-validation">
-            {{ form.hidden_tag() }}
-        
+            {{ form.csrf_token }}
+            {{ form.mark_layer }}
         <div class="container">
             <div class="row">
-                    <div class="col-4 col-md-4 col-sm-4"> 
+                    <div class="col-md-4"> 
                     {{ form.cur_neighborhood.label}}
                     {% if form.cur_neighborhood.errors %}
                         {{ form.cur_neighborhood(class_="form-text form-control is-invalid", autocomplete="off", list="neighborhood_list")}}
@@ -27,7 +27,7 @@
                       Please fill in the neighborhood!
                     </div>
                 </div>
-                <div class="col-4 col-md-4 col-sm-4">
+                <div class="col-md-4">
                     {{ form.years_lived.label(class_="form-label")}}
                     {% if form.years_lived.errors %}
                         {{ form.years_lived(class_="form-number form-control is-invalid")}}
@@ -38,7 +38,7 @@
                         Please enter the number of years between 0 and 100
                     </div>
                 </div>
-                <div class="col-4 col-md-4 col-sm-4">
+                <div class="col-md-4">
                     {% if form.rent_own.errors %}
                         {{ form.rent_own.label(class_="form-check-label is-invalid")}}
                     {% else %}
@@ -90,6 +90,7 @@
 {% block map_script %}
         <script>
             {{ script|safe }}
+            var csrf_token = "{{ csrf_token() }}";
             function storeLayer() {
                 var data = drawnItems.toGeoJSON();
                 var convertedData = 'text/json;charset=utf-8,'

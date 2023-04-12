@@ -9,7 +9,7 @@
 {{ body_html|safe }}
 
 <form action="" method="post" novalidate id="mainform">
-    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
     {{ form.draw_another.label }}
     {{ form.draw_another }}
     {% if first_time %}

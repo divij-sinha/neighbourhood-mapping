@@ -23,6 +23,9 @@ def survey_form():
         parsed_geojson = get_geojson(form.mark_layer.data)
         return redirect(url_for("survey_draw_first"))
 
+    if form.is_submitted():
+        print(form.mark_layer.data)
+
     return render_template("form_page_start.html",
         form=form,
         neighborhood_list = neighborhood_list,

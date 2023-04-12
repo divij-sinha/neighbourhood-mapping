@@ -16,7 +16,7 @@
         </div>
         <div class="container-fluid text-center">
         <form action="" method="post" novalidate id="mainform">
-            {{ agree.hidden_tag() }}
+            {{ agree.csrf_token }}
             {{ agree.agree(class_="btn btn-success btn-lg") }}
         </form>
         </div>

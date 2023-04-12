@@ -5,7 +5,7 @@ from utils import get_geojson
 
 def validator_geo_json(form, field):
     parsed_geojson = get_geojson(form.mark_layer.data)
-    if len(parsed_geojson["features"]) == 1:
+    if len(parsed_geojson["features"]) != 1:
         raise ValidationError()
     
 class SurveyStart(FlaskForm): 
