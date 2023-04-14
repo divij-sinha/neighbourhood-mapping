@@ -4,7 +4,7 @@ from wtforms.validators import NumberRange, DataRequired, InputRequired, Validat
 from utils import get_geojson
 
 def validator_geo_json(form, field):
-    parsed_geojson = get_geojson(form.mark_layer.data)
+    parsed_geojson = get_geojson(field.data)
     if len(parsed_geojson["features"]) != 1:
         raise ValidationError()
     
@@ -22,14 +22,11 @@ class SurveyStart(FlaskForm):
     submit = SubmitField("Next!")
 
 class SurveyDraw(FlaskForm):
-    draw_another = RadioField("Draw another neighborhood you know?", choices=["Yes","No"],validators=[InputRequired()])
-    draw_layer = HiddenField("invisible_str_draw")
-    submit = SubmitField("Submit")
-
-class SurveyDrawFirst(FlaskForm):
-    draw_another = RadioField("Draw another neighborhood you know?", choices=["Yes","No"])
-    draw_layer = HiddenField("invisible_str_draw")
-    submit = SubmitField("Submit")
+    cur_neighborhood = StringField("What is the name of your neighborhood?", 
+                            description="What is the name of your neighborhood?")
+    draw_layer = HiddenField("invisible_str_draw",validators=[DataRequired(),validator_geo_json])
+    submit = SubmitField("Submit and Finish!")
+    draw_another = SubmitField("Draw Another Neighborhood?")
 
 class AgreeButton(FlaskForm):
     agree = SubmitField("I Agree")

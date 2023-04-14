@@ -5,20 +5,64 @@
 {% endblock %}
     
 {% block map_body %}
-
-{{ body_html|safe }}
-
-<form action="" method="post" novalidate id="mainform">
-    {{ form.csrf_token }}
-    {{ form.draw_another.label }}
-    {{ form.draw_another }}
-    {% if first_time %}
-    {% else %}
-    Which is the next neighborhood you want to draw?
-        {{ form.cur_neighbourhood(class_="form-radio") }}
-    {% endif %}
-</form>    
-    {{ form.submit(onclick="storeLayer()", form="mainform") }}
+    {{ form_html }}
+    <form action="" method="post" novalidate id="mainform" class="needs-validation">
+        {{ form.csrf_token }}
+        {{ form.draw_layer }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"> 
+                {{ form.cur_neighborhood.label}}
+                {% if first=='first' %}
+                    {{ form.cur_neighborhood(class_="form-text form-control", autocomplete="off", list="neighborhood_list", disabled="")}}
+                {% else %}
+                    {% if form.cur_neighborhood.errors %}
+                        {{ form.cur_neighborhood(class_="form-text form-control is-invalid", autocomplete="off", list="neighborhood_list")}}
+                    {% else %}
+                        {{ form.cur_neighborhood(class_="form-text form-control", autocomplete="off", list="neighborhood_list")}}
+                    {% endif %}
+                {% endif %}
+                <datalist id="neighborhood_list">
+                    {% for neighborhood in neighborhood_list %}
+                        <option> {{ neighborhood }}</option>
+                    {% endfor %}
+                </datalist>
+                <div class="invalid-feedback">
+                    Please fill in the neighborhood!
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <br><br>
+    <div class="container-fluid">
+        <p>
+            Now, let's draw your neighborhood! Please pan to your neighborhood, click on the <img src="/static/poly_icon.png" alt="polygon" width="25" /> and, start drawing your neighborhood.  
+            Click to mark a spot along the boundary of your neighborhood, and click elsewhere to draw a straight line between the two points. Keep going until you are satisifed with the neighborhood. Click on the first point to close the polygon, or click on the finish button to close the polygon.    
+            We will only look at your location in aggregate, and we do not store your address! 
+        </p>
+        <p class = "fst-italic">
+            Please draw only 1 neighborhood! Use the <img src="/static/delete_icon.png" alt="trash" width="25" /> to delete a marker. Use the <img src="/static/edit_icon.png" alt="pencil" width="25" /> to move a marker around.
+        </p>
+    </div>
+    {% if form.draw_layer.errors %}
+        <p class="text-danger">
+            Please draw the the neighborhood!
+        </p>
+        {% endif %}
+    </div>
+    <div class="container-fluid p-4">
+        {{ body_html|safe }}
+    </div>
+    <div class="container-fluid text-center">
+        <form>
+            {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn btn-primary btn-lg") }}            
+            {{ form.draw_another(onclick="storeLayer()", form="mainform", class_="btn btn-primary btn-lg") }}            
+        </form>
+    </div>
+    <div class="container-fluid p-4">
+    </div>
+    
 {% endblock %}
 
 {% block map_script %}
