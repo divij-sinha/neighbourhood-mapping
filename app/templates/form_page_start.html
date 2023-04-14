@@ -5,7 +5,14 @@
 {% endblock %}
     
 {% block map_body %}
-    {{ form_html }}
+<div class="container-fluid">
+    <p class="fs-3 lead p-3">
+        Tell us about your neighborhood. What do you call it, how long have you lived there, and roughly
+        where is it located? Use the map to indicate generally where you live. Your location will only be
+        seen in aggregate and no personal locations will be revealed.
+    </p>
+</div>
+        {{ form_html }}
     <form action="" method="post" novalidate id="mainform" class="needs-validation">
         {{ form.csrf_token }}
         {{ form.mark_layer }}

@@ -6,14 +6,26 @@
         {% endblock %}
     </head>
     <body>
-        <div class="container-fluid p-5 text-center h-1">
+        <div class="container-fluid p-3 text-center h-1">
             <h1> Where are Chicago's neighborhoods? </h1>
         </div>
-        <div class="container-fluid p-3">
-            <p>
-                By participating, you agree that you have read, understand and accept the Reader Submission Terms in relation to all of the content and other information you send to us ('Your Content'). If you do not accept these terms, please do not submit any content.
+            <p class="fs-3 lead p-3">
+                This project asks current Chicago residents to identify Chicago's neighborhoods using an
+                interactive map to draw neighborhood boundaries.
             </p>
-        </div>
+            <p class="fs-3 lead p-3">
+                Participation in this survey is completely voluntary. Even if you decide to participate now, you
+                may change your mind and stop at any time. If you agree to participate, all information will be
+                completely anonymous and confidential. Any locations provided will only be used for analysis,
+                summarized in a general manner, and will not be linked to you or included in publications
+                resulting from this study. If you have questions about this research study, you can contact Lydia
+                Wileden, Mansueto Institute for Urban Innovation, University of Chicago,
+                lwileden@uchicago.edu.
+            </p>
+            <p class="fs-3 lead p-3">
+                By clicking “I agree” below, you agree that you are a resident of Chicago at least 18 years of age
+                and consent to participate in this study voluntarily.            
+            </p>
         <div class="container-fluid text-center">
         <form action="" method="post" novalidate id="mainform">
             {{ agree.csrf_token }}

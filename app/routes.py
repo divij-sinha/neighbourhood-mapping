@@ -39,7 +39,7 @@ def survey_form():
 @app.route("/survey_draw/<first>", methods=['GET', 'POST'])
 def survey_draw(first):
     draw_options = {"polyline": False, "rectangle": False, "circle": False, "marker": False, "circlemarker": False}
-    header, body_html, script = get_map_comps(loc = session["coords"][::-1], zoom = 12, draw_options=draw_options)
+    header, body_html, script = get_map_comps(loc = session["coords"][::-1], zoom = 13, draw_options=draw_options)
     form = SurveyDraw()
     if (form.validate_on_submit() and first == 'first') or form.validate_on_submit(extra_validators={'cur_neighborhood':[DataRequired()]}):
         if form.submit.data:

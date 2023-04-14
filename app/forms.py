@@ -29,4 +29,4 @@ class SurveyDraw(FlaskForm):
     draw_another = SubmitField("Draw Another Neighborhood?")
 
 class AgreeButton(FlaskForm):
-    agree = SubmitField("I Agree")
+    agree = SubmitField("Yes, I agree to participate")
