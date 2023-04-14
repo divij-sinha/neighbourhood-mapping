@@ -8,8 +8,9 @@ from utils import get_geojson, get_map_comps, get_neighborhood_list
 import uuid
 from datetime import datetime, timezone
 from geoalchemy2.functions import ST_GeomFromGeoJSON
-from geoalchemy2.shape import from_shape
+from geoalchemy2.shape import from_shape, to_shape
 from shapely.geometry import shape
+from datetime import datetime, timezone 
 
 neighborhood_list = get_neighborhood_list()
 
@@ -19,7 +20,8 @@ def start_page():
     agree = AgreeButton()
     if agree.validate_on_submit():
         session["uuid"] = str(uuid.uuid4())
-        neighbor = Neighborhood(id_user = session["uuid"], first = "first")
+        dt = datetime.now(timezone.utc)
+        neighbor = Neighborhood(id_user = session["uuid"], first = "first", neighborhood_time_stamp = dt)
         db.session.add(neighbor)
         db.session.commit()
         return redirect(url_for("survey_form"))
@@ -38,9 +40,8 @@ def survey_form():
         neighbor.neighborhood_name = form.cur_neighborhood.data
         neighbor.rent_own = form.rent_own.data
         neighbor.years_lived = form.years_lived.data
+        neighbor.neighborhood_time_stamp = datetime.now(timezone.utc)
         db.session.commit()
-        session["coords"] = parsed_geojson["features"][0]["geometry"]["coordinates"]
-        session["neighborhood"] = form.cur_neighborhood.data
         return redirect(url_for("survey_draw", first = "first"))
 
     return render_template("form_page_start.html",
@@ -54,18 +55,34 @@ def survey_form():
 @app.route("/survey_draw/<first>", methods=['GET', 'POST'])
 def survey_draw(first):
     draw_options = {"polyline": False, "rectangle": False, "circle": False, "marker": False, "circlemarker": False}
-    header, body_html, script = get_map_comps(loc = session["coords"][::-1], zoom = 13, draw_options=draw_options)
+    if first == 'first':
+        cur_neighbor = Neighborhood.query.filter_by(id_user = session["uuid"], first = "first").first()
+        pt = to_shape(cur_neighbor.location_geojson)
+        loc = pt.y, pt.x
+    else:
+        loc = (41.8781, -87.6298)
+    header, body_html, script = get_map_comps(loc = loc, zoom = 13, draw_options=draw_options)
     form = SurveyDraw()
-    now = datetime.now(timezone.utc)
     if (form.validate_on_submit() and first == 'first') or form.validate_on_submit(extra_validators={'cur_neighborhood':[DataRequired()]}):
+        parsed_geojson = get_geojson(form.draw_layer.data)
+        if first == 'first':
+            neighbor = cur_neighbor
+            neighbor.neighborhood_geojson = from_shape(shape(parsed_geojson["features"][0]["geometry"]))
+            neighbor.neighborhood_time_stamp = datetime.now(timezone.utc)
+            db.session.commit()
+        else:
+            neighbor = Neighborhood(id_user = session["uuid"], first = "next")
+            neighbor.neighborhood_name = form.cur_neighborhood.data
+            neighbor.neighborhood_geojson = from_shape(shape(parsed_geojson["features"][0]["geometry"]))
+            neighbor.neighborhood_time_stamp = datetime.now(timezone.utc)
+            db.session.add(neighbor)
+            db.session.commit()
         if form.submit.data:
             return redirect(url_for("thank_page"))
         elif form.draw_another.data:
-            parsed_geojson = get_geojson(form.draw_layer.data)
-            print(parsed_geojson)
             return redirect(url_for("survey_draw", first = "next"))
     if first == "first":
-        form.cur_neighborhood.data = session["neighborhood"]
+        form.cur_neighborhood.data = cur_neighbor.neighborhood_name
     else:
         form.cur_neighborhood.data = ""
     return render_template("form_page_draw.html",

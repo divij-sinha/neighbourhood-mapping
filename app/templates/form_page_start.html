@@ -6,7 +6,7 @@
     
 {% block map_body %}
 <div class="container-fluid">
-    <p class="fs-3 lead p-3">
+    <p class="fs-3 lead p-3 text-left">
         Tell us about your neighborhood. What do you call it, how long have you lived there, and roughly
         where is it located? Use the map to indicate generally where you live. Your location will only be
         seen in aggregate and no personal locations will be revealed.
@@ -16,7 +16,7 @@
     <form action="" method="post" novalidate id="mainform" class="needs-validation">
         {{ form.csrf_token }}
         {{ form.mark_layer }}
-    <div class="container">
+    <div class="container text-left">
         <div class="row">
                 <div class="col-md-4"> 
                 {{ form.cur_neighborhood.label}}
@@ -68,7 +68,7 @@
 
     </form>
     <br><br>
-    <div class="container-fluid">
+    <div class="container-fluid text-left">
         <p>
             Now, let's mark where you live! Please pan to where you live, click on the <img src="/static/draw_icon.png" alt="white circle" width="25" /> and, mark your location.  
             We will only look at your location in aggregate, and we do not store your address! 
