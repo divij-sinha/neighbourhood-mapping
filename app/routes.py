@@ -4,6 +4,7 @@ from app.forms import SurveyStart, SurveyDraw, AgreeButton
 from wtforms.validators import DataRequired
 from utils import get_geojson, get_map_comps, get_neighborhood_list
 import uuid
+from app.models import Neighborhood
 
 neighborhood_list = get_neighborhood_list()
 
