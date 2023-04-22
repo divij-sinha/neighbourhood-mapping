@@ -38,5 +38,21 @@ class SurveyDraw(FlaskForm):
     submit = SubmitField("I'm done!")
     draw_another = SubmitField("I want to draw the boundary of another neighborhood")
 
+class SurveyDemo(FlaskForm):
+    gender = RadioField("What gender do you identify as?",
+                        validators=[Optional()],
+                        default = "default",
+                        choices=[("man","Man"),("woman","Woman"),("nonbin","Non-Binary"),("other", "Other")])
+    age = RadioField("What age group do you fall in?",
+                        validators=[Optional()],
+                        default = "default",
+                        choices=[("1825","18-25"),("2635","26-35"),("3645","36-45"),("4660", "46-60"),("6080", "60-80"),("80", "80+")])
+    ethnicity = RadioField("What race or ethnic group do you most closely identify with?",
+                        validators=[Optional()],
+                        default = "default",
+                        choices = [("tbd","tbd")],
+                        )
+    submit = SubmitField("I'm done!")
+    
 class AgreeButton(FlaskForm):
     agree = SubmitField("Yes, I agree to participate")

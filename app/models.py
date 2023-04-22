@@ -20,3 +20,6 @@ class Neighborhood(db.Model):
 
 class Respondent(db.Model):
     user_id = db.Column(db.String(36), db.ForeignKey('location.user_id'), primary_key = True)
+    gender = db.Column(db.String(10))
+    age = db.Column(db.String(5))
+    ethnicity = db.Column(db.String(20))

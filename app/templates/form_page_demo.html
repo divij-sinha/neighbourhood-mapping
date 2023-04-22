@@ -1,0 +1,65 @@
+{% extends "_form_page.html" %}
+
+{% block map_head %} {% endblock %} 
+
+{% block title_body %} 
+<div class="container-fluid p-3 text-center h-1">
+  <h1>Tell us a little about yourself!</h1>
+</div>
+{% endblock %}
+
+{% block map_body %} 
+<div class="container-fluid">
+  <p class="fs-3 lead p-3 text-left">
+    Tell us about yourself. This section is completely optional, but will
+    help us in our research!
+  </p>
+</div>
+<div class="container-fluid">
+<form action="" method="post" novalidate id="mainform" class="needs-validation">
+  {{ form.csrf_token }}
+  <div class="container text-left">
+    <div class="row">
+      <div class="col-md-4 form-check">
+        {{ form.gender.label(class_="form-check-label")}}  
+        {% for subfield in form.gender %}
+        <div class="form-check">
+          <tr>
+            <td>{{ subfield(class_="form-check-input") }}</td>
+            <td>{{ subfield.label(class_="form-check-label") }}</td>
+          </tr>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="col-md-4 form-check">
+        {{ form.age.label(class_="form-check-label")}}  
+        {% for subfield in form.age %}
+        <div class="form-check">
+          <tr>
+            <td>{{ subfield(class_="form-check-input") }}</td>
+            <td>{{ subfield.label(class_="form-check-label") }}</td>
+          </tr>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="col-md-4 form-check">
+        {{ form.ethnicity.label(class_="form-check-label")}}  
+        {% for subfield in form.ethnicity %}
+        <div class="form-check">
+          <tr>
+            <td>{{ subfield(class_="form-check-input") }}</td>
+            <td>{{ subfield.label(class_="form-check-label") }}</td>
+          </tr>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid text-center">
+    {{ form.submit(class_="btn btn-primary btn-lg") }}
+  </div>
+</form>
+</div>
+{% endblock %} 
+
+{% block map_script %} {% endblock %}

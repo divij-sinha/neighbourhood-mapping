@@ -1,6 +1,6 @@
 from app import app, db
-from app.models import Neighborhood, Location
-from app.forms import SurveyStart, SurveyDraw, AgreeButton
+from app.models import Neighborhood, Location, Respondent
+from app.forms import SurveyStart, SurveyDraw, AgreeButton, SurveyDemo
 from flask import render_template, redirect, url_for, session
 from wtforms.validators import DataRequired
 from utils import get_geojson, get_map_comps, get_neighborhood_list
@@ -61,28 +61,21 @@ def survey_draw(first):
     form = SurveyDraw()
     if (form.validate_on_submit() and first == 'first') or form.validate_on_submit(extra_validators={'cur_neighborhood':[DataRequired()]}):
         parsed_geojson = get_geojson(form.draw_layer.data)
+        neighborhood = Neighborhood(
+            user_id = session["uuid"],
+            geometry = from_shape(shape(parsed_geojson["features"][0]["geometry"])),
+            time_stamp = datetime.now(timezone.utc)
+        )
         if first == 'first':
-            neighborhood = Neighborhood(
-                user_id = session["uuid"],
-                name = location.name,
-                geometry = from_shape(shape(parsed_geojson["features"][0]["geometry"])),
-                user_relationship = "cur_live",
-                time_stamp = datetime.now(timezone.utc)
-            )
-            db.session.add(neighborhood)
-            db.session.commit()
+            neighborhood.user_relationship = "cur_live"
+            neighborhood.name = location.name
         else:
-            neighborhood = Neighborhood(
-                user_id = session["uuid"],
-                name = form.cur_neighborhood.data,
-                geometry = from_shape(shape(parsed_geojson["features"][0]["geometry"])),
-                user_relationship = form.user_relationship.data,
-                time_stamp = datetime.now(timezone.utc)
-            )
-            db.session.add(neighborhood)
-            db.session.commit()
+            neighborhood.user_relationship = form.user_relationship.data
+            neighborhood.name = form.cur_neighborhood.data
+        db.session.add(neighborhood)
+        db.session.commit()
         if form.submit.data:
-            return redirect(url_for("thank_page"))
+            return redirect(url_for("survey_demo"))
         elif form.draw_another.data:
             return redirect(url_for("survey_draw", first = "next"))
     if first == "first":
@@ -97,6 +90,23 @@ def survey_draw(first):
         first=first,
         neighborhood_list = neighborhood_list
     )
+
+@app.route("/survey_demo", methods=['GET', 'POST'])
+def survey_demo():
+    form = SurveyDemo()
+    if form.validate_on_submit():
+        resp = Respondent(user_id = session["uuid"], 
+                          age = form.age.data,
+                          gender = form.gender.data,
+                          ethnicity = form.ethnicity.data)
+        db.session.add(resp)
+        db.session.commit()
+        return redirect(url_for("thank_page"))
+
+    return render_template("form_page_demo.html",
+        form=form
+    )
+
 
 @app.route("/thank_you", methods=['GET'])
 def thank_page():
