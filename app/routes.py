@@ -1,16 +1,13 @@
-from app import app
-from app import db
-from app.models import Neighborhood
-from flask import render_template, redirect, url_for, session
+from app import app, db
+from app.models import Neighborhood, Location
 from app.forms import SurveyStart, SurveyDraw, AgreeButton
+from flask import render_template, redirect, url_for, session
 from wtforms.validators import DataRequired
 from utils import get_geojson, get_map_comps, get_neighborhood_list
-import uuid
 from datetime import datetime, timezone
-from geoalchemy2.functions import ST_GeomFromGeoJSON
 from geoalchemy2.shape import from_shape, to_shape
 from shapely.geometry import shape
-from datetime import datetime, timezone 
+import uuid
 
 neighborhood_list = get_neighborhood_list()
 
@@ -20,9 +17,8 @@ def start_page():
     agree = AgreeButton()
     if agree.validate_on_submit():
         session["uuid"] = str(uuid.uuid4())
-        dt = datetime.now(timezone.utc)
-        neighbor = Neighborhood(id_user = session["uuid"], first = "first", neighborhood_time_stamp = dt)
-        db.session.add(neighbor)
+        location = Location(user_id = session["uuid"], time_stamp = datetime.now(timezone.utc))
+        db.session.add(location)
         db.session.commit()
         return redirect(url_for("survey_form"))
     return render_template("start_page.html", agree=agree)
@@ -35,12 +31,12 @@ def survey_form():
     
     if form.validate_on_submit():
         parsed_geojson = get_geojson(form.mark_layer.data)
-        neighbor = Neighborhood.query.filter_by(id_user = session["uuid"], first = "first").first()
-        neighbor.location_geojson = from_shape(shape(parsed_geojson["features"][0]["geometry"]))
-        neighbor.neighborhood_name = form.cur_neighborhood.data
-        neighbor.rent_own = form.rent_own.data
-        neighbor.years_lived = form.years_lived.data
-        neighbor.neighborhood_time_stamp = datetime.now(timezone.utc)
+        location = Location.query.filter_by(user_id = session["uuid"]).first()
+        location.geometry = from_shape(shape(parsed_geojson["features"][0]["geometry"]))
+        location.name = form.cur_neighborhood.data
+        location.rent_own = form.rent_own.data
+        location.years_lived = form.years_lived.data
+        location.time_stamp = datetime.now(timezone.utc)
         db.session.commit()
         return redirect(url_for("survey_draw", first = "first"))
 
@@ -56,8 +52,8 @@ def survey_form():
 def survey_draw(first):
     draw_options = {"polyline": False, "rectangle": False, "circle": False, "marker": False, "circlemarker": False}
     if first == 'first':
-        cur_neighbor = Neighborhood.query.filter_by(id_user = session["uuid"], first = "first").first()
-        pt = to_shape(cur_neighbor.location_geojson)
+        location = Location.query.filter_by(user_id = session["uuid"]).first()
+        pt = to_shape(location.geometry)
         loc = pt.y, pt.x
     else:
         loc = (41.8781, -87.6298)
@@ -66,23 +62,31 @@ def survey_draw(first):
     if (form.validate_on_submit() and first == 'first') or form.validate_on_submit(extra_validators={'cur_neighborhood':[DataRequired()]}):
         parsed_geojson = get_geojson(form.draw_layer.data)
         if first == 'first':
-            neighbor = cur_neighbor
-            neighbor.neighborhood_geojson = from_shape(shape(parsed_geojson["features"][0]["geometry"]))
-            neighbor.neighborhood_time_stamp = datetime.now(timezone.utc)
+            neighborhood = Neighborhood(
+                user_id = session["uuid"],
+                name = location.name,
+                geometry = from_shape(shape(parsed_geojson["features"][0]["geometry"])),
+                user_relationship = "cur_live",
+                time_stamp = datetime.now(timezone.utc)
+            )
+            db.session.add(neighborhood)
             db.session.commit()
         else:
-            neighbor = Neighborhood(id_user = session["uuid"], first = "next")
-            neighbor.neighborhood_name = form.cur_neighborhood.data
-            neighbor.neighborhood_geojson = from_shape(shape(parsed_geojson["features"][0]["geometry"]))
-            neighbor.neighborhood_time_stamp = datetime.now(timezone.utc)
-            db.session.add(neighbor)
+            neighborhood = Neighborhood(
+                user_id = session["uuid"],
+                name = form.cur_neighborhood.data,
+                geometry = from_shape(shape(parsed_geojson["features"][0]["geometry"])),
+                user_relationship = "<temp>",
+                time_stamp = datetime.now(timezone.utc)
+            )
+            db.session.add(neighborhood)
             db.session.commit()
         if form.submit.data:
             return redirect(url_for("thank_page"))
         elif form.draw_another.data:
             return redirect(url_for("survey_draw", first = "next"))
     if first == "first":
-        form.cur_neighborhood.data = cur_neighbor.neighborhood_name
+        form.cur_neighborhood.data = location.name
     else:
         form.cur_neighborhood.data = ""
     return render_template("form_page_draw.html",
