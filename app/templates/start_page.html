@@ -1,54 +1,40 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    {% block map_head %} {% endblock %}
-  </head>
-  <body>
-    <div class="container-fluid p-3 text-center h-1">
-      <h1>Where are Chicago's neighborhoods?</h1>
-    </div>
-    <p class="fs-4 lead p-3">
-      Chicago prides itself as “The City of Neighborhoods” but where are they?
-      Other than the 77 “Community Areas” mapped out in the 1920s, no official
-      neighborhood boundaries exist. Chicago needs an update!
-    </p>
-    <p class="fs-4 lead p-3">
-      This project asks current Chicago residents to identify Chicago's
-      neighborhoods using an interactive map to draw neighborhood boundaries.
-    </p>
-    <p class="fs-4 lead p-3">
-      Participation in this survey is completely voluntary. Even if you decide
-      to participate now, you may change your mind and stop at any time. If you
-      agree to participate, all information will be completely anonymous and
-      confidential. Any locations provided will only be used for analysis,
-      summarized in a general manner, and will not be linked to you or included
-      in publications resulting from this study. If you have questions about
-      this research study, you can contact us at urbanism@uchicago.edu.
-    </p>
-    <p class="fs-4 lead p-3">
-      By clicking “I agree” below, you agree that you are a resident of Chicago
-      at least 18 years of age and consent to participate in this study
-      voluntarily.
-    </p>
-    <div class="container-fluid text-center">
-      <form action="" method="post" novalidate id="mainform">
-        {{ agree.csrf_token }} {{ agree.agree(class_="btn btn-success btn-lg")
-        }}
-      </form>
-    </div>
-    <div class="container-fluid p-4"></div>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
-    {% block map_script %} {% endblock %}
-  </body>
-</html>
+{% extends "_base_page.html" %}
+
+{% block map_head %} {% endblock %}
+
+{% block body %} 
+<div class="container-fluid p-3 text-center h-1">
+  <h1>Where are Chicago's neighborhoods?</h1>
+</div>
+<p class="fs-4 lead p-3">
+  Chicago prides itself as “The City of Neighborhoods” but where are they?
+  Other than the 77 “Community Areas” mapped out in the 1920s, no official
+  neighborhood boundaries exist. Chicago needs an update!
+</p>
+<p class="fs-4 lead p-3">
+  This project asks current Chicago residents to identify Chicago's
+  neighborhoods using an interactive map to draw neighborhood boundaries.
+</p>
+<p class="fs-4 lead p-3">
+  Participation in this survey is completely voluntary. Even if you decide
+  to participate now, you may change your mind and stop at any time. If you
+  agree to participate, all information will be completely anonymous and
+  confidential. Any locations provided will only be used for analysis,
+  summarized in a general manner, and will not be linked to you or included
+  in publications resulting from this study. If you have questions about
+  this research study, you can contact us at urbanism@uchicago.edu.
+</p>
+<p class="fs-4 lead p-3">
+  By clicking “I agree” below, you agree that you are a resident of Chicago
+  at least 18 years of age and consent to participate in this study
+  voluntarily.
+</p>
+<div class="container-fluid text-center">
+  <form action="" method="post" novalidate id="mainform">
+    {{ agree.csrf_token }} {{ agree.agree(class_="btn btn-success btn-lg")
+    }}
+  </form>
+</div>
+{% endblock %}
+
+{% block map_script %} {% endblock %}
