@@ -1,110 +1,120 @@
 {% extends "_form_page.html" %}
 
 {% block map_head %}
-    {{ header|safe }}
-{% endblock %}
-    
-{% block map_body %}
-<div class="container-fluid">
-    <p class="fs-3 lead p-3 text-left">
-        Tell us about your neighborhood. What do you call it, how long have you lived there, and roughly
-        where is it located? Use the map to indicate generally where you live. Your location will only be
-        seen in aggregate and no personal locations will be revealed.
-    </p>
+  {{ header|safe }} 
+{% endblock %} 
+
+{% block title_body %} 
+<div class="container-fluid p-3 text-center h-1">
+  <h1>Where do you currently live?</h1>
 </div>
-        {{ form_html }}
-    <form action="" method="post" novalidate id="mainform" class="needs-validation">
-        {{ form.csrf_token }}
-        {{ form.mark_layer }}
-    <div class="container text-left">
-        <div class="row">
-                <div class="col-md-4"> 
-                {{ form.cur_neighborhood.label}}
-                {% if form.cur_neighborhood.errors %}
-                    {{ form.cur_neighborhood(class_="form-text form-control is-invalid", autocomplete="off", list="neighborhood_list")}}
-                {% else %}
-                    {{ form.cur_neighborhood(class_="form-text form-control", autocomplete="off", list="neighborhood_list")}}
-                {% endif %}
-                <datalist id="neighborhood_list">
-                    {% for neighborhood in neighborhood_list %}
-                        <option> {{ neighborhood }}</option>
-                    {% endfor %}
-                </datalist>
-                <div class="invalid-feedback">
-                    Please fill in the neighborhood!
-                </div>
-            </div>
-            <div class="col-md-4">
-                {{ form.years_lived.label(class_="form-label")}}
-                {% if form.years_lived.errors %}
-                    {{ form.years_lived(class_="form-number form-control is-invalid")}}
-                {% else %}
-                    {{ form.years_lived(class_="form-number form-control")}}
-                {% endif %}
-                <div class="invalid-feedback">
-                    Please enter the number of years between 0 and 100
-                </div>
-            </div>
-            <div class="col-md-4">
-                {% if form.rent_own.errors %}
-                    {{ form.rent_own.label(class_="form-check-label is-invalid")}}
-                {% else %}
-                    {{ form.rent_own.label(class_="form-check-label")}}
-                {% endif %}
-                {% for subfield in form.rent_own %}
-                <div class="form-check">
-                    <tr>
-                        <td>{{ subfield(class_="form-check-input") }}</td>
-                        <td>{{ subfield.label(class_="form-check-label") }}</td>
-                    </tr>
-                </div>
-                {% endfor %}
-                <div class="invalid-feedback">
-                    Please choose an option!
-                </div>
-            </div>
-        </div>
-    </div>
-
-    </form>
-    <br><br>
-    <div class="container-fluid text-left">
-        <p>
-            Now, let's mark where you live! Please pan to where you live, click on the <img src="/static/draw_icon.png" alt="white circle" width="25" /> and, mark your location.  
-            We will only look at your location in aggregate, and we do not store your address! 
-        </p>
-        <p class = "fst-italic">
-            Please mark only 1 location! Use the <img src="/static/delete_icon.png" alt="trash" width="25" /> to delete a marker. Use the <img src="/static/edit_icon.png" alt="pencil" width="25" /> to move a marker around.
-        </p>
-        {% if form.mark_layer.errors %}
-        <p class="text-danger">
-            Please mark the general location of where you live!
-        </p>
-        {% endif %}
-    </div>
-    <div class="container-fluid p-4">
-        {{ body_html|safe }}
-    </div>
-    <div class="container-fluid text-center">
-        <form>
-            {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn btn-primary btn-lg") }}            
-        </form>
-    </div>
-    <div class="container-fluid p-4">
-    </div>
 {% endblock %}
 
+{% block map_body %} 
+<div class="container-fluid">
+  <p class="fs-3 lead p-3 text-left">
+    Tell us about your neighborhood. What do you call it, how long have you
+    lived there, and roughly where is it located? Use the map to indicate
+    generally where you live. Your location will only be seen in aggregate and
+    no personal locations will be revealed.
+  </p>
+</div>
+{{ form_html }}
+<form action="" method="post" novalidate id="mainform" class="needs-validation">
+  {{ form.csrf_token }}
+  {{ form.mark_layer }}
+  <div class="container text-left">
+    <div class="row">
+      <div class="col-md-4">
+        {{ form.cur_neighborhood.label}} 
+        {% if form.cur_neighborhood.errors %}
+          {{ form.cur_neighborhood(
+            class_="form-text form-control is-invalid", autocomplete="off", 
+            list="neighborhood_list")}} 
+        {% else %} 
+          {{ form.cur_neighborhood(
+            class_="form-text form-control", autocomplete="off", 
+            list="neighborhood_list")}} 
+        {% endif %}
+        <datalist id="neighborhood_list">
+          {% for neighborhood in neighborhood_list %}
+          <option>{{ neighborhood }}</option>
+          {% endfor %}
+        </datalist>
+        <div class="form-text">{{ form.cur_neighborhood.description }}</div>
+        <div class="invalid-feedback">Please fill in the neighborhood!</div>
+      </div>
+      <div class="col-md-4">
+        {{ form.years_lived.label(class_="form-label")}} 
+          {% if form.years_lived.errors %}
+            {{ form.years_lived(class_="form-number form-control is-invalid")}}
+          {% else %} 
+            {{form.years_lived(class_="form-number form-control")}} 
+          {% endif %}
+        <div class="invalid-feedback">
+          Please enter the number of years between 0 and 100
+        </div>
+      </div>
+      <div class="col-md-4">
+        {% if form.rent_own.errors %} 
+          {{ form.rent_own.label(class_="form-check-label is-invalid")}}
+        {% else %}
+          {{ form.rent_own.label(class_="form-check-label")}} 
+        {% endif %} 
+        {% for subfield in form.rent_own %}
+        <div class="form-check">
+          <tr>
+            <td>{{ subfield(class_="form-check-input") }}</td>
+            <td>{{ subfield.label(class_="form-check-label") }}</td>
+          </tr>
+        </div>
+        {% endfor %}
+        <div class="invalid-feedback">Please choose an option!</div>
+      </div>
+    </div>
+  </div>
+</form>
+<br /><br />
+<div class="container-fluid text-left">
+  <p>
+    Now, let's mark where you live! On the map below, please pan to where you
+    live, click on the
+    <img src="/static/draw_icon.png" alt="white circle" width="25" /> on the top
+    left corner of the map and, mark your location. We will only look at your
+    location in aggregate, and we do not store your address!
+  </p>
+  <p class="fst-italic">
+    Please mark only 1 location! Use the
+    <img src="/static/delete_icon.png" alt="trash" width="25" /> to delete a
+    marker. Use the
+    <img src="/static/edit_icon.png" alt="pencil" width="25" /> to move a marker
+    around.
+  </p>
+  {% if form.mark_layer.errors %}
+  <p class="text-danger">Please mark the general location of where you live!</p>
+  {% endif %}
+</div>
+<div class="container-fluid p-4">
+  {{ body_html|safe }}
+</div>
+<div class="container-fluid text-center">
+  <form>
+    {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn btn-primary btn-lg") }}
+  </form>
+</div>
+<div class="container-fluid p-4"></div>
+{% endblock %} 
 {% block map_script %}
-    <script>
-        {{ script|safe }}
-        var csrf_token = "{{ csrf_token() }}";
-        function storeLayer() {
-            var data = drawnItems.toGeoJSON();
-            var convertedData = 'text/json;charset=utf-8,'
-                + encodeURIComponent(JSON.stringify(data));
-            document.getElementById('mark_layer').setAttribute(
-                'value', 'data:' + convertedData
-            );                 
-        }
-    </script>
+<script>
+  {{ script|safe }}
+  var csrf_token = "{{ csrf_token() }}";
+  function storeLayer() {
+    var data = drawnItems.toGeoJSON();
+    var convertedData =
+      "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+    document
+      .getElementById("mark_layer")
+      .setAttribute("value", "data:" + convertedData);
+  }
+</script>
 {% endblock %}
