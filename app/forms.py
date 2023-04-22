@@ -27,6 +27,14 @@ class SurveyDraw(FlaskForm):
     cur_neighborhood = StringField("What is the name of this neighborhood?", 
                             description="Choose from the list, or type your own!")
     draw_layer = HiddenField("invisible_str_draw",validators=[DataRequired(),validator_geo_json])
+    user_relationship = RadioField("What is your relationship with this neighborhood?", 
+                                   validators=[Optional()],
+                                   default = "default",
+                                   choices=[("past_live","I used to live here"),
+                                            ("rel_live","Someone I know lives here"),
+                                            ("work", "I work/worked here"),
+                                            ("visit", "I like to vist here"),
+                                            ("other","Other Arrangements")])
     submit = SubmitField("I'm done!")
     draw_another = SubmitField("I want to draw the boundary of another neighborhood")
 

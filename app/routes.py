@@ -76,7 +76,7 @@ def survey_draw(first):
                 user_id = session["uuid"],
                 name = form.cur_neighborhood.data,
                 geometry = from_shape(shape(parsed_geojson["features"][0]["geometry"])),
-                user_relationship = "<temp>",
+                user_relationship = form.user_relationship.data,
                 time_stamp = datetime.now(timezone.utc)
             )
             db.session.add(neighborhood)
