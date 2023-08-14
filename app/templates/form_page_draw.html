@@ -1,37 +1,38 @@
-{% extends "_form_page.html" %}
-
-{% block map_head %}
-  {{ header|safe }} 
-{% endblock %} 
-
-{% block title_body %} 
+{% extends "_form_page.html" %} {% block map_head %} {{ header|safe }} {%
+endblock %} {% block title_body %}
 <div class="container-fluid p-3 text-center h-1">
   {% if first=='first' %}
-    <h1>Where are the boundaries of your current neighborhood?</h1>
+  <h1>Where are the boundaries of your current neighborhood?</h1>
   {% else %}
-    <h1>What other neighborhood would you like to draw?</h1>
+  <h1>What other neighborhood would you like to draw?</h1>
   {% endif %}
-  </div>
-{% endblock %}
-
-{% block map_body %} 
-
+</div>
+{% endblock %} {% block map_body %}
+{% if first=='first' %}
+<div class="container-fluid text-left">
+  <p>
+     You told us you live in
+    {{form.cur_neighborhood.data}}. Now, let's draw the neighborhood! 
+    
+  </p>
+</div>
+{% else %}
+{% endif %}
 {{ form_html }}
 <form action="" method="post" novalidate id="mainform" class="needs-validation">
   {{ form.csrf_token }} {{ form.draw_layer }}
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        {{ form.cur_neighborhood.label}} 
-        {% if first=='first' %}
-          {{ form.cur_neighborhood(class_="form-text form-control", autocomplete="off", list="neighborhood_list", disabled="")}}
-        {% else %}
-          {% if form.cur_neighborhood.errors %} 
-            {{ form.cur_neighborhood(class_="form-text form-control is-invalid", autocomplete="off", list="neighborhood_list")}}
-          {% else %}
-            {{ form.cur_neighborhood(class_="form-text form-control", autocomplete="off", list="neighborhood_list")}} 
-          {% endif %} 
-           <div class="form-text">{{ form.cur_neighborhood.description }}</div>
+        {{ form.cur_neighborhood.label}} {% if first=='first' %} {{
+        form.cur_neighborhood(class_="form-text form-control",
+        autocomplete="off", list="neighborhood_list", disabled="")}} {% else %}
+        {% if form.cur_neighborhood.errors %} {{
+        form.cur_neighborhood(class_="form-text form-control is-invalid",
+        autocomplete="off", list="neighborhood_list")}} {% else %} {{
+        form.cur_neighborhood(class_="form-text form-control",
+        autocomplete="off", list="neighborhood_list")}} {% endif %}
+        <div class="form-text">{{ form.cur_neighborhood.description }}</div>
         {% endif %}
         <datalist id="neighborhood_list">
           {% for neighborhood in neighborhood_list %}
@@ -40,20 +41,19 @@
         </datalist>
         <div class="invalid-feedback">Please fill in the neighborhood!</div>
       </div>
-      {% if first=='first' %}
-      {% else %}
-        <div class="container-fluid p-3"></div>
-        <div class="col-md-12">
-          {{ form.user_relationship.label(class_="form-check-label")}}
-          {% for subfield in form.user_relationship %}
-          <div class="form-check">
-            <tr>
-              <td>{{ subfield(class_="form-check-input") }}</td>
-              <td>{{ subfield.label(class_="form-check-label") }}</td>
-            </tr>
-          </div>
-          {% endfor %}
+      {% if first=='first' %} {% else %}
+      <div class="container-fluid p-3"></div>
+      <div class="col-md-12">
+        {{ form.user_relationship.label(class_="form-check-label")}} {% for
+        subfield in form.user_relationship %}
+        <div class="form-check">
+          <tr>
+            <td>{{ subfield(class_="form-check-input") }}</td>
+            <td>{{ subfield.label(class_="form-check-label") }}</td>
+          </tr>
         </div>
+        {% endfor %}
+      </div>
       {% endif %}
     </div>
   </div>
@@ -61,22 +61,20 @@
 <br /><br />
 <div class="container-fluid">
   <p>
-    Now, let's draw the neighborhood! On the map below, please pan to your
-    neighborhood, click on the
-    <img src="/static/poly_icon.png" alt="polygon" width="25" /> on the top left
-    corner of the map and, start drawing your neighborhood. Click to mark a spot
-    along the boundary of your neighborhood, and click elsewhere to draw a
-    straight line between the two points. Keep going until you are satisifed
-    with the neighborhood. Click on the first point to close the polygon, or
-    click on the finish button to close the polygon. We will only look at your
-    location in aggregate, and we do not store your address!
+    Here's how to draw:  
+    <ol>
+      <li>On the map below, please pan to your neighborhood by clicking and dragging the map</li>
+      <li>Click on the <img src="/static/poly_icon.png" alt="polygon" width="25" /> on the top left corner of the map then click on the map to mark a
+        starting point along the boundary of your neighborhood.</li>
+      <li>Click on the map to draw a straight line between additional points to mark the boundary of your neighborhood</li>
+      <li>Click on the first point to close the shape or click “Finish”</li>
   </p>
   <p class="fst-italic">
     Please draw only 1 neighborhood! Use the
     <img src="/static/delete_icon.png" alt="trash" width="25" /> to delete a
     marker. Use the
     <img src="/static/edit_icon.png" alt="pencil" width="25" /> to move a marker
-    around.
+    around or edit a point.
   </p>
 </div>
 {% if form.draw_layer.errors %}
@@ -85,24 +83,22 @@
 <div class="container-fluid p-4">{{ body_html|safe }}</div>
 <div class="container-fluid text-center">
   <form>
-    {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn btn-primary btn-lg") }} 
+    {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn
+    btn-primary btn-lg") }}
     <div class="container-fluid p-2"></div>
-    {{ form.draw_another(onclick="storeLayer()", form="mainform", class_="btn btn-primary btn-lg") }}
+    {{ form.draw_another(onclick="storeLayer()", form="mainform", class_="btn
+    btn-primary btn-lg") }}
   </form>
 </div>
 <div class="container-fluid p-4"></div>
-{% endblock %} 
-
-{% block map_script %}
+{% endblock %} {% block map_script %}
 <script>
-  {{ script|safe }}
+  {{script | safe}}
   function storeLayer() {
     var data = drawnItems.toGeoJSON();
     var convertedData =
       "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
-    document
-      .getElementById("draw_layer")
-      .setAttribute("value", "data:" + convertedData);
+    document.getElementById("draw_layer").setAttribute("value", "data:" + convertedData);
   }
 </script>
 {% endblock %}

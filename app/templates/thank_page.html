@@ -1,14 +1,26 @@
-{% extends "_base_page.html" %}
-
-{% block map_head %} {% endblock %}
-
-{% block body %} 
+{% extends "_base_page.html" %} {% block map_head %} {% endblock %} {% block
+body %}
 <div class="container-fluid p-3 text-center h-1">
-    <h1>Where are Chicago's neighborhoods?</h1>
-  </div>
+  <h1>Where are Chicago's neighborhoods?</h1>
+</div>
 <p class="fs-3 lead p-3">
-    Thank you for participating!         
+  Thank you for participating! Your responses will help us better understand how
+  Chicago residents think about their neighborhoods and neighborhoods across the
+  city.
 </p>
-{% endblock %}
-
-{% block map_script %} {% endblock %}
+<p class="fs-3 lead p-3">
+  We welcome your comments and feedback. If there is more information you would
+  like to share with us, please use the textbox below.
+</p>
+<form action="" method="post" novalidate id="mainform" class="needs-validation">
+  {{ form.csrf_token }}
+  <div class="container-fluid text-center">
+    {{form.feedback(class_="form-control", style="height: 100px", placeholder =
+    "Write feedback here!")}}
+  </div>
+  <div class="container-fluid p-4"></div>
+  <div class="container-fluid text-center">
+    {{ form.agree(class_="btn btn-success btn-lg") }}
+  </div>
+</form>
+{% endblock %} {% block map_script %} {% endblock %}
