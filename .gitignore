@@ -3,3 +3,12 @@
 .DS_STORE
 __pycache__/
 migrations/
+get_df.py
+locations.gdb
+neighborhood.gdb
+locations.gdb.zip
+locations.parquet
+neighborhood.gdb.zip
+neighborhood.parquet
+respondent.csv
+respondent.parquet
