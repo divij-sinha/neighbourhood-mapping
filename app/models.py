@@ -34,3 +34,9 @@ class Respondent(db.Model):
     soc_cohes_neighborhood_value = db.Column(db.String(10))
     soc_cohes_neighborhood_talk = db.Column(db.String(10))
     soc_cohes_neighborhood_belong = db.Column(db.String(10))
+
+
+class Feedback(db.Model):
+    feedback_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.String(36), db.ForeignKey("location.user_id"))
+    feedback = db.Column(db.Text)

@@ -1,6 +1,6 @@
 from app import app, db
-from app.models import Neighborhood, Location, Respondent
-from app.forms import SurveyStart, SurveyDraw, AgreeButton, SurveyDemo
+from app.models import Neighborhood, Location, Respondent, Feedback
+from app.forms import SurveyStart, SurveyDraw, AgreeButton, SurveyDemo, SurveyFeedback
 from flask import render_template, redirect, url_for, session
 from wtforms.validators import DataRequired
 from utils import get_geojson, get_map_comps, get_neighborhood_list
@@ -132,22 +132,6 @@ def survey_demo():
             soc_cohes_neighborhood_talk=form.soc_cohes_neighborhood_talk.data,
             soc_cohes_neighborhood_belong=form.soc_cohes_neighborhood_belong.data,
         )
-        print(
-            "form.soc_cohes_neighborhood_knit.data",
-            form.soc_cohes_neighborhood_knit.data,
-        )
-        print(
-            "form.soc_cohes_neighborhood_value.data",
-            form.soc_cohes_neighborhood_value.data,
-        )
-        print(
-            "form.soc_cohes_neighborhood_talk.data",
-            form.soc_cohes_neighborhood_talk.data,
-        )
-        print(
-            "form.soc_cohes_neighborhood_belong.data",
-            form.soc_cohes_neighborhood_belong.data,
-        )
         db.session.add(resp)
         db.session.commit()
         return redirect(url_for("thank_page"))
@@ -155,6 +139,12 @@ def survey_demo():
     return render_template("form_page_demo.html", form=form)
 
 
-@app.route("/thank_you", methods=["GET"])
+@app.route("/thank_you", methods=["GET", "POST"])
 def thank_page():
-    return render_template("thank_page.html")
+    form = SurveyFeedback()
+    if form.validate_on_submit():
+        feedback = Feedback(user_id=session["uuid"], feedback=form.feedback.data)
+        db.session.add(feedback)
+        db.session.commit()
+        return redirect(url_for("thank_page"))
+    return render_template("thank_page.html", form=form)

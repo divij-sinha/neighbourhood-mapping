@@ -1,5 +1,12 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, HiddenField, RadioField, StringField, DecimalField
+from wtforms import (
+    SubmitField,
+    HiddenField,
+    RadioField,
+    StringField,
+    DecimalField,
+    TextAreaField,
+)
 from wtforms.validators import NumberRange, DataRequired, ValidationError, Optional
 from utils import get_geojson
 
@@ -156,6 +163,15 @@ class SurveyDemo(FlaskForm):
         ],
     )
     submit = SubmitField("I'm done!")
+
+
+class SurveyFeedback(FlaskForm):
+    feedback = TextAreaField(
+        label="Write feedback here!",
+        validators=[Optional()],
+        description="Write feedback here!",
+    )
+    agree = SubmitField("Submit Feedback!")
 
 
 class AgreeButton(FlaskForm):
