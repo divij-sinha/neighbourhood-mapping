@@ -12,3 +12,5 @@ neighborhood.gdb.zip
 neighborhood.parquet
 respondent.csv
 respondent.parquet
+feedback.csv
+feedback.parquet
