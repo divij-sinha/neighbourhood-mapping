@@ -69,7 +69,7 @@ class SurveyDemo(FlaskForm):
     gender = RadioField(
         "What gender do you identify as?",
         validators=[Optional()],
-        default="default",
+        default="none",
         choices=[
             ("man", "Man"),
             ("woman", "Woman"),
@@ -80,7 +80,7 @@ class SurveyDemo(FlaskForm):
     age = RadioField(
         "What age group do you fall in?",
         validators=[Optional()],
-        default="default",
+        default="none",
         choices=[
             ("1824", "18-24"),
             ("2534", "25-34"),
@@ -94,7 +94,7 @@ class SurveyDemo(FlaskForm):
     ethnicity = RadioField(
         "How would you identify your racial/ethnic background?",
         validators=[Optional()],
-        default="default",
+        default="none",
         choices=[
             ("black_afamer", "Black / African American"),
             ("hisp_latino", "Hispanic / Latino"),
@@ -105,6 +105,54 @@ class SurveyDemo(FlaskForm):
             ("asian", "Asian"),
             ("multi_racial", "Multi-racial / Two or more races"),
             ("other", "Other"),
+        ],
+    )
+    soc_cohes_neighborhood_knit = RadioField(
+        "I live in a close-knit neighborhood",
+        validators=[Optional()],
+        default="none",
+        choices=[
+            ("strong_dis", "Strong Disagree"),
+            ("somew_dis", "Somewhat disagree"),
+            ("neither", "Neither agree nor disagree"),
+            ("somew_agr", "Somewhat agree"),
+            ("strong_agr", "Strong agree"),
+        ],
+    )
+    soc_cohes_neighborhood_value = RadioField(
+        "People in my neighborhood share the same values",
+        validators=[Optional()],
+        default="none",
+        choices=[
+            ("strong_dis", "Strong Disagree"),
+            ("somew_dis", "Somewhat disagree"),
+            ("neither", "Neither agree nor disagree"),
+            ("somew_agr", "Somewhat agree"),
+            ("strong_agr", "Strong agree"),
+        ],
+    )
+    soc_cohes_neighborhood_talk = RadioField(
+        "I regularly stop and talk with people in my neighborhood",
+        validators=[Optional()],
+        default="none",
+        choices=[
+            ("strong_dis", "Strong Disagree"),
+            ("somew_dis", "Somewhat disagree"),
+            ("neither", "Neither agree nor disagree"),
+            ("somew_agr", "Somewhat agree"),
+            ("strong_agr", "Strong agree"),
+        ],
+    )
+    soc_cohes_neighborhood_belong = RadioField(
+        "I feel like I belong in my neighborhood",
+        validators=[Optional()],
+        default="none",
+        choices=[
+            ("strong_dis", "Strong Disagree"),
+            ("somew_dis", "Somewhat disagree"),
+            ("neither", "Neither agree nor disagree"),
+            ("somew_agr", "Somewhat agree"),
+            ("strong_agr", "Strong agree"),
         ],
     )
     submit = SubmitField("I'm done!")

@@ -62,6 +62,72 @@ endblock %} {% block title_body %}
       Tell us more about your neighborhood. How much do you agree or disagree
       with the following statements?
     </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Strongly disagree</th>
+          <th scope="col">Somewhat disagree</th>
+          <th scope="col">Neither agree nor disagree</th>
+          <th scope="col">Somewhat agree</th>
+          <th scope="col">Strongly agree</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <div class="form-check">
+            <th scope="row">
+              {{
+              form.soc_cohes_neighborhood_knit.label(class_="form-check-label")}}
+            </th>
+            {% for subfield in form.soc_cohes_neighborhood_knit %}
+            <td class="text-center">
+              {{ subfield(class_="form-check-input") }}
+            </td>
+            {% endfor %}
+          </div>
+        </tr>
+        <tr>
+          <div class="form-check">
+            <th scope="row">
+              {{
+              form.soc_cohes_neighborhood_value.label(class_="form-check-label")}}
+            </th>
+            {% for subfield in form.soc_cohes_neighborhood_value %}
+            <td class="text-center">
+              {{ subfield(class_="form-check-input") }}
+            </td>
+            {% endfor %}
+          </div>
+        </tr>
+        <tr>
+          <div class="form-check">
+            <th scope="row">
+              {{
+              form.soc_cohes_neighborhood_talk.label(class_="form-check-label")}}
+            </th>
+            {% for subfield in form.soc_cohes_neighborhood_talk %}
+            <td class="text-center">
+              {{ subfield(class_="form-check-input") }}
+            </td>
+            {% endfor %}
+          </div>
+        </tr>
+        <tr>
+          <div class="form-check">
+            <th scope="row">
+              {{
+              form.soc_cohes_neighborhood_belong.label(class_="form-check-label")}}
+            </th>
+            {% for subfield in form.soc_cohes_neighborhood_belong %}
+            <td class="text-center">
+              {{ subfield(class_="form-check-input") }}
+            </td>
+            {% endfor %}
+          </div>
+        </tr>
+      </tbody>
+    </table>
     <div class="container-fluid text-center">
       {{ form.submit(class_="btn btn-primary btn-lg") }}
     </div>

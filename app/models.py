@@ -30,3 +30,7 @@ class Respondent(db.Model):
     gender = db.Column(db.String(10))
     age = db.Column(db.String(5))
     ethnicity = db.Column(db.String(20))
+    soc_cohes_neighborhood_knit = db.Column(db.String(10))
+    soc_cohes_neighborhood_value = db.Column(db.String(10))
+    soc_cohes_neighborhood_talk = db.Column(db.String(10))
+    soc_cohes_neighborhood_belong = db.Column(db.String(10))
