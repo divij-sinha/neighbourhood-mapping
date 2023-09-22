@@ -195,4 +195,4 @@ class SurveyFeedback(FlaskForm):
 
 
 class AgreeButton(FlaskForm):
-    agree = SubmitField("Yes, I agree to participate")
+    agree = SubmitField("Start survey")
