@@ -6,7 +6,9 @@ from wtforms import (
     StringField,
     DecimalField,
     TextAreaField,
+    SelectMultipleField,
 )
+from wtforms import widgets
 from wtforms.validators import NumberRange, DataRequired, ValidationError, Optional
 from utils import get_geojson
 
@@ -15,6 +17,18 @@ def validator_geo_json(form, field):
     parsed_geojson = get_geojson(field.data)
     if len(parsed_geojson["features"]) != 1:
         raise ValidationError()
+
+
+class MultiCheckboxField(SelectMultipleField):
+    """
+    A multiple-select, except displays a list of checkboxes.
+
+    Iterating the field will produce subfields, allowing custom rendering of
+    the enclosed checkbox fields.
+    """
+
+    widget = widgets.ListWidget(prefix_label=False)
+    option_widget = widgets.CheckboxInput()
 
 
 class SurveyStart(FlaskForm):
@@ -54,8 +68,8 @@ class SurveyDraw(FlaskForm):
     draw_layer = HiddenField(
         "invisible_str_draw", validators=[DataRequired(), validator_geo_json]
     )
-    user_relationship = RadioField(
-        "How do you know this neighborhood?",
+    user_relationship = MultiCheckboxField(
+        "How do you know this neighborhood? (Select all that apply)",
         validators=[Optional()],
         default="default",
         choices=[
@@ -65,7 +79,7 @@ class SurveyDraw(FlaskForm):
             ("school", "I go/went to school here"),
             ("visit", "I visit/visited friends here"),
             ("shop", "I shop/shopped here"),
-            ("other", "Other Arrangements"),
+            ("other", "Other"),
         ],
     )
     submit = SubmitField("I'm done!")
@@ -73,6 +87,12 @@ class SurveyDraw(FlaskForm):
 
 
 class SurveyDemo(FlaskForm):
+    years_lived_chicago = DecimalField(
+        "How many years in total have you lived in the City of Chicago?",
+        description="How many years in total have you lived in the City of Chicago?",
+        places=1,
+        validators=[Optional(), NumberRange(0, 100)],
+    )
     gender = RadioField(
         "What gender do you identify as?",
         validators=[Optional()],
@@ -98,8 +118,8 @@ class SurveyDemo(FlaskForm):
             ("75", "75+"),
         ],
     )
-    ethnicity = RadioField(
-        "How would you identify your racial/ethnic background?",
+    ethnicity = MultiCheckboxField(
+        "How would you identify your racial/ethnic background? (Select all that apply)",
         validators=[Optional()],
         default="none",
         choices=[
@@ -171,8 +191,13 @@ class SurveyFeedback(FlaskForm):
         validators=[Optional()],
         description="Write feedback here!",
     )
+    email = StringField(
+        label="Enter your email address to win $50 gift card!",
+        validators=[Optional()],
+        description="Enter your email address to win $50 gift card!",
+    )
     agree = SubmitField("Submit Feedback!")
 
 
 class AgreeButton(FlaskForm):
-    agree = SubmitField("Yes, I agree to participate")
+    agree = SubmitField("Start survey")

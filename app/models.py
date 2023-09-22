@@ -20,16 +20,17 @@ class Neighborhood(db.Model):
     name = db.Column(db.String(200))
     geometry = db.Column(Geometry("POLYGON"))
     time_stamp = db.Column(db.DateTime(timezone=True))
-    user_relationship = db.Column(db.String(10))
+    user_relationship = db.Column(db.ARRAY(db.String(10)))
 
 
 class Respondent(db.Model):
     user_id = db.Column(
         db.String(36), db.ForeignKey("location.user_id"), primary_key=True
     )
+    years_lived_chicago = db.Column(db.Float())
     gender = db.Column(db.String(10))
     age = db.Column(db.String(5))
-    ethnicity = db.Column(db.String(20))
+    ethnicity = db.Column(db.ARRAY(db.String(20)))
     soc_cohes_neighborhood_knit = db.Column(db.String(10))
     soc_cohes_neighborhood_value = db.Column(db.String(10))
     soc_cohes_neighborhood_talk = db.Column(db.String(10))
@@ -39,4 +40,5 @@ class Respondent(db.Model):
 class Feedback(db.Model):
     feedback_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.String(36), db.ForeignKey("location.user_id"))
+    email = db.Column(db.String(320))
     feedback = db.Column(db.Text)

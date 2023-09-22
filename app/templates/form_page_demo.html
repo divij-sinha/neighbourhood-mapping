@@ -23,7 +23,11 @@ endblock %} {% block title_body %}
     {{ form.csrf_token }}
     <div class="container text-left">
       <div class="row">
-        <div class="col-md-4 form-check">
+        <div class="col-md-3">
+          {{ form.years_lived_chicago.label(class_="form-label")}}
+          {{ form.years_lived_chicago(class_="form-number form-control")}}
+        </div>
+        <div class="col-md-3 form-check">
           {{ form.gender.label(class_="form-check-label")}} {% for subfield in
           form.gender %}
           <div class="form-check">
@@ -34,7 +38,7 @@ endblock %} {% block title_body %}
           </div>
           {% endfor %}
         </div>
-        <div class="col-md-4 form-check">
+        <div class="col-md-3 form-check">
           {{ form.age.label(class_="form-check-label")}} {% for subfield in
           form.age %}
           <div class="form-check">
@@ -45,12 +49,12 @@ endblock %} {% block title_body %}
           </div>
           {% endfor %}
         </div>
-        <div class="col-md-4 form-check">
+        <div class="col-md-3 form-check">
           {{ form.ethnicity.label(class_="form-check-label")}} {% for subfield
           in form.ethnicity %}
           <div class="form-check">
             <tr>
-              <td>{{ subfield(class_="form-check-input") }}</td>
+              <td>{{ subfield(class_="form-check-input", type="checkbox") }}</td>
               <td>{{ subfield.label(class_="form-check-label") }}</td>
             </tr>
           </div>

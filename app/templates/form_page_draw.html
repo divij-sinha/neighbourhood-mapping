@@ -48,7 +48,7 @@ endblock %} {% block title_body %}
         subfield in form.user_relationship %}
         <div class="form-check">
           <tr>
-            <td>{{ subfield(class_="form-check-input") }}</td>
+            <td>{{ subfield(class_="form-check-input", type="checkbox") }}</td>
             <td>{{ subfield.label(class_="form-check-label") }}</td>
           </tr>
         </div>
@@ -59,15 +59,27 @@ endblock %} {% block title_body %}
   </div>
 </form>
 <br /><br />
+
+{% if first!='first' %}
+<div class="container-fluid">
+  <p>
+    Where are the boundaries of this neighborhood?
+    Now, let's draw the neighborhood! Please mark this neighborhood's boundaries to the best of your knowledge.
+  </p>
+</div>
+{% else %}
+{% endif %}
+
 <div class="container-fluid">
   <p>
     Here's how to draw:  
     <ol>
       <li>On the map below, please pan to your neighborhood by clicking and dragging the map</li>
       <li>Click on the <img src="/static/poly_icon.png" alt="polygon" width="25" /> on the top left corner of the map then click on the map to mark a
-        starting point along the boundary of your neighborhood.</li>
+        starting point along the boundary of your neighborhood</li>
       <li>Click on the map to draw a straight line between additional points to mark the boundary of your neighborhood</li>
-      <li>Click on the first point to close the shape or click “Finish”</li>
+      <li>To close the shape, click on the first point or click “Finish” on the top left corner of the map</li>
+      <li>Click "I'm done" if you don't want to draw any more neighborhoods or click on "I want to draw the boundary of another neighborhood" to continue drawing</li>
   </p>
   <p class="fst-italic">
     Please draw only 1 neighborhood! Use the
@@ -82,14 +94,20 @@ endblock %} {% block title_body %}
 {% endif %}
 <div class="container-fluid p-4">{{ body_html|safe }}</div>
 <div class="container-fluid text-center">
-  <form>
-    {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn
-    btn-primary btn-lg") }}
-    <div class="container-fluid p-2"></div>
-    {{ form.draw_another(onclick="storeLayer()", form="mainform", class_="btn
-    btn-primary btn-lg") }}
-  </form>
-</div>
+  <div class="row">
+    <div class="col-md-6">
+      <form>
+        {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn
+        btn-primary btn-lg") }}
+      </form>
+    </div>
+    <div class="col-md-6">
+      <form>
+        {{ form.draw_another(onclick="storeLayer()", form="mainform", class_="btn
+        btn-primary btn-lg") }}
+      </form>
+    </div>
+  </div>
 <div class="container-fluid p-4"></div>
 {% endblock %} {% block map_script %}
 <script>
