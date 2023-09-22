@@ -144,7 +144,9 @@ def survey_demo():
 def thank_page():
     form = SurveyFeedback()
     if form.validate_on_submit():
-        feedback = Feedback(user_id=session["uuid"], feedback=form.feedback.data)
+        feedback = Feedback(
+            user_id=session["uuid"], feedback=form.feedback.data, email=form.email.data
+        )
         db.session.add(feedback)
         db.session.commit()
         return redirect(url_for("thank_page"))

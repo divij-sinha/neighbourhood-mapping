@@ -1,10 +1,10 @@
 {% extends "_base_page.html" %} {% block map_head %} {% endblock %} {% block
 body %}
 <div class="container-fluid p-3 text-center h-1">
-  <h1>Where are Chicago's neighborhoods?</h1>
+  <h1>Thank you for participating!</h1>
 </div>
 <p class="fs-3 lead p-3">
-  Thank you for participating! Your responses will help us better understand how
+  Your responses will help us better understand how
   Chicago residents think about their neighborhoods and neighborhoods across the
   city.
 </p>
@@ -12,11 +12,16 @@ body %}
   We welcome your comments and feedback. If there is more information you would
   like to share with us, please use the textbox below.
 </p>
+<p class="fs-3 lead p-3">
+  To be entered to win a $50 gift card, enter your email address below. 
+  20 gift cards will be randomly awarded to survey respondents who provide contact information.
+</p>
 <form action="" method="post" novalidate id="mainform" class="needs-validation">
   {{ form.csrf_token }}
-  <div class="container-fluid text-center">
+  <div class="container-fluid">
     {{form.feedback(class_="form-control", style="height: 100px", placeholder =
     "Write feedback here!")}}
+    {{form.email(class_="form-text form-control", placeholder="Enter email here!")}}
   </div>
   <div class="container-fluid p-4"></div>
   <div class="container-fluid text-center">

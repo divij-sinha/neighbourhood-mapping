@@ -40,4 +40,5 @@ class Respondent(db.Model):
 class Feedback(db.Model):
     feedback_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.String(36), db.ForeignKey("location.user_id"))
+    email = db.Column(db.String(320))
     feedback = db.Column(db.Text)
