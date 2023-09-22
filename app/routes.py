@@ -92,7 +92,7 @@ def survey_draw(first):
             time_stamp=datetime.now(timezone.utc),
         )
         if first == "first":
-            neighborhood.user_relationship = "cur_live"
+            neighborhood.user_relationship = ["cur_live"]
             neighborhood.name = location.name
         else:
             neighborhood.user_relationship = form.user_relationship.data
@@ -124,6 +124,7 @@ def survey_demo():
     if form.validate_on_submit():
         resp = Respondent(
             user_id=session["uuid"],
+            years_lived_chicago=form.years_lived_chicago.data,
             age=form.age.data,
             gender=form.gender.data,
             ethnicity=form.ethnicity.data,
