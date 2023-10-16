@@ -8,32 +8,24 @@ endblock %} {% block title_body %}
   {% endif %}
 </div>
 {% endblock %} {% block map_body %}
-{% if first=='first' %}
 <div class="container-fluid text-left">
   <p>
-     You told us you live in
-    {{form.cur_neighborhood.data}}. Now, let's draw the neighborhood! 
-    
+    What do you call your neighborhood or the area where you live?
   </p>
 </div>
-{% else %}
-{% endif %}
+
 {{ form_html }}
 <form action="" method="post" novalidate id="mainform" class="needs-validation">
   {{ form.csrf_token }} {{ form.draw_layer }}
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        {{ form.cur_neighborhood.label}} {% if first=='first' %} {{
-        form.cur_neighborhood(class_="form-text form-control",
-        autocomplete="off", list="neighborhood_list", disabled="")}} {% else %}
         {% if form.cur_neighborhood.errors %} {{
         form.cur_neighborhood(class_="form-text form-control is-invalid",
         autocomplete="off", list="neighborhood_list")}} {% else %} {{
         form.cur_neighborhood(class_="form-text form-control",
         autocomplete="off", list="neighborhood_list")}} {% endif %}
         <div class="form-text">{{ form.cur_neighborhood.description }}</div>
-        {% endif %}
         <datalist id="neighborhood_list">
           {% for neighborhood in neighborhood_list %}
           <option>{{ neighborhood }}</option>
@@ -72,14 +64,13 @@ endblock %} {% block title_body %}
 
 <div class="container-fluid">
   <p>
-    Here's how to draw:  
+    Now, draw your neighborhood!
     <ol>
-      <li>On the map below, please pan to your neighborhood by clicking and dragging the map</li>
-      <li>Click on the <img src="/static/poly_icon.png" alt="polygon" width="25" /> on the top left corner of the map then click on the map to mark a
-        starting point along the boundary of your neighborhood</li>
-      <li>Click on the map to draw a straight line between additional points to mark the boundary of your neighborhood</li>
-      <li>To close the shape, click on the first point or click “Finish” on the top left corner of the map</li>
-      <li>Click "I'm done" if you don't want to draw any more neighborhoods or click on "I want to draw the boundary of another neighborhood" to continue drawing</li>
+      <li>Pan to your neighborhood by clicking and dragging the map</li>
+      <li>Click on the <img src="/static/poly_icon.png" alt="polygon" width="25" /> icon to mark a starting point</li>
+      <li>Add points to mark the boundary</li>
+      <li>Click on the first point to close the shape</li>
+      <!-- <li>Click "I'm done" if you don't want to draw any more neighborhoods or click on "I want to draw the boundary of another neighborhood" to continue drawing</li> -->
   </p>
   <p class="fst-italic">
     Please draw only 1 neighborhood! Use the
@@ -95,13 +86,16 @@ endblock %} {% block title_body %}
 <div class="container-fluid p-4">{{ body_html|safe }}</div>
 <div class="container-fluid text-center">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <form>
         {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn
         btn-primary btn-lg") }}
       </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-2">
+      <br>
+    </div>
+    <div class="col-md-5">
       <form>
         {{ form.draw_another(onclick="storeLayer()", form="mainform", class_="btn
         btn-primary btn-lg") }}
