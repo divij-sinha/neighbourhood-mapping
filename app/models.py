@@ -7,8 +7,6 @@ class Location(db.Model):
     geometry = db.Column(Geometry("POINT"))
     time_stamp = db.Column(db.DateTime(timezone=True))
     name = db.Column(db.String(200))
-    rent_own = db.Column(db.String(5))
-    years_lived = db.Column(db.Float())
     neighborhoods = db.relationship(
         "Neighborhood", backref="neighborhoods", lazy="subquery"
     )
@@ -27,7 +25,9 @@ class Respondent(db.Model):
     user_id = db.Column(
         db.String(36), db.ForeignKey("location.user_id"), primary_key=True
     )
+    rent_own = db.Column(db.String(5))
     years_lived_chicago = db.Column(db.Float())
+    years_lived = db.Column(db.Float())
     gender = db.Column(db.String(10))
     age = db.Column(db.String(5))
     ethnicity = db.Column(db.ARRAY(db.String(20)))

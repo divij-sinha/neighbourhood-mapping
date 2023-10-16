@@ -22,10 +22,28 @@ endblock %} {% block title_body %}
   >
     {{ form.csrf_token }}
     <div class="container text-left">
-      <div class="row">
+      <div class="row justify-content-center">
         <div class="col-md-3">
           {{ form.years_lived_chicago.label(class_="form-label")}}
           {{ form.years_lived_chicago(class_="form-number form-control")}}
+        </div>
+        <div class="col-md-3">
+          {{ form.years_lived.label(class_="form-label")}}
+          {{ form.years_lived(class_="form-number form-control")}}
+        </div>
+        <div class="col-md-3">
+          {% if form.rent_own.errors %} {{
+          form.rent_own.label(class_="form-check-label is-invalid")}} {% else %}
+          {{ form.rent_own.label(class_="form-check-label")}} {% endif %} {% for
+          subfield in form.rent_own %}
+          <div class="form-check">
+            <tr>
+              <td>{{ subfield(class_="form-check-input") }}</td>
+              <td>{{ subfield.label(class_="form-check-label") }}</td>
+            </tr>
+          </div>
+          {% endfor %}
+          <div class="invalid-feedback">Please choose an option!</div>
         </div>
         <div class="col-md-3 form-check">
           {{ form.gender.label(class_="form-check-label")}} {% for subfield in
@@ -38,7 +56,7 @@ endblock %} {% block title_body %}
           </div>
           {% endfor %}
         </div>
-        <div class="col-md-3 form-check">
+        <div class="col-md-6 form-check">
           {{ form.age.label(class_="form-check-label")}} {% for subfield in
           form.age %}
           <div class="form-check">
@@ -49,7 +67,7 @@ endblock %} {% block title_body %}
           </div>
           {% endfor %}
         </div>
-        <div class="col-md-3 form-check">
+        <div class="col-md-6 form-check">
           {{ form.ethnicity.label(class_="form-check-label")}} {% for subfield
           in form.ethnicity %}
           <div class="form-check">

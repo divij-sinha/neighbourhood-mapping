@@ -32,27 +32,27 @@ class MultiCheckboxField(SelectMultipleField):
 
 
 class SurveyStart(FlaskForm):
-    cur_neighborhood = StringField(
-        "What is the name of your neighborhood?",
-        description="Choose from the list, or type your own!",
-        validators=[DataRequired()],
-    )
-    years_lived = DecimalField(
-        "How many years in total have you lived here?",
-        description="How many years in total have you lived here?",
-        default=0.0,
-        places=1,
-        validators=[NumberRange(0, 100)],
-    )
-    rent_own = RadioField(
-        "Do you rent or own your current residence?",
-        choices=[
-            ("rent", "I rent it"),
-            ("own", "I own it"),
-            ("other", "Other arrangement"),
-        ],
-        validators=[Optional()],
-    )
+    # cur_neighborhood = StringField(
+    #     "What is the name of your neighborhood?",
+    #     description="Choose from the list, or type your own!",
+    #     validators=[DataRequired()],
+    # )
+    # years_lived = DecimalField(
+    #     "How many years in total have you lived here?",
+    #     description="How many years in total have you lived here?",
+    #     default=0.0,
+    #     places=1,
+    #     validators=[NumberRange(0, 100)],
+    # )
+    # rent_own = RadioField(
+    #     "Do you rent or own your current residence?",
+    #     choices=[
+    #         ("rent", "I rent it"),
+    #         ("own", "I own it"),
+    #         ("other", "Other arrangement"),
+    #     ],
+    #     validators=[Optional()],
+    # )
     mark_layer = HiddenField(
         "invisible_str_mark", validators=[DataRequired(), validator_geo_json]
     )
@@ -87,11 +87,27 @@ class SurveyDraw(FlaskForm):
 
 
 class SurveyDemo(FlaskForm):
+    years_lived = DecimalField(
+        "How many years in total have you lived in your current neighborhood?",
+        description="How many years in total have you lived here?",
+        default=0.0,
+        places=1,
+        validators=[Optional(), NumberRange(0, 100)],
+    )
     years_lived_chicago = DecimalField(
         "How many years in total have you lived in the City of Chicago?",
         description="How many years in total have you lived in the City of Chicago?",
         places=1,
         validators=[Optional(), NumberRange(0, 100)],
+    )
+    rent_own = RadioField(
+        "Do you rent or own your current residence?",
+        choices=[
+            ("rent", "I rent it"),
+            ("own", "I own it"),
+            ("other", "Other arrangement"),
+        ],
+        validators=[Optional()],
     )
     gender = RadioField(
         "What gender do you identify as?",
@@ -200,4 +216,4 @@ class SurveyFeedback(FlaskForm):
 
 
 class AgreeButton(FlaskForm):
-    agree = SubmitField("Start survey")
+    agree = SubmitField("Start survey!")

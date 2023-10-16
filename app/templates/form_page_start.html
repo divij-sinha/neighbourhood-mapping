@@ -6,64 +6,20 @@ endblock %} {% block title_body %}
 {% endblock %} {% block map_body %}
 <div class="container-fluid text-left">
   <p>
-    Tell us about your neighborhood. What do you call it, how long have you
-    lived there, and roughly where is it located? Use the map to indicate
-    generally where you live.
+    To start drawing your neighborhood, first use the map to indicate generally where you live.
   </p>
 </div>
 {{ form_html }}
 <form action="" method="post" novalidate id="mainform" class="needs-validation">
   {{ form.csrf_token }} {{ form.mark_layer }}
-  <div class="container text-left">
-    <div class="row">
-      <div class="col-md-4">
-        {{ form.cur_neighborhood.label}} {% if form.cur_neighborhood.errors %}
-        {{ form.cur_neighborhood( class_="form-text form-control is-invalid",
-        autocomplete="off", list="neighborhood_list")}} {% else %} {{
-        form.cur_neighborhood( class_="form-text form-control",
-        autocomplete="off", list="neighborhood_list")}} {% endif %}
-        <datalist id="neighborhood_list">
-          {% for neighborhood in neighborhood_list %}
-          <option>{{ neighborhood }}</option>
-          {% endfor %}
-        </datalist>
-        <div class="form-text">{{ form.cur_neighborhood.description }}</div>
-        <div class="invalid-feedback">Please fill in the neighborhood!</div>
-      </div>
-      <div class="col-md-4">
-        {{ form.years_lived.label(class_="form-label")}} {% if
-        form.years_lived.errors %} {{ form.years_lived(class_="form-number
-        form-control is-invalid")}} {% else %}
-        {{form.years_lived(class_="form-number form-control")}} {% endif %}
-        <div class="invalid-feedback">
-          Please enter the number of years between 0 and 100
-        </div>
-      </div>
-      <div class="col-md-4">
-        {% if form.rent_own.errors %} {{
-        form.rent_own.label(class_="form-check-label is-invalid")}} {% else %}
-        {{ form.rent_own.label(class_="form-check-label")}} {% endif %} {% for
-        subfield in form.rent_own %}
-        <div class="form-check">
-          <tr>
-            <td>{{ subfield(class_="form-check-input") }}</td>
-            <td>{{ subfield.label(class_="form-check-label") }}</td>
-          </tr>
-        </div>
-        {% endfor %}
-        <div class="invalid-feedback">Please choose an option!</div>
-      </div>
-    </div>
-  </div>
+
 </form>
-<br /><br />
+
 <div class="container-fluid text-left">
   <p>
-    Now, let's mark where you live! Please pan to where you live by clicking and
-    dragging the map to your approximate address. Then click on the
-    <img src="/static/draw_icon.png" alt="white circle" width="25" /> on the top
-    left corner of the map and mark your home's general location. As a reminder, we will only
-    look at your location in aggregate and do not store your address!
+    Pan to your approximate address by clicking and dragging the map. Use the 
+    <img src="/static/draw_icon.png" alt="white circle" width="25" /> icon to mark your home's general location. 
+    We will only look at your location as rough coordinates and do not store your address!
   </p>
   <p class="fst-italic">
     Please mark only 1 location! Use the
