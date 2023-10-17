@@ -1,5 +1,9 @@
-{% extends "_base_page.html" %} {% block map_head %} {% endblock %} {% block
-body %}
+{% extends "_base_page.html" %} 
+
+{% block map_head %} 
+{% endblock %} 
+
+{% block body %}
 <div class="container-fluid p-3 text-center h-1">
   <h1>Draw your neighborhood in less than 3 minutes!</h1>
 </div>
@@ -15,7 +19,8 @@ body %}
 </p>
 <p class="fs-4 lead p-3">
   <b>
-  Enter to win one of twenty $50 gift cards! Register at the end of the survey.
+    Enter to win one of twenty $50 gift cards! Gift card drawings will occur every 
+    two weeks starting in November. Register at the end of the survey to be notified by email!
   </b>
 </p>
 <p class="fs-4 lead p-3">
@@ -29,7 +34,11 @@ body %}
 </p>
 <div class="container-fluid text-center">
   <form action="" method="post" novalidate id="mainform">
-    {{ agree.csrf_token }} {{ agree.agree(class_="btn btn-success btn-lg") }}
+    {{ agree.csrf_token }} 
+    {{ agree.agree(class_="btn btn-primary btn-lg") }}
   </form>
 </div>
-{% endblock %} {% block map_script %} {% endblock %}
+{% endblock %} 
+
+{% block map_script %} 
+{% endblock %}

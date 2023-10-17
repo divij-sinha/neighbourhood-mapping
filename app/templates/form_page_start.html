@@ -1,9 +1,16 @@
-{% extends "_form_page.html" %} {% block map_head %} {{ header|safe }} {%
-endblock %} {% block title_body %}
+{% extends "_form_page.html" %}
+
+{% block map_head %} 
+{{ header|safe }} 
+{%endblock %} 
+
+{% block title_body %}
 <div class="container-fluid p-3 text-center h-1">
   <h1>Where do you currently live?</h1>
 </div>
-{% endblock %} {% block map_body %}
+{% endblock %} 
+
+{% block map_body %}
 <div class="container-fluid text-left">
   <p>
     To start drawing your neighborhood, first use the map to indicate generally where you live.
@@ -11,10 +18,9 @@ endblock %} {% block title_body %}
 </div>
 {{ form_html }}
 <form action="" method="post" novalidate id="mainform" class="needs-validation">
-  {{ form.csrf_token }} {{ form.mark_layer }}
-
+  {{ form.csrf_token }} 
+  {{ form.mark_layer }}
 </form>
-
 <div class="container-fluid text-left">
   <p>
     Pan to your approximate address by clicking and dragging the map. Use the 
@@ -32,15 +38,18 @@ endblock %} {% block title_body %}
   <p class="text-danger">Please mark the general location of where you live!</p>
   {% endif %}
 </div>
-<div class="container-fluid p-4">{{ body_html|safe }}</div>
+<div class="container-fluid p-4">
+  {{ body_html|safe }}
+</div>
 <div class="container-fluid text-center">
   <form>
-    {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn
-    btn-primary btn-lg") }}
+    {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn btn-primary btn-lg") }}
   </form>
 </div>
 <div class="container-fluid p-4"></div>
-{% endblock %} {% block map_script %}
+{% endblock %} 
+
+{% block map_script %}
 <script>
   {{script | safe}}
   var csrf_token = "{{ csrf_token() }}";
