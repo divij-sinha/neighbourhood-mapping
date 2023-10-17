@@ -40,4 +40,5 @@ def get_map_comps(loc: tuple, zoom: int, draw_options: dict) -> tuple:
     body_html = m.get_root().html.render()
     script = m.get_root().script.render()
 
+    header = header.replace('    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>', "")
     return header, body_html, script
