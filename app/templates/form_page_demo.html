@@ -1,9 +1,16 @@
-{% extends "_form_page.html" %} {% block map_head %} {{ header|safe }} {%
-endblock %} {% block title_body %}
+{% extends "_form_page.html" %} 
+
+{% block map_head %} 
+  {{ header|safe }} 
+{% endblock %} 
+
+{% block title_body %}
 <div class="container-fluid p-3 text-center h-1">
   <h1>Tell us more about yourself!</h1>
 </div>
-{% endblock %} {% block map_body %}
+{% endblock %} 
+
+{% block map_body %}
 <div class="container-fluid">
   <p class="text-left">
     We're interested in how different groups of residents think about Chicago's
@@ -32,50 +39,52 @@ endblock %} {% block title_body %}
           {{ form.years_lived(class_="form-number form-control")}}
         </div>
         <div class="col-md-3">
-          {% if form.rent_own.errors %} {{
-          form.rent_own.label(class_="form-check-label is-invalid")}} {% else %}
-          {{ form.rent_own.label(class_="form-check-label")}} {% endif %} {% for
-          subfield in form.rent_own %}
-          <div class="form-check">
-            <tr>
-              <td>{{ subfield(class_="form-check-input") }}</td>
-              <td>{{ subfield.label(class_="form-check-label") }}</td>
-            </tr>
-          </div>
+          {% if form.rent_own.errors %} 
+            {{ form.rent_own.label(class_="form-check-label is-invalid")}} 
+          {% else %}
+            {{ form.rent_own.label(class_="form-check-label")}} 
+          {% endif %} 
+          {% for subfield in form.rent_own %}
+            <div class="form-check">
+              <tr>
+                <td>{{ subfield(class_="form-check-input") }}</td>
+                <td>{{ subfield.label(class_="form-check-label") }}</td>
+              </tr>
+            </div>
           {% endfor %}
           <div class="invalid-feedback">Please choose an option!</div>
         </div>
         <div class="col-md-3 form-check">
-          {{ form.gender.label(class_="form-check-label")}} {% for subfield in
-          form.gender %}
-          <div class="form-check">
-            <tr>
-              <td>{{ subfield(class_="form-check-input") }}</td>
-              <td>{{ subfield.label(class_="form-check-label") }}</td>
-            </tr>
-          </div>
+          {{ form.gender.label(class_="form-check-label")}} 
+          {% for subfield in form.gender %}
+            <div class="form-check">
+              <tr>
+                <td>{{ subfield(class_="form-check-input") }}</td>
+                <td>{{ subfield.label(class_="form-check-label") }}</td>
+              </tr>
+            </div>
           {% endfor %}
         </div>
         <div class="col-md-6 form-check">
-          {{ form.age.label(class_="form-check-label")}} {% for subfield in
-          form.age %}
-          <div class="form-check">
-            <tr>
-              <td>{{ subfield(class_="form-check-input") }}</td>
-              <td>{{ subfield.label(class_="form-check-label") }}</td>
-            </tr>
-          </div>
+          {{ form.age.label(class_="form-check-label")}} 
+          {% for subfield in form.age %}
+            <div class="form-check">
+              <tr>
+                <td>{{ subfield(class_="form-check-input") }}</td>
+                <td>{{ subfield.label(class_="form-check-label") }}</td>
+              </tr>
+            </div>
           {% endfor %}
         </div>
         <div class="col-md-6 form-check">
-          {{ form.ethnicity.label(class_="form-check-label")}} {% for subfield
-          in form.ethnicity %}
-          <div class="form-check">
-            <tr>
-              <td>{{ subfield(class_="form-check-input", type="checkbox") }}</td>
-              <td>{{ subfield.label(class_="form-check-label") }}</td>
-            </tr>
-          </div>
+          {{ form.ethnicity.label(class_="form-check-label")}} 
+          {% for subfield in form.ethnicity %}
+            <div class="form-check">
+              <tr>
+                <td>{{ subfield(class_="form-check-input", type="checkbox") }}</td>
+                <td>{{ subfield.label(class_="form-check-label") }}</td>
+              </tr>
+            </div>
           {% endfor %}
         </div>
       </div>
@@ -99,52 +108,48 @@ endblock %} {% block title_body %}
         <tr>
           <div class="form-check">
             <th scope="row">
-              {{
-              form.soc_cohes_neighborhood_knit.label(class_="form-check-label")}}
+              {{ form.soc_cohes_neighborhood_knit.label(class_="form-check-label") }}
             </th>
             {% for subfield in form.soc_cohes_neighborhood_knit %}
-            <td class="text-center">
-              {{ subfield(class_="form-check-input") }}
-            </td>
+              <td class="text-center">
+                {{ subfield(class_="form-check-input") }}
+              </td>
             {% endfor %}
           </div>
         </tr>
         <tr>
           <div class="form-check">
             <th scope="row">
-              {{
-              form.soc_cohes_neighborhood_value.label(class_="form-check-label")}}
+              {{ form.soc_cohes_neighborhood_value.label(class_="form-check-label") }}
             </th>
             {% for subfield in form.soc_cohes_neighborhood_value %}
-            <td class="text-center">
-              {{ subfield(class_="form-check-input") }}
-            </td>
+              <td class="text-center">
+                {{ subfield(class_="form-check-input") }}
+              </td>
             {% endfor %}
           </div>
         </tr>
         <tr>
           <div class="form-check">
             <th scope="row">
-              {{
-              form.soc_cohes_neighborhood_talk.label(class_="form-check-label")}}
+              {{ form.soc_cohes_neighborhood_talk.label(class_="form-check-label") }}
             </th>
             {% for subfield in form.soc_cohes_neighborhood_talk %}
-            <td class="text-center">
-              {{ subfield(class_="form-check-input") }}
-            </td>
+              <td class="text-center">
+                {{ subfield(class_="form-check-input") }}
+              </td>
             {% endfor %}
           </div>
         </tr>
         <tr>
           <div class="form-check">
             <th scope="row">
-              {{
-              form.soc_cohes_neighborhood_belong.label(class_="form-check-label")}}
+              {{ form.soc_cohes_neighborhood_belong.label(class_="form-check-label") }}
             </th>
             {% for subfield in form.soc_cohes_neighborhood_belong %}
-            <td class="text-center">
-              {{ subfield(class_="form-check-input") }}
-            </td>
+              <td class="text-center">
+                {{ subfield(class_="form-check-input") }}
+              </td>
             {% endfor %}
           </div>
         </tr>
@@ -155,4 +160,7 @@ endblock %} {% block title_body %}
     </div>
   </form>
 </div>
-{% endblock %} {% block map_script %} {% endblock %}
+{% endblock %} 
+
+{% block map_script %} 
+{% endblock %}
