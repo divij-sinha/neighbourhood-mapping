@@ -18,10 +18,6 @@ body %}
   <div class="container-fluid">
     {{form.email(class_="form-text form-control", placeholder="Enter email here!")}}
   </div>
-  <div class="container-fluid p-4"></div>
-  <div class="container-fluid text-center">
-    {{ form.agree(class_="btn btn-success btn-lg") }}
-  </div>
 </form>
 <p class="fs-3 lead p-3">
   We welcome your comments and feedback. If there is more information you would
@@ -29,8 +25,11 @@ body %}
 </p>
 <form>
   <div class="container-fluid">
-    {{form.feedback(form="mainform", class_="form-control", style="height: 100px", placeholder =
-    "Write feedback here!")}}
+    {{form.feedback(form="mainform", class_="form-control", style="height: 100px", placeholder = "Write feedback here!")}}
+    <div class="container-fluid p-4"></div>
+    <div class="container-fluid text-center">
+      {{ form.agree(form="mainform", class_="btn btn-success btn-lg") }}
+    </div>
   </div>
 </form>
 {% endblock %} {% block map_script %} {% endblock %}
