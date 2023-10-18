@@ -212,7 +212,7 @@ class SurveyFeedback(FlaskForm):
         validators=[Optional()],
         description="Enter your email address to win $50 gift card!",
     )
-    agree = SubmitField("Submit Feedback!")
+    agree = SubmitField("I'm done!")
 
 
 class AgreeButton(FlaskForm):

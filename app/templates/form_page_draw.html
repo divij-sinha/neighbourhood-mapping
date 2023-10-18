@@ -8,16 +8,22 @@
   {% if first=='first' %}
   <h1>Where are the boundaries of your current neighborhood?</h1>
   {% else %}
-  <h1>What other neighborhood would you like to draw?</h1>
+  <h1>Draw another neighborhood</h1>
   {% endif %}
 </div>
 {% endblock %} 
 
 {% block map_body %}
 <div class="container-fluid text-left">
+  {% if first=='first' %}
   <p>
     What do you call your neighborhood or the area where you live?
   </p>
+  {% else %}
+  <p>
+    What other neighborhood would you like to draw?
+  </p>
+  {% endif %}
 </div>
 
 {{ form_html }}
@@ -68,14 +74,18 @@
     Now, draw the neighborhood!
     {% endif %}
     <ol>
+      {% if first=='first' %}
       <li>Pan to your neighborhood by clicking and dragging the map</li>
+      {% else %}
+      <li>Pan to the neighborhood by clicking and dragging the map</li>
+      {% endif %}
       <li>Click on the <img src="/static/poly_icon.png" alt="polygon" width="25" /> icon to mark a starting point</li>
       <li>Add points to mark the boundary</li>
       <li>Click on the first point to close the shape</li>
       <!-- <li>Click "I'm done" if you don't want to draw any more neighborhoods or click on "I want to draw the boundary of another neighborhood" to continue drawing</li> -->
   </p>
   <p class="fst-italic">
-    Please draw only 1 neighborhood! Use the
+    Draw only 1 neighborhood! Use the
     <img src="/static/delete_icon.png" alt="trash" width="25" /> to delete a
     marker. Use the
     <img src="/static/edit_icon.png" alt="pencil" width="25" /> to move a marker
