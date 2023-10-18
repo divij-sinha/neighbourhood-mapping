@@ -17,7 +17,7 @@ def get_geojson(input_str: str) -> dict:
 
 def get_neighborhood_list() -> list:
     df = pd.read_csv("app/data/neighborhoods233.csv")
-    return df["name"].to_list()
+    return df["name"].sort_values().to_list()
 
 def get_map_comps(loc: tuple, zoom: int, draw_options: dict) -> tuple:
     m = folium.Map(
