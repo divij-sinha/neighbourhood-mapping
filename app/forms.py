@@ -198,7 +198,7 @@ class SurveyDemo(FlaskForm):
             ("strong_agr", "Strong agree"),
         ],
     )
-    submit = SubmitField("I'm done!")
+    submit = SubmitField("Enter to win $50 giftcard")
 
 
 class SurveyFeedback(FlaskForm):
