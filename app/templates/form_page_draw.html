@@ -59,19 +59,14 @@
 </form>
 <br /><br />
 
-{% if first!='first' %}
-<div class="container-fluid">
-  <p>
-    Where are the boundaries of this neighborhood?
-    Now, let's draw the neighborhood! Please mark this neighborhood's boundaries to the best of your knowledge.
-  </p>
-</div>
-{% else %}
-{% endif %}
 
 <div class="container-fluid">
   <p>
+    {% if first=='first' %}
     Now, draw your neighborhood!
+    {% else %}
+    Now, draw the neighborhood!
+    {% endif %}
     <ol>
       <li>Pan to your neighborhood by clicking and dragging the map</li>
       <li>Click on the <img src="/static/poly_icon.png" alt="polygon" width="25" /> icon to mark a starting point</li>
