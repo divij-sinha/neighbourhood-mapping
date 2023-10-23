@@ -64,9 +64,10 @@ class SurveyDraw(FlaskForm):
     cur_neighborhood = StringField(
         "What is the name of this neighborhood?",
         description="Choose from the list, or type your own!",
+        validators=[Optional()]
     )
     draw_layer = HiddenField(
-        "invisible_str_draw", validators=[DataRequired(), validator_geo_json]
+        "invisible_str_draw", validators=[Optional()]
     )
     user_relationship = MultiCheckboxField(
         "How do you know this neighborhood? (Select all that apply)",
@@ -95,8 +96,8 @@ class SurveyDemo(FlaskForm):
         validators=[Optional(), NumberRange(0, 100)],
     )
     years_lived_chicago = DecimalField(
-        "How many years in total have you lived in the City of Chicago?",
-        description="How many years in total have you lived in the City of Chicago?",
+        "How many years in total have you lived in the city of Chicago?",
+        description="How many years in total have you lived in the city of Chicago?",
         places=1,
         validators=[Optional(), NumberRange(0, 100)],
     )
@@ -121,7 +122,7 @@ class SurveyDemo(FlaskForm):
         ],
     )
     age = RadioField(
-        "What age group do you fall in?",
+        "What is your age?",
         validators=[Optional()],
         default="none",
         choices=[
@@ -198,7 +199,7 @@ class SurveyDemo(FlaskForm):
             ("strong_agr", "Strong agree"),
         ],
     )
-    submit = SubmitField("Enter to win $50 giftcard")
+    submit = SubmitField("I'm done!")
 
 
 class SurveyFeedback(FlaskForm):

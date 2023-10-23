@@ -1,6 +1,6 @@
 from app import app, db
 from app.models import Neighborhood, Location, Respondent, Feedback
-from app.forms import SurveyStart, SurveyDraw, AgreeButton, SurveyDemo, SurveyFeedback
+from app.forms import SurveyStart, SurveyDraw, AgreeButton, SurveyDemo, SurveyFeedback, validator_geo_json
 from flask import render_template, redirect, url_for, session, flash
 from wtforms.validators import DataRequired
 from utils import get_geojson, get_map_comps, get_neighborhood_list
@@ -82,13 +82,15 @@ def survey_draw(first):
         loc=loc, zoom=13, draw_options=draw_options
     )
     form = SurveyDraw()
-    if (form.validate_on_submit() and first == "first") or form.validate_on_submit(
-        extra_validators={"cur_neighborhood": [DataRequired()]}
-    ):
+    if form.validate_on_submit():
         parsed_geojson = get_geojson(form.draw_layer.data)
+        try:
+            geometry = from_shape(shape(parsed_geojson["features"][0]["geometry"]))
+        except:
+            geometry = None
         neighborhood = Neighborhood(
             user_id=session["uuid"],
-            geometry=from_shape(shape(parsed_geojson["features"][0]["geometry"])),
+            geometry=geometry,
             time_stamp=datetime.now(timezone.utc),
             name=form.cur_neighborhood.data
         )
@@ -138,13 +140,13 @@ def survey_demo():
         )
         db.session.add(resp)
         db.session.commit()
-        return redirect(url_for("thank_page"))
+        return redirect(url_for("thank_page", feedback_page="feedback"))
 
     return render_template("form_page_demo.html", form=form)
 
 
-@app.route("/thank_you", methods=["GET", "POST"])
-def thank_page():
+@app.route("/thank_you/<feedback_page>", methods=["GET", "POST"])
+def thank_page(feedback_page):
     form = SurveyFeedback()
     if form.validate_on_submit():
         feedback = Feedback(
@@ -152,5 +154,5 @@ def thank_page():
         )
         db.session.add(feedback)
         db.session.commit()
-        return redirect(url_for("thank_page"))
-    return render_template("thank_page.html", form=form)
+        return redirect(url_for("thank_page", feedback_page="thank_you"))
+    return render_template("thank_page.html", form=form, feedback_page=feedback_page)
