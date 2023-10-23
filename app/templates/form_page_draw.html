@@ -79,7 +79,7 @@
       {% else %}
       <li>Pan to the neighborhood by clicking and dragging the map</li>
       {% endif %}
-      <li>Click on the <img src="/static/poly_icon.png" alt="polygon" width="25" /> icon to mark a starting point</li>
+      <li>Click on the <img src="/static/poly_icon.png" alt="polygon" width="25" /> icon then click on the map to mark a starting point</li>
       <li>Add points to mark the boundary</li>
       <li>Click on the first point to close the shape</li>
       <!-- <li>Click "I'm done" if you don't want to draw any more neighborhoods or click on "I want to draw the boundary of another neighborhood" to continue drawing</li> -->
@@ -87,9 +87,8 @@
   <p class="fst-italic">
     Draw only 1 neighborhood! Use the
     <img src="/static/delete_icon.png" alt="trash" width="25" /> to delete a
-    marker. Use the
-    <img src="/static/edit_icon.png" alt="pencil" width="25" /> to move a marker
-    around or edit a point.
+    point. Use the
+    <img src="/static/edit_icon.png" alt="pencil" width="25" /> to move or edit a point.
   </p>
 </div>
 {% if form.draw_layer.errors %}
