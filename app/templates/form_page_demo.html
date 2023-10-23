@@ -156,9 +156,16 @@
       </tbody>
     </table>
     <div class="container-fluid text-center">
+      <div class="row">
+        <div class="col-md-5">
       {{ form.submit(class_="btn btn-primary btn-lg") }}
+      </div>
+      <div class="col-md-5">
+      {{ form.submit_giftcard(class_="btn btn-primary btn-lg") }}
+      </div>
+      </div>
     </div>
-  </form>
+    </form>
 </div>
 {% endblock %} 
 

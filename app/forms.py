@@ -200,6 +200,7 @@ class SurveyDemo(FlaskForm):
         ],
     )
     submit = SubmitField("I'm done!")
+    submit_giftcard = SubmitField("Enter to win $50 gift card")
 
 
 class SurveyFeedback(FlaskForm):
