@@ -3,6 +3,10 @@
   {{ header|safe }} 
 {% endblock %} 
 
+{% block dynamic_class %}
+w-50
+{% endblock %}
+
 {% block title_body %}
 <div class="container-fluid p-3 text-center h-1">
   {% if first=='first' %}
@@ -14,7 +18,7 @@
 {% endblock %} 
 
 {% block map_body %}
-<div class="container-fluid text-left">
+<div class="container-fluid text-left fs-5 px-4">
   {% if first=='first' %}
   <p>
     What do you call your neighborhood or the area where you live?
@@ -66,7 +70,7 @@
 <br /><br />
 
 
-<div class="container-fluid">
+<div class="container-fluid text-left fs-5 px-4">
   <p>
     {% if first=='first' %}
     Now, draw your neighborhood!
@@ -83,7 +87,8 @@
       <li>Add points to mark the boundary</li>
       <li>Click on the first point to close the shape</li>
       <!-- <li>Click "I'm done" if you don't want to draw any more neighborhoods or click on "I want to draw the boundary of another neighborhood" to continue drawing</li> -->
-  </p>
+    </ol>
+    </p>
   <p class="fst-italic">
     Draw only 1 neighborhood! Use the
     <img src="/static/delete_icon.png" alt="trash" width="25" /> to delete a
@@ -95,18 +100,15 @@
 <p class="text-danger">Please draw the the neighborhood!</p>
 {% endif %} -->
 <div class="container-fluid p-4">{{ body_html|safe }}</div>
-<div class="container-fluid text-center">
+<div class="container-fluid mx-auto">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-4 mx-auto py-2 text-center">
       <form>
         {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn
         btn-primary btn-lg") }}
       </form>
     </div>
-    <div class="col-md-2">
-      <br>
-    </div>
-    <div class="col-md-5">
+    <div class="col-md-8 mx-auto py-2 text-center">
       <form>
         {{ form.draw_another(onclick="storeLayer()", form="mainform", class_="btn
         btn-primary btn-lg") }}

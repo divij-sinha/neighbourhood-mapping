@@ -1,5 +1,7 @@
 body {
-    background-image: url("/static/MapBG.png")
+    background: #c8c8c8;
+        background-blend-mode: hard-light;
+        background-image: url("/static/MapBG.png");
 }
 
 @font-face {
@@ -9,6 +11,12 @@ body {
     font-weight: normal;
 }
 
+@font-face {
+    font-family: Gilroy;
+    src: url("/static/Fonts/gilroy-regularitalic.otf");
+    font-style: italic;
+    font-weight: normal;
+}
 @font-face {
     font-family: Gilroy;
     src: url("/static/Fonts/gilroy-medium.otf");
@@ -84,5 +92,8 @@ path {
     fill: #4AA3CE;
 }
 
+.table-secondary {
+    --bs-table-bg: rgba(200, 200, 200, 0.3);
+}
 /* Red: #c30302
 Blue: #54b7ca */
