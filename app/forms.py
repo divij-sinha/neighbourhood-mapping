@@ -98,6 +98,7 @@ class SurveyDemo(FlaskForm):
     years_lived_chicago = DecimalField(
         "How many years in total have you lived in the city of Chicago?",
         description="How many years in total have you lived in the city of Chicago?",
+        default=0.0,
         places=1,
         validators=[Optional(), NumberRange(0, 100)],
     )

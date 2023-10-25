@@ -1,4 +1,10 @@
-{% extends "_base_page.html" %} {% block map_head %} {% endblock %} {% block
+{% extends "_base_page.html" %} {% block map_head %} {% endblock %} 
+
+{% block dynamic_class %}
+w-100
+{% endblock %}
+
+{% block
 body %}
 <div class="container-fluid p-3 text-center h-1">
   <h1>Thank you for participating!</h1>
@@ -9,7 +15,7 @@ body %}
   city.
 </p> -->
 {% if feedback_page == "feedback" %}
-<p class="fs-3 lead p-3">
+<p class="fs-4 lead p-3">
   To be entered to win one of twenty $50 gift cards, enter your email address below. 
   Gift card winners will be randomly selected every two weeks and notified by email. 
   Your email will only be used for the gift card drawing and will never be shared.
@@ -20,7 +26,7 @@ body %}
     {{form.email(class_="form-text form-control", placeholder="Enter email here!")}}
   </div>
 </form>
-<p class="fs-3 lead p-3">
+<p class="fs-4 lead p-3">
   We welcome your comments and feedback. If there is more information you would
   like to share with us, please use the textbox below.
 </p>
@@ -29,7 +35,7 @@ body %}
     {{form.feedback(form="mainform", class_="form-control", style="height: 100px", placeholder = "Write feedback here!")}}
     <div class="container-fluid p-4"></div>
     <div class="container-fluid text-center">
-      {{ form.agree(form="mainform", class_="btn btn-success btn-lg") }}
+      {{ form.agree(form="mainform", class_="btn btn-primary btn-lg") }}
     </div>
   </div>
 </form>
