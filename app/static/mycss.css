@@ -11,17 +11,34 @@ body {
 
 @font-face {
     font-family: Gilroy;
-    src: url("/static/Fonts/gilroy-bold.otf");
+    src: url("/static/Fonts/gilroy-medium.otf");
     font-style: bold;
     font-weight: bold;
 
 }
 
+@font-face {
+    font-family: Gilroy;
+    src: url("/static/Fonts/gilroy-bold.otf");
+    font-weight: 900;
 
+}
+
+
+h1 {
+    font-family: Gilroy;
+    font-weight: 900;
+}
+
+p,
 div {
     font-family: Gilroy;
 }
 
+b {
+    font-family: Gilroy;
+    font-weight: bold;
+}
 .btn-primary {
     background-color: #54b7ca;
     border-color: #54b7ca;
@@ -35,13 +52,37 @@ div {
     border-color: #4AA3CE;
 }
 
-.a:link,
-.a:visited,
-.a:active,
-.a:hover {
+a:link {
     color: #54b7ca;
 }
 
+a:visited,
+a:active,
+a:hover {
+    color: #4AA3CE;
+}
+
+.text-danger-custom {
+    color: #c30302;
+}
+
+.form-check-input:checked {
+    background-color: #4AA3CE;
+    border-color: #4AA3CE;
+}
+
+.progress-bar-color {
+    background-color: #54b7ca;
+}
+
+.progress-bar-bg-color {
+    background-color: #dddddd;
+}
+
+path {
+    stroke: #4AA3CE;
+    fill: #4AA3CE;
+}
 
 /* Red: #c30302
 Blue: #54b7ca */
