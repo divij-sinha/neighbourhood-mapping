@@ -60,15 +60,16 @@ b {
     border-color: #4AA3CE;
 }
 
-a:link {
+.email-color:link {
     color: #54b7ca;
 }
 
-a:visited,
-a:active,
-a:hover {
+.email-color:visited,
+.email-color:active,
+.email-color:hover {
     color: #4AA3CE;
 }
+
 
 .text-danger-custom {
     color: #c30302;
