@@ -14,6 +14,7 @@ body %}
   Chicago residents think about their neighborhoods and neighborhoods across the
   city.
 </p> -->
+<div class="container-fluid">
 {% if feedback_page == "feedback" %}
 <p class="fs-4 lead p-3">
   To be entered to win one of twenty $50 gift cards, enter your email address below. 
@@ -40,7 +41,14 @@ body %}
   </div>
 </form>
 {% else %}
+<p class="fs-4 lead p-3 text-center">
+  Thank you for your help! Consider sharing our link with other Chicagoans!
+</p>
+<p class="fs-4 lead p-3 text-center">
+  <a class="email-color" href="https://www.chicago-neighborhoods.com">www.chicago-neighborhoods.com</a>
+</p>
 {% endif %}
+</div>
 {% endblock %} 
 
 {% block map_script %} 
