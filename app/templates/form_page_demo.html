@@ -15,8 +15,8 @@ w-75
 {% endblock %}
 
 {% block map_body %}
-<div class="container-fluid text-left fs-5 px-4">
-  <p class="text-left">
+<div class="container-fluid text-start fs-5 px-4">
+  <p class="text-start">
     We're interested in how different groups of residents think about Chicago's
     neighborhoods. Please share a little about your background and feelings
     about your neighborhood. Remember that all data will be kept confidential
@@ -24,7 +24,7 @@ w-75
     You may skip any question you prefer not to answer.
   </p>
 </div>
-<div class="container-fluid text-left fs-5 px-4">
+<div class="container-fluid text-start fs-5 px-4">
   <form
     action=""
     method="post"
@@ -33,7 +33,7 @@ w-75
     class="needs-validation"
   >
     {{ form.csrf_token }}
-    <div class="container text-left">
+    <div class="container text-start">
       <div class="row justify-content-center">
         <div class="col-md-6 py-2">
           {{ form.years_lived_chicago.label(class_="form-label")}}
@@ -111,72 +111,62 @@ w-75
       How much do you agree or disagree with the following statements?
     </div>
     <div class="py-2"></div>
-    <div class="container-fluid">
+    <div class="container text-start">
+      <div class="row text-center">
+        <div class="col-md-2 d-none d-md-block"></div>
+        <div class="col-md-2 d-none d-md-block">Strongly disagree</div>
+        <div class="col-md-2 d-none d-md-block">Somewhat disagree</div>
+        <div class="col-md-2 d-none d-md-block">Neither agree nor disagree</div>
+        <div class="col-md-2 d-none d-md-block">Somewhat agree</div>
+        <div class="col-md-2 d-none d-md-block">Strongly agree</div>
+      </div>
+      <div class="py-1"></div>
       <div class="row">
-        <div class="column">
-          <table class="table table-secondary text-center">
-            <thead>
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Strongly disagree</th>
-                <th scope="col">Somewhat disagree</th>
-                <th scope="col">Neither agree nor disagree</th>
-                <th scope="col">Somewhat agree</th>
-                <th scope="col">Strongly agree</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <!-- <div class="form-check"> -->
-                  <th scope="row" class="text-start">
-                    {{ form.soc_cohes_neighborhood_knit.label(class_="form-check-label") }}
-                  </th>
-                  {% for subfield in form.soc_cohes_neighborhood_knit %}
-                    <td class="text-center">
-                      {{ subfield(class_="form-check-input") }}
-                    </td>
-                  {% endfor %}
-                <!-- </div> -->
-              </tr>
-              <tr>
-                <!-- <div class="form-check"> -->
-                  <th scope="row" class="text-start">
-                    {{ form.soc_cohes_neighborhood_value.label(class_="form-check-label") }}
-                  </th>
-                  {% for subfield in form.soc_cohes_neighborhood_value %}
-                    <td class="text-center">
-                      {{ subfield(class_="form-check-input") }}
-                    </td>
-                  {% endfor %}
-                <!-- </div> -->
-              </tr>
-              <tr>
-                <!-- <div class="form-check"> -->
-                  <th scope="row" class="text-start">
-                    {{ form.soc_cohes_neighborhood_talk.label(class_="form-check-label") }}
-                  </th>
-                  {% for subfield in form.soc_cohes_neighborhood_talk %}
-                    <td class="text-center">
-                      {{ subfield(class_="form-check-input") }}
-                    </td>
-                  {% endfor %}
-                <!-- </div> -->
-              </tr>
-              <tr>
-                <!-- <div class="form-check"> -->
-                  <th scope="row" class="text-start">
-                    {{ form.soc_cohes_neighborhood_belong.label(class_="form-check-label") }}
-                  </th>
-                  {% for subfield in form.soc_cohes_neighborhood_belong %}
-                    <td class="text-center">
-                      {{ subfield(class_="form-check-input") }}
-                    </td>
-                  {% endfor %}
-                <!-- </div> -->
-              </tr>
-            </tbody>
-          </table>
+        <div class="col-md-2">
+          {{ form.soc_cohes_neighborhood_knit.label(class_="form-check-label") }}
         </div>
+        {% for subfield in form.soc_cohes_neighborhood_knit %}
+          <div class="col-md-2 text-md-center text-start">
+            {{ subfield(class_="form-check-input") }}
+            {{ subfield.label(class_="form-check-label d-md-none") }}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="py-1"></div>
+      <div class="row">
+        <div class="col-md-2">
+          {{ form.soc_cohes_neighborhood_value.label(class_="form-check-label") }}
+        </div>
+        {% for subfield in form.soc_cohes_neighborhood_value %}
+          <div class="col-md-2 text-md-center text-start">
+            {{ subfield(class_="form-check-input") }}
+            {{ subfield.label(class_="form-check-label d-md-none") }}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="py-1"></div>
+      <div class="row">
+        <div class="col-md-2">
+          {{ form.soc_cohes_neighborhood_talk.label(class_="form-check-label") }}
+        </div>
+        {% for subfield in form.soc_cohes_neighborhood_talk %}
+          <div class="col-md-2 text-md-center text-start">
+            {{ subfield(class_="form-check-input") }}
+            {{ subfield.label(class_="form-check-label d-md-none") }}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="py-1"></div>
+      <div class="row">
+        <div class="col-md-2">
+          {{ form.soc_cohes_neighborhood_belong.label(class_="form-check-label") }}
+        </div>
+        {% for subfield in form.soc_cohes_neighborhood_belong %}
+          <div class="col-md-2 text-md-center text-start">
+            {{ subfield(class_="form-check-input") }}
+            {{ subfield.label(class_="form-check-label d-md-none") }}
+          </div>
+        {% endfor %}
       </div>
     </div>
     <div class="container-fluid">
