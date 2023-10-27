@@ -2,11 +2,20 @@
     
 {% block map_head %} {% endblock %}
 
+{% block progressbar %}
+<div class="container-fluid justify-content-start">
+    <div class="progress ms-auto progress-bar-bg-color mx-2" style="width: 40%;" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar progress-bar-color {% block dynamic_class %}w-0{% endblock %}"></div>
+    </div>
+    <a class="navbar-brand me-auto" href="{{ url_for('start_page') }}">
+        <img src="/static/GiftCard.png" alt="$50 Gift card" width="100" >
+    </a>
+</div>
+{% endblock %}
+
 {% block body %}
 {% block title_body %} {% endblock %}
 {% block map_body %} {% endblock %}
 {% endblock %}
-
-{% block dynamic_class %} {% endblock %}
 
 {% block map_script %} {% endblock %}

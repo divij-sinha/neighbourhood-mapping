@@ -46,9 +46,6 @@ def survey_form():
         parsed_geojson = get_geojson(form.mark_layer.data)
         location = Location.query.filter_by(user_id=session["uuid"]).first()
         location.geometry = from_shape(shape(parsed_geojson["features"][0]["geometry"]))
-        # location.name = form.cur_neighborhood.data
-        # location.rent_own = form.rent_own.data
-        # location.years_lived = form.years_lived.data
         location.time_stamp = datetime.now(timezone.utc)
         db.session.commit()
         return redirect(url_for("survey_draw", first="first"))
@@ -125,21 +122,24 @@ def survey_draw(first):
 def survey_demo():
     form = SurveyDemo()
     if form.validate_on_submit():
-        resp = Respondent(
-            user_id=session["uuid"],
-            rent_own=form.rent_own.data,
-            years_lived_chicago=form.years_lived_chicago.data,
-            years_lived=form.years_lived.data,
-            age=form.age.data,
-            gender=form.gender.data,
-            ethnicity=form.ethnicity.data,
-            soc_cohes_neighborhood_knit=form.soc_cohes_neighborhood_knit.data,
-            soc_cohes_neighborhood_value=form.soc_cohes_neighborhood_value.data,
-            soc_cohes_neighborhood_talk=form.soc_cohes_neighborhood_talk.data,
-            soc_cohes_neighborhood_belong=form.soc_cohes_neighborhood_belong.data,
-        )
-        db.session.add(resp)
+        resp = Respondent.query.get(session["uuid"])
+        if not resp:
+            resp = Respondent()
+            db.session.add(resp)
+            
+        resp.user_id=session["uuid"]
+        resp.rent_own=form.rent_own.data
+        resp.years_lived_chicago=form.years_lived_chicago.data
+        resp.years_lived=form.years_lived.data
+        resp.age=form.age.data
+        resp.gender=form.gender.data
+        resp.ethnicity=form.ethnicity.data
+        resp.soc_cohes_neighborhood_knit=form.soc_cohes_neighborhood_knit.data
+        resp.soc_cohes_neighborhood_value=form.soc_cohes_neighborhood_value.data
+        resp.soc_cohes_neighborhood_talk=form.soc_cohes_neighborhood_talk.data
+        resp.soc_cohes_neighborhood_belong=form.soc_cohes_neighborhood_belong.data
         db.session.commit()
+        
         return redirect(url_for("thank_page", feedback_page="feedback"))
 
     return render_template("form_page_demo.html", form=form)

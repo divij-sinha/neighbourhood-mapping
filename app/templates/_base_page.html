@@ -17,13 +17,8 @@
         <a class="navbar-brand mx-auto" href="{{ url_for('start_page') }}">
           <img src="/static/TCNP.png" alt="Chicago Neighborhood Project" width="300" >
         </a>
-          <div class="progress ms-auto progress-bar-bg-color mx-2" style="width: 40%;" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-bar progress-bar-color {% block dynamic_class %}w-0{% endblock %}"></div>
-          </div>
-          <a class="navbar-brand me-auto" href="{{ url_for('start_page') }}">
-            <img src="/static/GiftCard.png" alt="$50 Gift card" width="100" >
-          </a>
-        </div>
+      </div>
+      {% block progressbar %} {% endblock %}
     </nav>
     {% block body %} {% endblock %}
     <!-- <div class="container-fluid p-3"></div> -->
@@ -37,7 +32,7 @@
               </a>
             </div>
             <div class="col-md-4 text-body-secondary d-flex align-items-center">
-              <span class="m-2 text-center">Contact Us : <a href="mailto:urbanism@uchicago.edu">urbanism@uchicago.edu</a></span>
+              <span class="m-2 text-center">Contact Us : <a class="email-color" href="mailto:urbanism@uchicago.edu">urbanism@uchicago.edu</a></span>
             </div>
             <div class="col-md-4 text-body-secondary d-flex align-items-center">
               <span class="m-2 text-center">© 2023 University of Chicago</span>
