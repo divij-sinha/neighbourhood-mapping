@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 msgid ""
-msgstr "SPANISH NOT FOUND"
+msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-10-30 21:20-0500\n"
@@ -186,11 +186,11 @@ msgstr "Participa para ganar una tarjeta de regalo de $50"
 
 #: app/forms.py:210 app/forms.py:212
 msgid "Write feedback here!"
-msgstr "SPANISH NOT FOUND"
+msgstr "Ingrese su comentario"
 
 #: app/forms.py:215 app/forms.py:217
 msgid "Enter email here!"
-msgstr "SPANISH NOT FOUND"
+msgstr "Ingrese su correo electrónico"
 
 #: app/forms.py:223
 msgid "Start survey!"
@@ -226,7 +226,7 @@ msgstr "¿Dónde están los límites de su vecindario?"
 
 #: app/templates/form_page_draw.html:15
 msgid "Draw another neighborhood"
-msgstr "SPANISH NOT FOUND"
+msgstr "Quiero dibujar otro vecindario."
 
 #: app/templates/form_page_draw.html:30
 msgid "What do you call your neighborhood or the area where you live?"
@@ -238,7 +238,7 @@ msgstr "¿Qué otro barrio te gustaría dibujar?"
 
 #: app/templates/form_page_draw.html:47
 msgid "Please fill in the neighborhood!"
-msgstr "SPANISH NOT FOUND"
+msgstr ""
 
 #: app/templates/form_page_draw.html:75
 msgid "Now, draw your neighborhood!"
@@ -254,7 +254,7 @@ msgstr "Desplázate hacia tu vecindario haciendo clic y arrastrando el mapa."
 
 #: app/templates/form_page_draw.html:83
 msgid "Pan to the neighborhood by clicking and dragging the map"
-msgstr "SPANISH NOT FOUND"
+msgstr "Desplázate hacia el vecindario haciendo clic y arrastrando el mapa."
 
 #: app/templates/form_page_draw.html:85
 msgid "Click on the"
@@ -313,7 +313,7 @@ msgstr "icono y luego haga clic en el mapa para marcar la ubicación general de 
 msgid ""
 "We will only look at your location as approximate coordinates and do not "
 "store your address."
-msgstr "SPANISH NOT FOUND"
+msgstr "Solo veremos su ubicación como coordenadas aproximadas y no almacenaremos su dirección."
 
 #: app/templates/form_page_start.html:38
 msgid "Mark only 1 location! Use the"
@@ -333,7 +333,7 @@ msgstr "para moverse o editar un marcador."
 
 #: app/templates/form_page_start.html:45
 msgid "Mark the general location of where you live!"
-msgstr "SPANISH NOT FOUND"
+msgstr "Por favor marque la ubicación de donde vive!"
 
 #: app/templates/start_page.html:26
 msgid "Draw your neighborhood in less than 3 minutes!"
@@ -418,5 +418,5 @@ msgstr "Apreciamos sus comentarios y retroalimentación. \n"
 
 #: app/templates/thank_page.html:45
 msgid "Thank you for your help! Consider sharing our link with other Chicagoans!"
-msgstr "SPANISH NOT FOUND"
+msgstr "¡Gracias por participar! Por favor comparte con otros."
 
