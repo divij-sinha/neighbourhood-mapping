@@ -76,8 +76,8 @@ b {
 }
 
 .form-check-input:checked {
-    background-color: #4AA3CE;
-    border-color: #4AA3CE;
+    background-color: #54b7ca;
+        border-color: #54b7ca;
 }
 
 .progress-bar-color {
@@ -89,12 +89,17 @@ b {
 }
 
 path {
-    stroke: #4AA3CE;
-    fill: #4AA3CE;
+    stroke: #54b7ca;
+        fill: #54b7ca;
 }
 
 .table-secondary {
     --bs-table-bg: rgba(200, 200, 200, 0.3);
+}
+.dropdown-item:active,
+.dropdown-toggle:active,
+.dropdown:active {
+    background-color: #54b7ca;
 }
 /* Red: #c30302
 Blue: #54b7ca */
