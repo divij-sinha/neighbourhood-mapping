@@ -101,13 +101,13 @@ w-50
 <div class="container-fluid p-4">{{ body_html|safe }}</div>
 <div class="container-fluid mx-auto">
   <div class="row">
-    <div class="col-md-4 mx-auto py-2 text-center">
+    <div class="col-md-6 mx-auto py-2 text-center">
       <form>
         {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn
         btn-primary btn-lg text-wrap") }}
       </form>
     </div>
-    <div class="col-md-8 mx-auto py-2 text-center">
+    <div class="col-md-6 mx-auto py-2 text-center">
       <form>
         {{ form.draw_another(onclick="storeLayer()", form="mainform", class_="btn
         btn-primary btn-lg text-wrap") }}
