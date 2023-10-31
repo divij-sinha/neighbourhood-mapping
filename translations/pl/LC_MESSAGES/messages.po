@@ -1,0 +1,422 @@
+# Polish translations for PROJECT.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-10-30 21:20-0500\n"
+"PO-Revision-Date: 2023-10-31 12:11-0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: pl\n"
+"Language-Team: pl <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && "
+"(n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.13.1\n"
+
+#: app/forms.py:61
+msgid "Next!"
+msgstr "Dalej!"
+
+#: app/forms.py:67
+msgid "Choose from the list, or type your own!"
+msgstr "Wybierz z listy lub wpisz własny!"
+
+#: app/forms.py:74
+msgid "How do you know this neighborhood? (Select all that apply)"
+msgstr "Skąd znasz tę okolicę? (Wybierz wszystkie, które mają zastosowanie)"
+
+#: app/forms.py:78
+msgid "I used to live here"
+msgstr "Tu mieszkałem"
+
+#: app/forms.py:80
+msgid "I work/worked here"
+msgstr "Pracuję/pracowałem tutaj"
+
+#: app/forms.py:81
+msgid "I go/went to school here"
+msgstr "Chodzę/chodziłem tutaj do szkoły"
+
+#: app/forms.py:82
+msgid "I visit/visited friends here"
+msgstr "Odwiedzam tutaj znajomych"
+
+#: app/forms.py:83
+msgid "I shop/shopped here"
+msgstr "Robię zakupy/robiłem tutaj zakupy"
+
+#: app/forms.py:84 app/forms.py:123 app/forms.py:153
+msgid "Other"
+msgstr "Inne"
+
+#: app/forms.py:87 app/forms.py:204 app/forms.py:219
+msgid "I'm done!"
+msgstr "Skończyłem"
+
+#: app/forms.py:88
+msgid "I want to draw the boundary of another neighborhood"
+msgstr "Chcę narysować inną okolicę."
+
+#: app/forms.py:93 app/forms.py:94
+msgid "How many years in total have you lived in your current neighborhood?"
+msgstr "Ile lat łącznie mieszkasz w swojej obecnej okolicy?"
+
+#: app/forms.py:100 app/forms.py:101
+msgid "How many years in total have you lived in the city of Chicago?"
+msgstr "Ile lat łącznie mieszkałeś w Chicago?"
+
+#: app/forms.py:107
+msgid "Do you rent or own your current residence?"
+msgstr "Czy wynajmujesz lub jesteś właścicielem swojego obecnego domu?"
+
+#: app/forms.py:109
+msgid "I rent it"
+msgstr "Wynajmuję"
+
+#: app/forms.py:110
+msgid "I own it"
+msgstr "Jestem właścicielem"
+
+#: app/forms.py:111
+msgid "Other arrangement"
+msgstr "Inne"
+
+#: app/forms.py:116
+msgid "What gender do you identify as?"
+msgstr "Z jaką płcią się identyfikujesz?"
+
+#: app/forms.py:120
+msgid "Man"
+msgstr "Mężczyzna"
+
+#: app/forms.py:121
+msgid "Woman"
+msgstr "Kobieta"
+
+#: app/forms.py:122
+msgid "Non-Binary"
+msgstr "Nie mężczyzna czy kobieta"
+
+#: app/forms.py:127
+msgid "What is your age?"
+msgstr "Ile masz lat?"
+
+#: app/forms.py:141
+msgid ""
+"How would you identify your racial/ethnic background? (Select all that "
+"apply)"
+msgstr "Jak określiłbyś swoje pochodzenie rasowe/etniczne? ( Wybierz wszystkie, które mają zastosowanie)"
+
+#: app/forms.py:145
+msgid "Black / African American"
+msgstr "Czarny / Afroamerykanin"
+
+#: app/forms.py:146
+msgid "Hispanic / Latino"
+msgstr "Hiszpan / Latynos"
+
+#: app/forms.py:147
+msgid "White"
+msgstr "Biały"
+
+#: app/forms.py:148
+msgid "American Indian or Alaska Native"
+msgstr "Indianin amerykański lub rdzenny mieszkaniec Alaski"
+
+#: app/forms.py:149
+msgid "Native Hawaiian or Pacific Islander"
+msgstr "Rdzenny mieszkaniec Hawajów lub wysp Pacyfiku"
+
+#: app/forms.py:150
+msgid "Middle Eastern / North African"
+msgstr "Bliski Wschód / Afryka Północna"
+
+#: app/forms.py:151
+msgid "Asian"
+msgstr "Azjatycki"
+
+#: app/forms.py:152
+msgid "Multi-racial / Two or more races"
+msgstr "Wielorasowe / Dwie lub więcej ras"
+
+#: app/forms.py:157
+msgid "I live in a close-knit neighborhood"
+msgstr "Mieszkam w zwartej okolicy."
+
+#: app/forms.py:161 app/forms.py:173 app/forms.py:185 app/forms.py:197
+msgid "Strong Disagree"
+msgstr "Zdecydowanie się nie zgadzam"
+
+#: app/forms.py:162 app/forms.py:174 app/forms.py:186 app/forms.py:198
+msgid "Somewhat disagree"
+msgstr "Trochę się nie zgadzam"
+
+#: app/forms.py:163 app/forms.py:175 app/forms.py:187 app/forms.py:199
+msgid "Neither agree nor disagree"
+msgstr "Ani się zgadzam, ani nie zgadzam"
+
+#: app/forms.py:164 app/forms.py:176 app/forms.py:188 app/forms.py:200
+msgid "Somewhat agree"
+msgstr "Trochę się zgadzam"
+
+#: app/forms.py:165 app/forms.py:177 app/forms.py:189 app/forms.py:201
+msgid "Strong agree"
+msgstr "Zdecydowanie się zgadzam"
+
+#: app/forms.py:169
+msgid "People in my neighborhood share the same values"
+msgstr "Ludzie w moim sąsiedztwie podzielają te same wartości."
+
+#: app/forms.py:181
+msgid "I regularly stop and talk with people in my neighborhood"
+msgstr "Regularnie zatrzymuję się i rozmawiam z ludźmi z mojej okolicy."
+
+#: app/forms.py:193
+msgid "I feel like I belong in my neighborhood"
+msgstr "Czuję, że należę do mojego sąsiedztwa."
+
+#: app/forms.py:205
+msgid "Enter to win $50 gift card"
+msgstr "Wejdź, aby wygrać kartę podarunkową o wartości 50 USD"
+
+#: app/forms.py:210 app/forms.py:212
+msgid "Write feedback here!"
+msgstr "Wpisz swoją opinię"
+
+#: app/forms.py:215 app/forms.py:217
+msgid "Enter email here!"
+msgstr "Wpisz swój adres e-mail"
+
+#: app/forms.py:223
+msgid "Start survey!"
+msgstr "Rozpocznij ankietę!"
+
+#: app/templates/form_page_demo.html:9
+msgid "Tell us more about yourself"
+msgstr "Powiedz nam więcej o sobie."
+
+#: app/templates/form_page_demo.html:20
+msgid ""
+"We're interested in how different groups of residents think about "
+"Chicago's\n"
+"    neighborhoods. Please share a little about your background and "
+"feelings\n"
+"    about your neighborhood. Remember that all data will be kept "
+"confidential\n"
+"    and only presented in summary form in resulting publications. \n"
+"    You may skip any question you prefer not to answer."
+msgstr "Interesuje nas Twoją opina o dzielnicach w Chicago. \n"
+"Proszę, opowiedz trochę o swoim pochodzeniu i uczuciach na temat swojej okolicy. \n"
+"Pamiętaj, że wszystkie dane będą traktowane jako poufne i prezentowane \n"
+"w powstałych publikacjach jedynie w formie podsumowania. \n"
+"Możesz pominąć każde pytanie, na które wolisz nie odpowiadać."
+
+#: app/templates/form_page_demo.html:111
+msgid "How much do you agree or disagree with the following statements?"
+msgstr ""
+
+#: app/templates/form_page_draw.html:13
+msgid "Where are the boundaries of your current neighborhood?"
+msgstr "W jakim stopniu zgadzasz się lub nie zgadzasz z poniższymi stwierdzeniami?"
+
+#: app/templates/form_page_draw.html:15
+msgid "Draw another neighborhood"
+msgstr "Chcę narysować inną okolicę."
+
+#: app/templates/form_page_draw.html:30
+msgid "What do you call your neighborhood or the area where you live?"
+msgstr "Jak nazywasz swoją okolicę lub obszar, w którym mieszkasz?"
+
+#: app/templates/form_page_draw.html:32
+msgid "What other neighborhood would you like to draw?"
+msgstr "Jakie inne okolica, którą chciałbyś narysować?"
+
+#: app/templates/form_page_draw.html:47
+msgid "Please fill in the neighborhood!"
+msgstr ""
+
+#: app/templates/form_page_draw.html:75
+msgid "Now, draw your neighborhood!"
+msgstr "Teraz narysuj swoją okolicę!"
+
+#: app/templates/form_page_draw.html:77
+msgid "Now, draw the neighborhood!"
+msgstr "Teraz narysuj okolicę!"
+
+#: app/templates/form_page_draw.html:81
+msgid "Pan to your neighborhood by clicking and dragging the map"
+msgstr "Przesuwaj się do swojej okolicy, klikając i przeciągając mapę"
+
+#: app/templates/form_page_draw.html:83
+msgid "Pan to the neighborhood by clicking and dragging the map"
+msgstr "Przesuwaj się po swojej okolicy, klikając i przeciągając mapę"
+
+#: app/templates/form_page_draw.html:85
+msgid "Click on the"
+msgstr "Kliknij ikonę,"
+
+#: app/templates/form_page_draw.html:85
+msgid "icon then click on the map to mark a starting point"
+msgstr "a następnie kliknij mapę, aby zaznaczyć punkt początkowy."
+
+#: app/templates/form_page_draw.html:86
+msgid "Add points to mark the boundary"
+msgstr "Dodaj punkty, aby oznaczyć granicę."
+
+#: app/templates/form_page_draw.html:87
+msgid "Click on the first point to close the shape"
+msgstr "Kliknij pierwszy punkt, aby zamknąć kształt."
+
+#: app/templates/form_page_draw.html:92
+msgid "Draw only 1 neighborhood! Use the"
+msgstr "Narysuj tylko 1 dzielnicę! Użyj"
+
+#: app/templates/form_page_draw.html:93
+msgid ""
+"to delete a\n"
+"    point. Use the"
+msgstr "aby usunąć punkt. Użyj"
+
+#: app/templates/form_page_draw.html:95
+msgid "to move or edit a point."
+msgstr "taby przenieść lub edytować punkt."
+
+#: app/templates/form_page_start.html:9
+msgid "Where do you currently live?"
+msgstr "Gdzie obecnie mieszkasz?"
+
+#: app/templates/form_page_start.html:26
+msgid ""
+"To start drawing your neighborhood, first use the map to indicate "
+"generally where you live."
+msgstr "Aby rozpocząć rysowanie swojej okolicy, najpierw użyj mapy, \n"
+"aby ogólnie wskazać, gdzie mieszkasz."
+
+#: app/templates/form_page_start.html:30
+msgid "Pan to your approximate address by clicking and dragging the map."
+msgstr "Przesuwaj się do przybliżonego adresu, klikając i przeciągając mapę."
+
+#: app/templates/form_page_start.html:31
+msgid "Tap the"
+msgstr "Stuknij"
+
+#: app/templates/form_page_start.html:31
+msgid "icon then click on the map to mark your home's general location."
+msgstr "ikonę, a następnie kliknij mapę, aby oznaczyć ogólną lokalizację swojego domu. \n"
+"Będziemy patrzeć na Twoją lokalizację jedynie jako przybliżone współrzędne i nie będziemy przechowywać Twojego adresu."
+
+#: app/templates/form_page_start.html:35
+msgid ""
+"We will only look at your location as approximate coordinates and do not "
+"store your address."
+msgstr "Będziemy patrzeć na Twoją lokalizację jedynie jako przybliżone współrzędne i nie będziemy przechowywać Twojego adresu."
+
+#: app/templates/form_page_start.html:38
+msgid "Mark only 1 location! Use the"
+msgstr "Zaznacz tylko 1 lokalizację! Użyj"
+
+#: app/templates/form_page_start.html:39
+msgid ""
+"to delete a\n"
+"    marker. Use the"
+msgstr "aby usunąć znacznik. Użyj"
+
+#: app/templates/form_page_start.html:41
+msgid ""
+"to move around\n"
+"    or edit a marker."
+msgstr "aby poruszać się lub edytować znacznik."
+
+#: app/templates/form_page_start.html:45
+msgid "Mark the general location of where you live!"
+msgstr "Proszę o zaznaczenie miejsca zamieszkania"
+
+#: app/templates/start_page.html:26
+msgid "Draw your neighborhood in less than 3 minutes!"
+msgstr "Narysuj swoją okolicę w mniej niż 3 minuty!"
+
+#: app/templates/start_page.html:29
+msgid ""
+"Chicago prides itself as “The City of Neighborhoods” but where are they?"
+" \n"
+"  Chicago needs an update from the 77 community areas mapped in the 1920s!"
+msgstr "Chicago szczyci się mianem „miasta dzielnic”, ale gdzie one są? \n"
+"Chicago potrzebuje aktualizacji z 77 obszarów społecznych mapowanych w 1920!"
+
+#: app/templates/start_page.html:34
+msgid ""
+"The purpose of this survey is to better understand — and support — "
+"Chicago's neighborhoods. \n"
+"  We're asking current Chicago residents to identify Chicago's "
+"neighborhoods using an \n"
+"  interactive map to draw neighborhood boundaries."
+msgstr "Celem tej ankiety jest lepsze zrozumienie i wsparcie dzielnic Chicago. \n"
+"Prosimy mieszkańców Chicago o zidentyfikowanie dzielnic Chicago za pomocą \n"
+"interaktywnej mapy w celu wytyczenia granic dzielnic."
+
+#: app/templates/start_page.html:40
+msgid ""
+"Participate and be entered to win one of twenty $50 gift cards! Gift card"
+" drawings will occur every \n"
+"    two weeks starting in November. Register at the end of the survey to "
+"be notified by email."
+msgstr "Weź udział i weź udział w konkursie, aby wygrać jedną z dwudziestu kart podarunkowych o wartości 50 USD! \n"
+"Losowania kart podarunkowych będą odbywać się co dwa tygodnie, począwszy od listopada. \n"
+"Zarejestruj się na końcu ankiety, aby otrzymać powiadomienie e-mailem."
+
+#: app/templates/start_page.html:45
+msgid ""
+"Participation in this survey is completely voluntary. Responses are "
+"confidential and no personally identifying information will ever appear "
+"in resulting reports. Have questions? \n"
+"  Contact the research team at"
+msgstr "Udział w tym badaniu jest całkowicie dobrowolny. \n"
+"Odpowiedzi są poufne i w wynikach raportów nie pojawią się żadne dane osobowe. \n"
+"Masz pytania? Skontaktuj się z zespołem badawczym pod adresem "
+
+#: app/templates/start_page.html:49
+msgid ""
+"By clicking the button below, you agree that you are a resident of the "
+"city of\n"
+"  Chicago, you are at least 18 years of age, and you consent to "
+"participate in\n"
+"  this study voluntarily."
+msgstr "Klikając poniższy przycisk , potwierdzasz, że jesteś mieszkańcem miasta \n"
+"Chicago , masz ukończone 18 lat i jesteś wyrazić zgodę na dobrowolny \n"
+"udział w tym badaniu."
+
+#: app/templates/thank_page.html:10
+msgid "Thank you for participating!"
+msgstr "Dziękuję za udział!"
+
+#: app/templates/thank_page.html:20
+msgid ""
+"To be entered to win one of twenty $50 gift cards, enter your email "
+"address below. \n"
+"  Gift card winners will be randomly selected every two weeks and "
+"notified by email. \n"
+"  Your email will only be used for the gift card drawing and will never "
+"be shared."
+msgstr "Aby wziąć udział w konkursie i wygrać jedną z dwudziestu kart podarunkowych o wartości 50 USD, \n"
+"wpisz poniżej swój adres e-mail. \n"
+"Zwycięzcy kart podarunkowych będą losowo wybierani co dwa tygodnie i powiadamiani e-mailem. \n"
+"Twój adres e-mail zostanie wykorzystany wyłącznie do losowania karty podarunkowej i nigdy nie zostanie udostępniony."
+
+#: app/templates/thank_page.html:31
+msgid ""
+"We welcome your comments and feedback. If there is more information you "
+"would\n"
+"  like to share with us, please use the textbox below."
+msgstr "Twoje komentarze oraz opinie są dla nas mile widziane. \n"
+"Jeśli chcesz podzielić się z nami dodatkowymi informacjami, skorzystaj z pola tekstowego poniżej."
+
+#: app/templates/thank_page.html:45
+msgid "Thank you for your help! Consider sharing our link with other Chicagoans!"
+msgstr "Dziękuję za udział! Proszę udostępnij innym."
+
