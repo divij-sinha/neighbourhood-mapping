@@ -10,9 +10,9 @@ w-50
 {% block title_body %}
 <div class="container-fluid p-3 text-center h-1">
   {% if first=='first' %}
-  <h1>Where are the boundaries of your current neighborhood?</h1>
+  <h1>{{ _("Where are the boundaries of your current neighborhood?") }}</h1>
   {% else %}
-  <h1>Draw another neighborhood</h1>
+  <h1>{{ _("Draw another neighborhood") }}</h1>
   {% endif %}
 </div>
 {% endblock %} 
@@ -27,9 +27,9 @@ w-50
     <div class="row">
       <div class="col-md-6 text-left fs-5 px-4">
           {% if first=='first' %}
-            What do you call your neighborhood or the area where you live?
+          {{ _("What do you call your neighborhood or the area where you live?") }}
           {% else %}
-            What other neighborhood would you like to draw?
+          {{ _("What other neighborhood would you like to draw?") }}
           {% endif %}
       </div>
       <div class="col-md-6 text-left fs-5 px-4">
@@ -44,7 +44,7 @@ w-50
            <option>{{ neighborhood }}</option>
           {% endfor %}
         </datalist>
-        <div class="invalid-feedback">Please fill in the neighborhood!</div>
+        <div class="invalid-feedback">{{ _("Please fill in the neighborhood!") }}</div>
       </div>
       {% if first=='first' %} 
       {% else %}
@@ -72,27 +72,27 @@ w-50
 <div class="container-fluid text-left fs-5 px-4">
   <p>
     {% if first=='first' %}
-    Now, draw your neighborhood!
+    {{ _("Now, draw your neighborhood!") }}
     {% else %}
-    Now, draw the neighborhood!
+    {{ _("Now, draw the neighborhood!") }}
     {% endif %}
     <ol>
       {% if first=='first' %}
-      <li>Pan to your neighborhood by clicking and dragging the map</li>
+      <li>{{ _("Pan to your neighborhood by clicking and dragging the map") }}</li>
       {% else %}
-      <li>Pan to the neighborhood by clicking and dragging the map</li>
+      <li>{{ _("Pan to the neighborhood by clicking and dragging the map") }}</li>
       {% endif %}
-      <li>Click on the <img src="/static/poly_icon.png" alt="polygon" width="30" /> icon then click on the map to mark a starting point</li>
-      <li>Add points to mark the boundary</li>
-      <li>Click on the first point to close the shape</li>
+      <li>{{ _("Click on the") }} <img src="/static/poly_icon.png" alt="polygon" width="30" /> {{ _("icon then click on the map to mark a starting point") }}</li>
+      <li>{{ _("Add points to mark the boundary") }}</li>
+      <li>{{ _("Click on the first point to close the shape") }}</li>
       <!-- <li>Click "I'm done" if you don't want to draw any more neighborhoods or click on "I want to draw the boundary of another neighborhood" to continue drawing</li> -->
     </ol>
     </p>
   <p class="fst-italic">
-    Draw only 1 neighborhood! Use the
-    <img src="/static/delete_icon.png" alt="trash" width="30" /> to delete a
-    point. Use the
-    <img src="/static/edit_icon.png" alt="pencil" width="30" /> to move or edit a point.
+    {{ _("Draw only 1 neighborhood! Use the") }}
+    <img src="/static/delete_icon.png" alt="trash" width="30" /> {{ _("to delete a
+    point. Use the") }}
+    <img src="/static/edit_icon.png" alt="pencil" width="30" /> {{ _("to move or edit a point.") }}
   </p>
 </div>
 <!-- {% if form.draw_layer.errors %}

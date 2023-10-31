@@ -1,16 +1,30 @@
 from app import app, db
 from app.models import Neighborhood, Location, Respondent, Feedback
 from app.forms import SurveyStart, SurveyDraw, AgreeButton, SurveyDemo, SurveyFeedback, validator_geo_json
-from flask import render_template, redirect, url_for, session, flash
-from wtforms.validators import DataRequired
+from flask import render_template, redirect, url_for, session, request
 from utils import get_geojson, get_map_comps, get_neighborhood_list
 from datetime import datetime, timezone
 from geoalchemy2.shape import from_shape, to_shape
 from shapely.geometry import shape
 import uuid
+from flask_babel import Babel
+
+def get_locale():
+    if "locale" in session.keys():
+        locale = session["locale"]
+    else:
+        locale = request.accept_languages.best_match(['en', 'es', 'zh', 'pl'])
+    return locale
+
+babel = Babel(app, locale_selector=get_locale)
+
 
 neighborhood_list = get_neighborhood_list()
 
+@app.route("/locale/<locale>", methods=["GET"])
+def set_locale(locale):
+    session["locale"] = locale
+    return redirect(url_for("start_page"))
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])

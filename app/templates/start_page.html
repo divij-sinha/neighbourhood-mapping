@@ -7,34 +7,48 @@
 w-0
 {% endblock %}
 
+{% block language %}
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Language
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="locale/en" value="en" name="lang">English</a></li>
+    <li><a class="dropdown-item" href="locale/zh" value="zh" name="lang">Chinese</a></li>
+    <li><a class="dropdown-item" href="locale/es" value="es" name="lang">Español</a></li>
+    <li><a class="dropdown-item" href="locale/pl" value="es" name="lang">Polski</a></li>
+  </ul>
+</div>
+{% endblock %}
+
 {% block body %}
 <div class="container-fluid p-3 text-center h-1">
-  <h1>Draw your neighborhood in less than 3 minutes!</h1>
+  <h1>{{ _("Draw your neighborhood in less than 3 minutes!") }}</h1>
 </div>
 <p class="fs-4 lead p-3">
-  Chicago prides itself as “The City of Neighborhoods” but where are they? 
-  Chicago needs an update from the 77 community areas mapped in the 1920s!
+  {{ _("Chicago prides itself as “The City of Neighborhoods” but where are they? 
+  Chicago needs an update from the 77 community areas mapped in the 1920s!") }}
 
 </p>
 <p class="fs-4 lead p-3">
-  The purpose of this survey is to better understand — and support — Chicago's neighborhoods. 
+  {{ _("The purpose of this survey is to better understand — and support — Chicago's neighborhoods. 
   We're asking current Chicago residents to identify Chicago's neighborhoods using an 
-  interactive map to draw neighborhood boundaries. 
+  interactive map to draw neighborhood boundaries.") }}
 </p>
 <p class="fs-4 lead p-3">
   <b>
-    Participate and be entered to win one of twenty $50 gift cards! Gift card drawings will occur every 
-    two weeks starting in November. Register at the end of the survey to be notified by email.
+    {{ _("Participate and be entered to win one of twenty $50 gift cards! Gift card drawings will occur every 
+    two weeks starting in November. Register at the end of the survey to be notified by email.") }}
   </b>
 </p>
 <p class="fs-4 lead p-3">
-  Participation in this survey is completely voluntary. Responses are confidential and no personally identifying information will ever appear in resulting reports. Have questions? 
-  Contact the research team at <a class="email-color" href="mailto:urbanism@uchicago.edu">urbanism@uchicago.edu</a>.
+  {{ _("Participation in this survey is completely voluntary. Responses are confidential and no personally identifying information will ever appear in resulting reports. Have questions? 
+  Contact the research team at") }} <a class="email-color" href="mailto:urbanism@uchicago.edu">urbanism@uchicago.edu</a>.
 </p>
 <p class="fs-4 lead p-3">
-  By clicking the button below, you agree that you are a resident of the city of
+  {{ _("By clicking the button below, you agree that you are a resident of the city of
   Chicago, you are at least 18 years of age, and you consent to participate in
-  this study voluntarily.
+  this study voluntarily.") }}
 </p>
 <div class="container-fluid text-center">
   <form action="" method="post" novalidate id="mainform">

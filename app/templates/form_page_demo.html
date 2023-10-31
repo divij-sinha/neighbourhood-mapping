@@ -6,7 +6,7 @@
 
 {% block title_body %}
 <div class="container-fluid p-3 text-center h-1">
-  <h1>Tell us more about yourself</h1>
+  <h1>{{ _("Tell us more about yourself") }}</h1>
 </div>
 {% endblock %} 
 
@@ -17,11 +17,11 @@ w-75
 {% block map_body %}
 <div class="container-fluid text-start fs-5 px-4">
   <p class="text-start">
-    We're interested in how different groups of residents think about Chicago's
+    {{ _("We're interested in how different groups of residents think about Chicago's
     neighborhoods. Please share a little about your background and feelings
     about your neighborhood. Remember that all data will be kept confidential
     and only presented in summary form in resulting publications. 
-    You may skip any question you prefer not to answer.
+    You may skip any question you prefer not to answer.") }}
   </p>
 </div>
 <div class="container-fluid text-start fs-5 px-4">
@@ -108,7 +108,7 @@ w-75
     </div>
     <div class="py-4"></div>
     <div class="container-fluid text-center fs-4">
-      How much do you agree or disagree with the following statements?
+      {{ _("How much do you agree or disagree with the following statements?") }}
     </div>
     <div class="py-2"></div>
     <div class="container text-start">
