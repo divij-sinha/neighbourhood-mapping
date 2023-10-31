@@ -11,6 +11,7 @@ from wtforms import (
 from wtforms import widgets
 from wtforms.validators import NumberRange, DataRequired, ValidationError, Optional
 from utils import get_geojson
+from flask_babel import lazy_gettext
 
 
 def validator_geo_json(form, field):
@@ -57,73 +58,73 @@ class SurveyStart(FlaskForm):
         "invisible_str_mark", validators=[DataRequired(), validator_geo_json]
     )
 
-    submit = SubmitField("Next!")
+    submit = SubmitField(lazy_gettext("Next!"))
 
 
 class SurveyDraw(FlaskForm):
     cur_neighborhood = StringField(
-        "What is the name of this neighborhood?",
-        description="Choose from the list, or type your own!",
+        "",
+        description=lazy_gettext("Choose from the list, or type your own!"),
         validators=[Optional()]
     )
     draw_layer = HiddenField(
         "invisible_str_draw", validators=[Optional()]
     )
     user_relationship = MultiCheckboxField(
-        "How do you know this neighborhood? (Select all that apply)",
+        lazy_gettext("How do you know this neighborhood? (Select all that apply)"),
         validators=[Optional()],
         default="default",
         choices=[
-            ("past_live", "I used to live here"),
+            ("past_live", lazy_gettext("I used to live here")),
             # ("rel_live", "Someone I know lives here"),
-            ("work", "I work/worked here"),
-            ("school", "I go/went to school here"),
-            ("visit", "I visit/visited friends here"),
-            ("shop", "I shop/shopped here"),
-            ("other", "Other"),
+            ("work", lazy_gettext("I work/worked here")),
+            ("school", lazy_gettext("I go/went to school here")),
+            ("visit", lazy_gettext("I visit/visited friends here")),
+            ("shop", lazy_gettext("I shop/shopped here")),
+            ("other", lazy_gettext("Other")),
         ],
     )
-    submit = SubmitField("I'm done!")
-    draw_another = SubmitField("I want to draw the boundary of another neighborhood")
+    submit = SubmitField(lazy_gettext("I'm done!"))
+    draw_another = SubmitField(lazy_gettext("I want to draw the boundary of another neighborhood"))
 
 
 class SurveyDemo(FlaskForm):
     years_lived = DecimalField(
-        "How many years in total have you lived in your current neighborhood?",
-        description="How many years in total have you lived here?",
+        lazy_gettext("How many years in total have you lived in your current neighborhood?"),
+        description=lazy_gettext("How many years in total have you lived in your current neighborhood?"),
         default=0.0,
         places=1,
         validators=[Optional(), NumberRange(0, 100)],
     )
     years_lived_chicago = DecimalField(
-        "How many years in total have you lived in the city of Chicago?",
-        description="How many years in total have you lived in the city of Chicago?",
+        lazy_gettext("How many years in total have you lived in the city of Chicago?"),
+        description=lazy_gettext("How many years in total have you lived in the city of Chicago?"),
         default=0.0,
         places=1,
         validators=[Optional(), NumberRange(0, 100)],
     )
     rent_own = RadioField(
-        "Do you rent or own your current residence?",
+        lazy_gettext("Do you rent or own your current residence?"),
         choices=[
-            ("rent", "I rent it"),
-            ("own", "I own it"),
-            ("other", "Other arrangement"),
+            ("rent", lazy_gettext("I rent it")),
+            ("own", lazy_gettext("I own it")),
+            ("other", lazy_gettext("Other arrangement")),
         ],
         validators=[Optional()],
     )
     gender = RadioField(
-        "What gender do you identify as?",
+        lazy_gettext("What gender do you identify as?"),
         validators=[Optional()],
         default="none",
         choices=[
-            ("man", "Man"),
-            ("woman", "Woman"),
-            ("nonbin", "Non-Binary"),
-            ("other", "Other"),
+            ("man", lazy_gettext("Man")),
+            ("woman", lazy_gettext("Woman")),
+            ("nonbin", lazy_gettext("Non-Binary")),
+            ("other", lazy_gettext("Other")),
         ],
     )
     age = RadioField(
-        "What is your age?",
+        lazy_gettext("What is your age?"),
         validators=[Optional()],
         default="none",
         choices=[
@@ -137,86 +138,86 @@ class SurveyDemo(FlaskForm):
         ],
     )
     ethnicity = MultiCheckboxField(
-        "How would you identify your racial/ethnic background? (Select all that apply)",
+        lazy_gettext("How would you identify your racial/ethnic background? (Select all that apply)"),
         validators=[Optional()],
         default="none",
         choices=[
-            ("black_afamer", "Black / African American"),
-            ("hisp_latino", "Hispanic / Latino"),
-            ("white", "White"),
-            ("amer_ind_alaska", "American Indian or Alaska Native"),
-            ("haw_pac_isl", "Native Hawaiian or Pacific Islander"),
-            ("mid_east_nor_afr", "Middle Eastern / North African"),
-            ("asian", "Asian"),
-            ("multi_racial", "Multi-racial / Two or more races"),
-            ("other", "Other"),
+            ("black_afamer", lazy_gettext("Black / African American")),
+            ("hisp_latino", lazy_gettext("Hispanic / Latino")),
+            ("white", lazy_gettext("White")),
+            ("amer_ind_alaska", lazy_gettext("American Indian or Alaska Native")),
+            ("haw_pac_isl", lazy_gettext("Native Hawaiian or Pacific Islander")),
+            ("mid_east_nor_afr", lazy_gettext("Middle Eastern / North African")),
+            ("asian", lazy_gettext("Asian")),
+            ("multi_racial", lazy_gettext("Multi-racial / Two or more races")),
+            ("other", lazy_gettext("Other")),
         ],
     )
     soc_cohes_neighborhood_knit = RadioField(
-        "I live in a close-knit neighborhood",
+        lazy_gettext("I live in a close-knit neighborhood"),
         validators=[Optional()],
         default="none",
         choices=[
-            ("strong_dis", "Strong Disagree"),
-            ("somew_dis", "Somewhat disagree"),
-            ("neither", "Neither agree nor disagree"),
-            ("somew_agr", "Somewhat agree"),
-            ("strong_agr", "Strong agree"),
+            ("strong_dis", lazy_gettext("Strong Disagree")),
+            ("somew_dis", lazy_gettext("Somewhat disagree")),
+            ("neither", lazy_gettext("Neither agree nor disagree")),
+            ("somew_agr", lazy_gettext("Somewhat agree")),
+            ("strong_agr", lazy_gettext("Strong agree")),
         ],
     )
     soc_cohes_neighborhood_value = RadioField(
-        "People in my neighborhood share the same values",
+        lazy_gettext("People in my neighborhood share the same values"),
         validators=[Optional()],
         default="none",
         choices=[
-            ("strong_dis", "Strong Disagree"),
-            ("somew_dis", "Somewhat disagree"),
-            ("neither", "Neither agree nor disagree"),
-            ("somew_agr", "Somewhat agree"),
-            ("strong_agr", "Strong agree"),
+            ("strong_dis", lazy_gettext("Strong Disagree")),
+            ("somew_dis", lazy_gettext("Somewhat disagree")),
+            ("neither", lazy_gettext("Neither agree nor disagree")),
+            ("somew_agr", lazy_gettext("Somewhat agree")),
+            ("strong_agr", lazy_gettext("Strong agree")),
         ],
     )
     soc_cohes_neighborhood_talk = RadioField(
-        "I regularly stop and talk with people in my neighborhood",
+        lazy_gettext("I regularly stop and talk with people in my neighborhood"),
         validators=[Optional()],
         default="none",
         choices=[
-            ("strong_dis", "Strong Disagree"),
-            ("somew_dis", "Somewhat disagree"),
-            ("neither", "Neither agree nor disagree"),
-            ("somew_agr", "Somewhat agree"),
-            ("strong_agr", "Strong agree"),
+            ("strong_dis", lazy_gettext("Strong Disagree")),
+            ("somew_dis", lazy_gettext("Somewhat disagree")),
+            ("neither", lazy_gettext("Neither agree nor disagree")),
+            ("somew_agr", lazy_gettext("Somewhat agree")),
+            ("strong_agr", lazy_gettext("Strong agree")),
         ],
     )
     soc_cohes_neighborhood_belong = RadioField(
-        "I feel like I belong in my neighborhood",
+        lazy_gettext("I feel like I belong in my neighborhood"),
         validators=[Optional()],
         default="none",
         choices=[
-            ("strong_dis", "Strong Disagree"),
-            ("somew_dis", "Somewhat disagree"),
-            ("neither", "Neither agree nor disagree"),
-            ("somew_agr", "Somewhat agree"),
-            ("strong_agr", "Strong agree"),
+            ("strong_dis", lazy_gettext("Strong Disagree")),
+            ("somew_dis", lazy_gettext("Somewhat disagree")),
+            ("neither", lazy_gettext("Neither agree nor disagree")),
+            ("somew_agr", lazy_gettext("Somewhat agree")),
+            ("strong_agr", lazy_gettext("Strong agree")),
         ],
     )
-    submit = SubmitField("I'm done!")
-    submit_giftcard = SubmitField("Enter to win $50 gift card")
+    submit = SubmitField(lazy_gettext("I'm done!"))
+    submit_giftcard = SubmitField(lazy_gettext("Enter to win $50 gift card"))
 
 
 class SurveyFeedback(FlaskForm):
     feedback = TextAreaField(
-        label="Write feedback here!",
+        label=lazy_gettext("Write feedback here!"),
         validators=[Optional()],
-        description="Write feedback here!",
+        description=lazy_gettext("Write feedback here!"),
     )
     email = StringField(
-        label="Enter your email address to win $50 gift card!",
+        label=lazy_gettext("Enter email here!"),
         validators=[Optional()],
-        description="Enter your email address to win $50 gift card!",
+        description=lazy_gettext("Enter email here!"),
     )
-    agree = SubmitField("I'm done!")
+    agree = SubmitField(lazy_gettext("I'm done!"))
 
 
 class AgreeButton(FlaskForm):
-    agree = SubmitField("Start survey!")
+    agree = SubmitField(lazy_gettext("Start survey!"))

@@ -6,7 +6,7 @@
 
 {% block title_body %}
 <div class="container-fluid p-3 text-center h-1">
-  <h1>Where do you currently live?</h1>
+  <h1>{{ _("Where do you currently live?") }}</h1>
 </div>
 {% endblock %} 
 
@@ -23,26 +23,26 @@ w-25
 
 <div class="container-fluid text-left fs-5 px-4">
   <p>
-    To start drawing your neighborhood, first use the map to indicate generally where you live.
+    {{ _("To start drawing your neighborhood, first use the map to indicate generally where you live.") }}
   </p>
   <p>
     <ol>
-    <li>Pan to your approximate address by clicking and dragging the map.</li> 
-    <li>Tap the <img src="/static/draw_icon.png" alt="white circle" width="30" /> icon then click on the map to mark your home's general location. </li>
+    <li>{{ _("Pan to your approximate address by clicking and dragging the map.") }}</li> 
+    <li>{{ _("Tap the") }} <img src="/static/draw_icon.png" alt="white circle" width="30" /> {{ _("icon then click on the map to mark your home's general location.") }} </li>
     </ol>
   </p>
   <p>
-    We will only look at your location as approximate coordinates and do not store your address.
+    {{ _("We will only look at your location as approximate coordinates and do not store your address.") }}
   </p>
   <p class="fst-italic">
-    Mark only 1 location! Use the
-    <img src="/static/delete_icon.png" alt="trash" width="30" /> to delete a
-    marker. Use the
-    <img src="/static/edit_icon.png" alt="pencil" width="30" /> to move around
-    or edit a marker.
+    {{ _("Mark only 1 location! Use the") }}
+    <img src="/static/delete_icon.png" alt="trash" width="30" /> {{ _("to delete a
+    marker. Use the") }}
+    <img src="/static/edit_icon.png" alt="pencil" width="30" /> {{ _("to move around
+    or edit a marker.") }}
   </p>
   {% if form.mark_layer.errors %}
-  <p class="text-danger-custom">Mark the general location of where you live!</p>
+  <p class="text-danger-custom">{{ _("Mark the general location of where you live!") }}</p>
   {% endif %}
 </div>
 <div class="container-fluid p-4">
