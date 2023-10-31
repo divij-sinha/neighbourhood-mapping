@@ -35,26 +35,26 @@ w-75
     {{ form.csrf_token }}
     <div class="container text-start">
       <div class="row justify-content-center">
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {{ form.years_lived_chicago.label(class_="form-label")}}
         </div>
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {{ form.years_lived_chicago(class_="form-number form-control")}}
         </div>
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {{ form.years_lived.label(class_="form-label")}}
         </div>
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {{ form.years_lived(class_="form-number form-control")}}
         </div>
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {% if form.rent_own.errors %} 
             {{ form.rent_own.label(class_="form-check-label is-invalid")}} 
           {% else %}
             {{ form.rent_own.label(class_="form-check-label")}} 
           {% endif %} 
         </div>
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {% for subfield in form.rent_own %}
             <div class="form-check">
               <tr>
@@ -65,10 +65,10 @@ w-75
           {% endfor %}
           <div class="invalid-feedback">Please choose an option!</div>
         </div>
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {{ form.gender.label(class_="form-check-label")}} 
         </div>
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {% for subfield in form.gender %}
             <div class="form-check">
               <tr>
@@ -78,10 +78,10 @@ w-75
             </div>
           {% endfor %}
         </div>
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {{ form.age.label(class_="form-check-label")}}
         </div>
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {% for subfield in form.age %}
             <div class="form-check">
               <tr>
@@ -91,10 +91,10 @@ w-75
             </div>
           {% endfor %}
         </div>
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {{ form.ethnicity.label(class_="form-check-label")}} 
         </div>
-        <div class="col-md-6 py-2">
+        <div class="col-md-8 py-2">
           {% for subfield in form.ethnicity %}
             <div class="form-check">
               <tr>
@@ -112,63 +112,61 @@ w-75
     </div>
     <div class="py-2"></div>
     <div class="container text-start">
-      <div class="row text-center">
-        <div class="col-md-2 d-none d-md-block"></div>
-        <div class="col-md-2 d-none d-md-block">Strongly disagree</div>
-        <div class="col-md-2 d-none d-md-block">Somewhat disagree</div>
-        <div class="col-md-2 d-none d-md-block">Neither agree nor disagree</div>
-        <div class="col-md-2 d-none d-md-block">Somewhat agree</div>
-        <div class="col-md-2 d-none d-md-block">Strongly agree</div>
-      </div>
-      <div class="py-1"></div>
-      <div class="row">
-        <div class="col-md-2">
+      <div class="row justify-content-center">
+        <div class="col-md-8 py-2">
           {{ form.soc_cohes_neighborhood_knit.label(class_="form-check-label") }}
         </div>
-        {% for subfield in form.soc_cohes_neighborhood_knit %}
-          <div class="col-md-2 text-md-center text-start">
-            {{ subfield(class_="form-check-input") }}
-            {{ subfield.label(class_="form-check-label d-md-none") }}
-          </div>
-        {% endfor %}
-      </div>
-      <div class="py-1"></div>
-      <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-8 py-2">
+          {% for subfield in form.soc_cohes_neighborhood_knit %}
+            <div class="form-check">
+              <tr>
+                {{ subfield(class_="form-check-input") }}
+                {{ subfield.label(class_="form-check-label") }}
+              </tr>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="col-md-8 py-2">
           {{ form.soc_cohes_neighborhood_value.label(class_="form-check-label") }}
         </div>
-        {% for subfield in form.soc_cohes_neighborhood_value %}
-          <div class="col-md-2 text-md-center text-start">
-            {{ subfield(class_="form-check-input") }}
-            {{ subfield.label(class_="form-check-label d-md-none") }}
-          </div>
-        {% endfor %}
-      </div>
-      <div class="py-1"></div>
-      <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-8 py-2">
+          {% for subfield in form.soc_cohes_neighborhood_value %}
+            <div class="form-check">
+              <tr>
+                {{ subfield(class_="form-check-input") }}
+                {{ subfield.label(class_="form-check-label") }}
+              </tr>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="col-md-8 py-2">
           {{ form.soc_cohes_neighborhood_talk.label(class_="form-check-label") }}
         </div>
-        {% for subfield in form.soc_cohes_neighborhood_talk %}
-          <div class="col-md-2 text-md-center text-start">
-            {{ subfield(class_="form-check-input") }}
-            {{ subfield.label(class_="form-check-label d-md-none") }}
-          </div>
-        {% endfor %}
-      </div>
-      <div class="py-1"></div>
-      <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-8 py-2">
+          {% for subfield in form.soc_cohes_neighborhood_talk %}
+            <div class="form-check">
+              <tr>
+                {{ subfield(class_="form-check-input") }}
+                {{ subfield.label(class_="form-check-label") }}
+              </tr>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="col-md-8 py-2">
           {{ form.soc_cohes_neighborhood_belong.label(class_="form-check-label") }}
         </div>
-        {% for subfield in form.soc_cohes_neighborhood_belong %}
-          <div class="col-md-2 text-md-center text-start">
-            {{ subfield(class_="form-check-input") }}
-            {{ subfield.label(class_="form-check-label d-md-none") }}
-          </div>
-        {% endfor %}
+        <div class="col-md-8 py-2">
+          {% for subfield in form.soc_cohes_neighborhood_belong %}
+            <div class="form-check">
+              <tr>
+                {{ subfield(class_="form-check-input") }}
+                {{ subfield.label(class_="form-check-label") }}
+              </tr>
+            </div>
+          {% endfor %}
+        </div>
       </div>
-    </div>
+    </div>        
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 mx-auto py-2 text-center">
