@@ -158,7 +158,7 @@ class SurveyDemo(FlaskForm):
         validators=[Optional()],
         default="none",
         choices=[
-            ("strong_dis", lazy_gettext("Strong Disagree")),
+            ("strong_dis", lazy_gettext("Strong disagree")),
             ("somew_dis", lazy_gettext("Somewhat disagree")),
             ("neither", lazy_gettext("Neither agree nor disagree")),
             ("somew_agr", lazy_gettext("Somewhat agree")),
@@ -170,7 +170,7 @@ class SurveyDemo(FlaskForm):
         validators=[Optional()],
         default="none",
         choices=[
-            ("strong_dis", lazy_gettext("Strong Disagree")),
+            ("strong_dis", lazy_gettext("Strong disagree")),
             ("somew_dis", lazy_gettext("Somewhat disagree")),
             ("neither", lazy_gettext("Neither agree nor disagree")),
             ("somew_agr", lazy_gettext("Somewhat agree")),
@@ -182,7 +182,7 @@ class SurveyDemo(FlaskForm):
         validators=[Optional()],
         default="none",
         choices=[
-            ("strong_dis", lazy_gettext("Strong Disagree")),
+            ("strong_dis", lazy_gettext("Strong disagree")),
             ("somew_dis", lazy_gettext("Somewhat disagree")),
             ("neither", lazy_gettext("Neither agree nor disagree")),
             ("somew_agr", lazy_gettext("Somewhat agree")),
@@ -194,7 +194,7 @@ class SurveyDemo(FlaskForm):
         validators=[Optional()],
         default="none",
         choices=[
-            ("strong_dis", lazy_gettext("Strong Disagree")),
+            ("strong_dis", lazy_gettext("Strong disagree")),
             ("somew_dis", lazy_gettext("Somewhat disagree")),
             ("neither", lazy_gettext("Neither agree nor disagree")),
             ("somew_agr", lazy_gettext("Somewhat agree")),
