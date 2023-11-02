@@ -149,7 +149,7 @@ msgid "I live in a close-knit neighborhood"
 msgstr "我住在一個關係密切的社區。"
 
 #: app/forms.py:161 app/forms.py:173 app/forms.py:185 app/forms.py:197
-msgid "Strong Disagree"
+msgid "Strong disagree"
 msgstr "強烈不同意"
 
 #: app/forms.py:162 app/forms.py:174 app/forms.py:186 app/forms.py:198
