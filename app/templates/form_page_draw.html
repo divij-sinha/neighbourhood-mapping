@@ -95,7 +95,7 @@ w-50
     <img src="/static/edit_icon.png" alt="pencil" width="30" /> {{ _("to move or edit a point.") }}
   </p>
   {% if form.draw_layer.errors %}
-    <p class="text-danger">Please draw the neighborhood!</p>
+    <p class="text-danger">{{ _("Please draw the neighborhood!") }}</p>
   {% endif %}
 </div>
 <div class="container-fluid p-4">{{ body_html|safe }}</div>

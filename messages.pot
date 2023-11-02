@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-30 21:20-0500\n"
+"POT-Creation-Date: 2023-11-02 09:39-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,7 +148,7 @@ msgid "I live in a close-knit neighborhood"
 msgstr ""
 
 #: app/forms.py:161 app/forms.py:173 app/forms.py:185 app/forms.py:197
-msgid "Strong Disagree"
+msgid "Strong disagree"
 msgstr ""
 
 #: app/forms.py:162 app/forms.py:174 app/forms.py:186 app/forms.py:198
@@ -279,6 +279,10 @@ msgstr ""
 
 #: app/templates/form_page_draw.html:95
 msgid "to move or edit a point."
+msgstr ""
+
+#: app/templates/form_page_draw.html:98
+msgid "Please draw the neighborhood!"
 msgstr ""
 
 #: app/templates/form_page_start.html:9

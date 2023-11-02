@@ -287,6 +287,10 @@ msgstr "aby usunąć punkt. Użyj"
 msgid "to move or edit a point."
 msgstr "taby przenieść lub edytować punkt."
 
+#: app/templates/form_page_draw.html:98
+msgid "Please draw the neighborhood!"
+msgstr "Narysuj swoją okolicę!"
+
 #: app/templates/form_page_start.html:9
 msgid "Where do you currently live?"
 msgstr "Gdzie obecnie mieszkasz?"

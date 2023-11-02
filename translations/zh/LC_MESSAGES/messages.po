@@ -285,6 +285,10 @@ msgstr "刪除點。使用"
 msgid "to move or edit a point."
 msgstr "移動或編輯點。"
 
+#: app/templates/form_page_draw.html:98
+msgid "Please draw the neighborhood!"
+msgstr "畫出您所在的社區的边界！"
+
 #: app/templates/form_page_start.html:9
 msgid "Where do you currently live?"
 msgstr "您現在住哪裡呢？"
