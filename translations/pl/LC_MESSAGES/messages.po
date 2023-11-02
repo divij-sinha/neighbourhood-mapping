@@ -150,7 +150,7 @@ msgid "I live in a close-knit neighborhood"
 msgstr "Mieszkam w zwartej okolicy."
 
 #: app/forms.py:161 app/forms.py:173 app/forms.py:185 app/forms.py:197
-msgid "Strong Disagree"
+msgid "Strong disagree"
 msgstr "Zdecydowanie się nie zgadzam"
 
 #: app/forms.py:162 app/forms.py:174 app/forms.py:186 app/forms.py:198
@@ -286,6 +286,10 @@ msgstr "aby usunąć punkt. Użyj"
 #: app/templates/form_page_draw.html:95
 msgid "to move or edit a point."
 msgstr "taby przenieść lub edytować punkt."
+
+#: app/templates/form_page_draw.html:98
+msgid "Please draw the neighborhood!"
+msgstr "Narysuj swoją okolicę!"
 
 #: app/templates/form_page_start.html:9
 msgid "Where do you currently live?"

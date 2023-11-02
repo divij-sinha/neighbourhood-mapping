@@ -149,7 +149,7 @@ msgid "I live in a close-knit neighborhood"
 msgstr "我住在一個關係密切的社區。"
 
 #: app/forms.py:161 app/forms.py:173 app/forms.py:185 app/forms.py:197
-msgid "Strong Disagree"
+msgid "Strong disagree"
 msgstr "強烈不同意"
 
 #: app/forms.py:162 app/forms.py:174 app/forms.py:186 app/forms.py:198
@@ -284,6 +284,10 @@ msgstr "刪除點。使用"
 #: app/templates/form_page_draw.html:95
 msgid "to move or edit a point."
 msgstr "移動或編輯點。"
+
+#: app/templates/form_page_draw.html:98
+msgid "Please draw the neighborhood!"
+msgstr "畫出您所在的社區的边界！"
 
 #: app/templates/form_page_start.html:9
 msgid "Where do you currently live?"
