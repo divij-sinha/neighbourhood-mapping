@@ -1,6 +1,6 @@
 from app import app, db
 from app.models import Neighborhood, Location, Respondent, Feedback
-from app.forms import SurveyStart, SurveyDraw, AgreeButton, SurveyDemo, SurveyFeedback, validator_geo_json
+from app.forms import SurveyStart, SurveyDraw, AgreeButton, SurveyDemo, SurveyFeedback, validator_geo_json, DataRequired
 from flask import render_template, redirect, url_for, session, request
 from utils import get_geojson, get_map_comps, get_neighborhood_list
 from datetime import datetime, timezone
@@ -93,7 +93,7 @@ def survey_draw(first):
         loc=loc, zoom=13, draw_options=draw_options
     )
     form = SurveyDraw()
-    if form.validate_on_submit():
+    if (form.validate_on_submit() and first == "next") or (form.validate_on_submit(extra_validators={"draw_layer": [DataRequired(), validator_geo_json]}) and first == "first"):
         parsed_geojson = get_geojson(form.draw_layer.data)
         try:
             geometry = from_shape(shape(parsed_geojson["features"][0]["geometry"]))
@@ -117,6 +117,8 @@ def survey_draw(first):
             return redirect(url_for("survey_demo"))
         elif form.draw_another.data:
             return redirect(url_for("survey_draw", first="next"))
+    else:
+        print(form.draw_layer.errors)
     # if first == "first":
     #     form.cur_neighborhood.data = location.name
     # else:

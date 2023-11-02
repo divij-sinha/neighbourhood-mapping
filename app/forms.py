@@ -17,7 +17,7 @@ from flask_babel import lazy_gettext
 def validator_geo_json(form, field):
     parsed_geojson = get_geojson(field.data)
     if len(parsed_geojson["features"]) != 1:
-        raise ValidationError()
+        raise ValidationError("Please fill in the requirement!")
 
 
 class MultiCheckboxField(SelectMultipleField):
@@ -68,7 +68,7 @@ class SurveyDraw(FlaskForm):
         validators=[Optional()]
     )
     draw_layer = HiddenField(
-        "invisible_str_draw", validators=[Optional()]
+        "invisible_str_draw", validators=[]
     )
     user_relationship = MultiCheckboxField(
         lazy_gettext("How do you know this neighborhood? (Select all that apply)"),
