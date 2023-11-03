@@ -101,7 +101,7 @@ w-50
 <div class="p-4 container-fluid h-50">
   {{ body_html|safe }}
 </div>
-<div class="container-fluid mx-auto">
+<div class="container-fluid mx-auto cta-main-btn">
   <div class="row">
     <div class="col-md-6 mx-auto py-2 text-center">
       <form>
@@ -116,7 +116,12 @@ w-50
       </form>
     </div>
   </div>
-<div class="container-fluid p-4"></div>
+
+<div class = "float-end fixed-bottom p-4 text-end">
+  <button id="scrollToBotBtn" class="btn btn-primary">
+    →
+  </button>
+</div>
 {% endblock %} 
 
 {% block map_script %}
@@ -128,5 +133,25 @@ w-50
       "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
     document.getElementById("draw_layer").setAttribute("value", "data:" + convertedData);
   }
+</script>
+<script>
+  $(document).ready(function(){
+    // Show or hide the button based on scroll position
+    $(window).scroll(function(){
+      var position_top = $('.cta-main-btn').position().top - $(window).height();
+
+      if ($(this).scrollTop() < position_top) {
+        $('#scrollToBotBtn').fadeIn();
+      } else {
+        $('#scrollToBotBtn').fadeOut();
+      }
+    });
+
+    // Scroll to top on button click
+    $('#scrollToBotBtn').click(function(){
+      $('html, body').animate({scrollTop : $(window).height()},200);
+      return false;
+    });
+  });
 </script>
 {% endblock %}

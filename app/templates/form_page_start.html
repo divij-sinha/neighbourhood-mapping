@@ -20,7 +20,6 @@ w-25
   {{ form.csrf_token }} 
   {{ form.mark_layer }}
 </form>
-
 <div class="container-fluid text-left fs-5 px-4">
   <p>
     {{ _("To start drawing your neighborhood, first use the map to indicate generally where you live.") }}
@@ -48,11 +47,18 @@ w-25
 <div class="p-4 container-fluid h-50">
   {{ body_html|safe }}
 </div>
-<div class="container-fluid text-center">
+<div class="container-fluid text-center cta-main-btn">
   <form>
     {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn btn-primary btn-lg text-wrap") }}
   </form>
 </div>
+
+<div class = "float-end fixed-bottom p-4 text-end">
+  <button id="scrollToBotBtn" class="btn btn-primary">
+    →
+  </button>
+</div>
+
 {% endblock %} 
 
 {% block map_script %}
@@ -67,5 +73,25 @@ w-25
       .getElementById("mark_layer")
       .setAttribute("value", "data:" + convertedData);
   }
+</script>
+<script>
+  $(document).ready(function(){
+    // Show or hide the button based on scroll position
+    $(window).scroll(function(){
+      var position_top = $('.cta-main-btn').position().top - $(window).height();
+
+      if ($(this).scrollTop() < position_top) {
+        $('#scrollToBotBtn').fadeIn();
+      } else {
+        $('#scrollToBotBtn').fadeOut();
+      }
+    });
+
+    // Scroll to top on button click
+    $('#scrollToBotBtn').click(function(){
+      $('html, body').animate({scrollTop : $(window).height()},200);
+      return false;
+    });
+  });
 </script>
 {% endblock %}
