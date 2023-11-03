@@ -45,7 +45,7 @@ w-25
   <p class="text-danger-custom">{{ _("Mark the general location of where you live!") }}</p>
   {% endif %}
 </div>
-<div class="container-fluid p-4">
+<div class="p-4 container-fluid h-50">
   {{ body_html|safe }}
 </div>
 <div class="container-fluid text-center">
@@ -53,7 +53,6 @@ w-25
     {{ form.submit(onclick="storeLayer()", form="mainform", class_="btn btn-primary btn-lg text-wrap") }}
   </form>
 </div>
-<div class="container-fluid p-4"></div>
 {% endblock %} 
 
 {% block map_script %}

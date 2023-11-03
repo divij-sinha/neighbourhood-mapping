@@ -117,8 +117,6 @@ def survey_draw(first):
             return redirect(url_for("survey_demo"))
         elif form.draw_another.data:
             return redirect(url_for("survey_draw", first="next"))
-    else:
-        print(form.draw_layer.errors)
     # if first == "first":
     #     form.cur_neighborhood.data = location.name
     # else:

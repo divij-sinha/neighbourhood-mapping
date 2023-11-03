@@ -26,7 +26,7 @@ def get_map_comps(loc: tuple, zoom: int, draw_options: dict) -> tuple:
         tiles = f"https://api.mapbox.com/styles/v1/divij-uc/clg184vco000401lhvagjhq3i/tiles/256/{{z}}/{{x}}/{{y}}@2x?access_token={os.environ['ACCESS_TOKEN']}",
         attr = '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
 
-        height=450,
+        height='100%',
         width='100%',
         tap = False,
         tapTolerance = 50,
