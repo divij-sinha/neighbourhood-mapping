@@ -68,7 +68,6 @@ def survey_form():
             loc=(41.8781, -87.6298), zoom=12, draw_options=draw_options
         )
         form = SurveyStart()
-
         if form.validate_on_submit():
             parsed_geojson = get_geojson(form.mark_layer.data)
             location = Location.query.filter_by(user_id=session["uuid"]).first()
@@ -78,7 +77,6 @@ def survey_form():
             location.time_stamp = datetime.now(timezone.utc)
             db.session.commit()
             return redirect(url_for("survey_draw", first="first"))
-
         return render_template(
             "form_page_start.html",
             form=form,
@@ -88,7 +86,7 @@ def survey_form():
             script=script,
         )
     except:
-        redirect(url_for("start_page"))
+        return redirect(url_for("start_page"))
 
 
 @app.route("/survey_draw/<first>", methods=["GET", "POST"])
@@ -154,7 +152,7 @@ def survey_draw(first):
             neighborhood_list=neighborhood_list,
         )
     except:
-        redirect(url_for("start_page"))
+        return redirect(url_for("start_page"))
 
 
 @app.route("/survey_demo", methods=["GET", "POST"])
@@ -184,7 +182,7 @@ def survey_demo():
 
         return render_template("form_page_demo.html", form=form)
     except:
-        redirect(url_for("start_page"))
+        return redirect(url_for("start_page"))
 
 
 @app.route("/thank_you/<feedback_page>", methods=["GET", "POST"])
@@ -204,4 +202,4 @@ def thank_page(feedback_page):
             "thank_page.html", form=form, feedback_page=feedback_page
         )
     except:
-        redirect(url_for("start_page"))
+        return redirect(url_for("start_page"))
