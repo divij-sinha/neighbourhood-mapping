@@ -110,5 +110,8 @@ path {
 .dropdown:active {
     background-color: #54b7ca;
 }
+.special-color {
+    color: #c30302;
+}
 /* Red: #c30302
 Blue: #54b7ca */
