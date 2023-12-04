@@ -30,6 +30,11 @@ w-25
     <li>{{ _("Tap the") }} <img src="/static/draw_icon.png" alt="white circle" width="30" /> {{ _("icon then click on the map to mark your home's general location.") }} </li>
     </ol>
   </p>
+</div>
+<div class="p-4 container-fluid h-50">
+  {{ body_html|safe }}
+</div>
+<div class="container-fluid text-left fs-5 px-4">
   <p>
     {{ _("We will only look at your location as approximate coordinates and do not store your address.") }}
   </p>
@@ -43,9 +48,6 @@ w-25
   {% if form.mark_layer.errors %}
   <p class="text-danger-custom">{{ _("Mark the general location of where you live!") }}</p>
   {% endif %}
-</div>
-<div class="p-4 container-fluid h-50">
-  {{ body_html|safe }}
 </div>
 <div class="container-fluid text-center cta-main-btn">
   <form>

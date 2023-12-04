@@ -88,6 +88,11 @@ w-50
       <!-- <li>Click "I'm done" if you don't want to draw any more neighborhoods or click on "I want to draw the boundary of another neighborhood" to continue drawing</li> -->
     </ol>
     </p>
+</div>
+<div class="p-4 container-fluid h-50">
+  {{ body_html|safe }}
+</div>
+<div class="container-fluid text-left fs-5 px-4">
   <p class="fst-italic">
     {{ _("Draw only 1 neighborhood! Use the") }}
     <img src="/static/delete_icon.png" alt="trash" width="30" /> {{ _("to delete a
@@ -97,9 +102,6 @@ w-50
   {% if form.draw_layer.errors %}
     <p class="text-danger">{{ _("Please draw the neighborhood!") }}</p>
   {% endif %}
-</div>
-<div class="p-4 container-fluid h-50">
-  {{ body_html|safe }}
 </div>
 <div class="container-fluid mx-auto cta-main-btn">
   <div class="row">
