@@ -98,6 +98,7 @@ def survey_draw(first):
             "circle": False,
             "marker": False,
             "circlemarker": False,
+            "polygon": {"allowIntersection": True, "drawError": False},
         }
         if first == "first":
             location = Location.query.filter_by(user_id=session["uuid"]).first()
