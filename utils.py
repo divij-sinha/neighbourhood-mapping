@@ -32,6 +32,7 @@ def get_map_comps(loc: tuple, zoom: int, draw_options: dict) -> tuple:
         width="100%",
         tap=False,
         tapTolerance=100,
+        gestureHandling=True,
     )
     Draw(
         position="topleft",
