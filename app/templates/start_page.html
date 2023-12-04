@@ -22,9 +22,14 @@ w-0
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid p-3 text-center h-1">
+<div class="container-fluid px-3 text-center h-1">
   <h1>{{ _("Draw your neighborhood in less than 3 minutes!") }}</h1>
 </div>
+<div class="container-fluid text-center">
+  <form action="" method="post" novalidate id="mainform">
+    {{ agree.csrf_token }} 
+    {{ agree.agree(class_="btn btn-primary btn-lg text-wrap") }}
+  </form>
 <p class="fs-4 lead p-3">
   {{ _("Chicago prides itself as “The City of Neighborhoods” but where are they? 
   Chicago needs an update from the 77 community areas mapped in the 1920s!") }}
@@ -50,10 +55,8 @@ w-0
   Chicago, you are at least 18 years of age, and you consent to participate in
   this study voluntarily.") }}
 </p>
-<div class="container-fluid text-center">
-  <form action="" method="post" novalidate id="mainform">
-    {{ agree.csrf_token }} 
-    {{ agree.agree(class_="btn btn-primary btn-lg text-wrap") }}
+  <form>
+    {{ agree.agree(class_="btn btn-primary btn-lg text-wrap",form="mainform") }}
   </form>
 </div>
 {% endblock %} 
