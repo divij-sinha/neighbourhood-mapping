@@ -6,6 +6,7 @@ Flask_WTF==1.1.1
 folium==0.14.0
 GeoAlchemy2==0.13.1
 geojson==3.0.1
+numpy==1.24.2
 pandas==1.5.3
 python-dotenv==1.0.0
 shapely==2.0.1
