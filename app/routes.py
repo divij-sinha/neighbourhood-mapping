@@ -1,21 +1,23 @@
-from app import app, db
-from app.models import Neighborhood, Location, Respondent, Feedback
-from app.forms import (
-    SurveyStart,
-    SurveyDraw,
-    AgreeButton,
-    SurveyDemo,
-    SurveyFeedback,
-    validator_geo_json,
-    DataRequired,
-)
-from flask import render_template, redirect, url_for, session, request
-from utils import get_geojson, get_map_comps, get_neighborhood_list
+import uuid
 from datetime import datetime, timezone
+
+from flask import redirect, render_template, request, session, url_for
+from flask_babel import Babel
 from geoalchemy2.shape import from_shape, to_shape
 from shapely.geometry import shape
-import uuid
-from flask_babel import Babel
+
+from app import app, db
+from app.forms import (
+    AgreeButton,
+    DataRequired,
+    SurveyDemo,
+    SurveyDraw,
+    SurveyFeedback,
+    SurveyStart,
+    validator_geo_json,
+)
+from app.models import Feedback, Location, Neighborhood, Respondent
+from utils import get_geojson, get_map_comps, get_neighborhood_list
 
 
 def get_locale():
@@ -204,3 +206,8 @@ def thank_page(feedback_page):
         )
     except:
         return redirect(url_for("start_page"))
+
+
+@app.route("/Public_Chi_Neighborhoods", methods=["GET"])
+def public_chi_neighborhoods():
+    return render_template("Public_Chi_Neighborhoods.html")
